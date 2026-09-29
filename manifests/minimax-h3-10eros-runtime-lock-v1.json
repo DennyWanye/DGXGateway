@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "required_architecture": "aarch64",
+  "parent": {
+    "image": "minimax-h3-two-node:production",
+    "image_id": "sha256:2c8b61d92a7f1205e8445e6ea6ba27b9922fde308b9daf121a8b4dcd50727d11"
+  },
+  "deployment_overlays": [
+    {
+      "path": "overlays/minimax-h3-two-node/worker.py",
+      "target": "/opt/h3-multinode/h3_multinode/worker.py",
+      "sha256": "f17239d6a5fc361e1e482f25e02273de5285c902f5a36340a10e3d9a9a901b93"
+    }
+  ],
+  "source": {
+    "revision": "3c071106f5b62c02b3cb0b7d831083cdb582b289",
+    "transformer_sha256": "bf34b4c9d2fa973ae84c480a1a5a04d2978958023bb6be7375b3b9e4818965e3"
+  },
+  "patch": {
+    "preimage_sha256": "5cdc9078215f1d07fe617d8dba6309c64f1987e8f83c82b0e22c50ac062f3826",
+    "script_sha256": "a0c9e1c6f6265b7d32990e29ccd9cd3f84c767638ab57a2059a73fe47faca597",
+    "result_sha256": "2c23a22ec8d1cc7adc3b848fd0692cfe2fb129ec74a6985b357d585c3c7eb507"
+  },
+  "schedule_patch": {
+    "preimage_sha256": "9bf880418209cc91e7131bd44595d140db5e9b213f0c3585da4b41e25b4691fc",
+    "script_sha256": "4b276572f757e1c7095b4070ae173ca2a7ccfe58f4183cb75086785254e4e903",
+    "result_sha256": "550a3401c249d55cb960fcf4790e297d2ae814eda31643859c54b80e59afd9b6",
+    "scheduler": "comfy-simple",
+    "updates": 8
+  },
+  "candidate": {
+    "tag": "minimax-h3-two-node:10eros-v1",
+    "final_image_id": "sha256:c9657a694a3266c2e1ad3deadef6aab164f2a5c2722156f703d7f6aec47ba14d"
+  },
+  "dockerfile_sha256": "31176dadcccf9f25a20a0dc772d68e23cbf16482bbda24c218ba933033feaea0",
+  "license_attestation_sha256": "3642300415fb0cf870eefd95d8e22b9e0b1f069a8f68143ffed6b1bcdd9547c6",
+  "status": "resolved"
+}

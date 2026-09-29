@@ -1,0 +1,107 @@
+[
+  {
+    "id": "h3-4dgx-base-license",
+    "repo": "MiniMaxAI/MiniMax-H3",
+    "revision": "42ed227ee7df40d41602854ae760620d6eb651fe",
+    "path": "LICENSE",
+    "destination": "h3-4dgx/models/MiniMax-H3/LICENSE"
+  },
+  {
+    "id": "h3-4dgx-base-readme-md",
+    "repo": "MiniMaxAI/MiniMax-H3",
+    "revision": "42ed227ee7df40d41602854ae760620d6eb651fe",
+    "path": "README.md",
+    "destination": "h3-4dgx/models/MiniMax-H3/README.md"
+  },
+  {
+    "id": "h3-4dgx-heretic-readme-md",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "README.md",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/README.md"
+  },
+  {
+    "id": "h3-4dgx-heretic-chat-template-jinja",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "chat_template.jinja",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/chat_template.jinja"
+  },
+  {
+    "id": "h3-4dgx-heretic-config-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "config.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/config.json"
+  },
+  {
+    "id": "h3-4dgx-heretic-generation-config-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "generation_config.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/generation_config.json"
+  },
+  {
+    "id": "h3-4dgx-heretic-model-00001-of-00002-safetensors",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "model-00001-of-00002.safetensors",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/model-00001-of-00002.safetensors"
+  },
+  {
+    "id": "h3-4dgx-heretic-model-00002-of-00002-safetensors",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "model-00002-of-00002.safetensors",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/model-00002-of-00002.safetensors"
+  },
+  {
+    "id": "h3-4dgx-heretic-model-safetensors-index-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "model.safetensors.index.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/model.safetensors.index.json"
+  },
+  {
+    "id": "h3-4dgx-heretic-preprocessor-config-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "preprocessor_config.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/preprocessor_config.json"
+  },
+  {
+    "id": "h3-4dgx-heretic-tokenizer-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "tokenizer.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/tokenizer.json"
+  },
+  {
+    "id": "h3-4dgx-heretic-tokenizer-config-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "tokenizer_config.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/tokenizer_config.json"
+  },
+  {
+    "id": "h3-4dgx-heretic-video-preprocessor-config-json",
+    "repo": "llmfan46/Qwen3-VL-32B-Instruct-ultra-uncensored-heretic",
+    "revision": "c44b949b30d111666a5ed9851c5cd633ed39b070",
+    "path": "video_preprocessor_config.json",
+    "destination": "h3-4dgx/models/H3-Heretic-Encoder/video_preprocessor_config.json"
+  },
+  {
+    "id": "h3-4dgx-turbo-readme-md",
+    "repo": "larryvrh/MiniMax-H3-Turbo-Lora",
+    "revision": "43a74557ac3f6539db8e0f2a959d03feb7a81480",
+    "path": "README.md",
+    "destination": "h3-4dgx/models/H3-Turbo-v4/README.md"
+  },
+  {
+    "id": "h3-4dgx-turbo-minimax-h3-turbo-v4-step600-ema-safetensors",
+    "repo": "larryvrh/MiniMax-H3-Turbo-Lora",
+    "revision": "43a74557ac3f6539db8e0f2a959d03feb7a81480",
+    "path": "minimax_h3_turbo_v4_step600_ema.safetensors",
+    "destination": "h3-4dgx/models/H3-Turbo-v4/minimax_h3_turbo_v4_step600_ema.safetensors"
+  }
+]

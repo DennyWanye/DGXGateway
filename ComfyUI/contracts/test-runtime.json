@@ -1,0 +1,10 @@
+{
+  "schema_id": "dgx-h3-test-v1",
+  "profile": "test",
+  "endpoint_id": "fake-gateway-v1",
+  "endpoint": "http://fake-gateway:19081/v1/videos/sync",
+  "secret_path": "/run/dgx-h3-secret/token",
+  "connect_timeout_seconds": 2,
+  "total_timeout_seconds": 5,
+  "max_response_bytes": 268435456
+}

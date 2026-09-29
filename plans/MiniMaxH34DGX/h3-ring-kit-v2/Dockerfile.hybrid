@@ -1,0 +1,8 @@
+# Optional experimental dependency overlay. Do NOT replace the known-good base image/tag.
+ARG BASE
+FROM ${BASE}
+ARG KITCHEN_VERSION
+RUN test -n "$KITCHEN_VERSION" \
+    && python -m pip install --no-deps "comfy-kitchen==$KITCHEN_VERSION" \
+    && python -m pip check \
+    && python -m pip freeze --all > /opt/h3-hybrid-freeze.txt

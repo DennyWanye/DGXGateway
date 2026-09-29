@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DGX Cluster Gateway</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css?v=20260923-legend-dash">
+  <link rel="stylesheet" href="/admin-guide.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><p class="eyebrow">FOUR-NODE CONTROL PLANE</p><h1>DGX Cluster Gateway</h1></div>
+    <div class="topbar-status"><a class="admin-guide-link" href="/mcp-guide.html">MCP 工具文档</a><a class="admin-guide-link" href="/admin-guide.html">管理员使用指南</a><span id="connection" class="connection">正在连接</span><span id="lock" class="badge">读取中</span></div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="active-model-summary"><p class="label">当前本地服务与制作任务</p><h2 id="active-model">读取中…</h2><p id="runtime-detail" class="muted" aria-live="polite"></p><p id="sample-time" class="muted"></p></div>
+      <div id="active-connection" class="connection-details"><p class="muted">正在读取连接信息…</p></div>
+      <button id="login-button" class="secondary">管理登录</button>
+    </section>
+
+    <section id="residency-panel" class="panel" hidden aria-label="模型复用与内存释放">
+      <h3>模型复用与内存释放</h3>
+      <p id="residency-detail" class="muted" aria-live="polite"></p>
+      <button id="release-residency" class="secondary" disabled>立即释放模型内存</button>
+    </section>
+
+    <section aria-labelledby="operation-title">
+      <div class="section-title"><div><p class="section-kicker">CONTROL</p><h3 id="operation-title">切换进度</h3></div><span>真实阶段，不是预计剩余时间</span></div>
+      <div id="operation" class="panel operation-panel" aria-live="polite" aria-atomic="true"><p class="muted">正在读取操作状态…</p></div>
+    </section>
+
+    <section aria-labelledby="models-title">
+      <div class="section-title"><div><p class="section-kicker">MODELS</p><h3 id="models-title">模型切换</h3></div><span>严格独占 · 切换期间自动锁定</span></div>
+      <div id="control-reason" class="control-reason" role="status">正在读取可操作状态…</div>
+      <div id="models" class="grid models"></div>
+    </section>
+
+    <section aria-labelledby="nodes-title">
+      <div class="section-title"><div><p class="section-kicker">CLUSTER</p><h3 id="nodes-title">四机状态</h3></div><span>DGX 1 主控 / API · DGX 2–4 计算节点</span></div>
+      <div id="nodes" class="grid"></div>
+    </section>
+
+    <section aria-labelledby="telemetry-title">
+      <div class="section-title"><div><p class="section-kicker">TELEMETRY</p><h3 id="telemetry-title">四机遥测趋势</h3></div>
+        <div class="telemetry-controls" aria-label="遥测时间范围">
+          <label for="telemetry-range">时间范围</label>
+          <select id="telemetry-range">
+            <option value="1h">过去 1 小时</option>
+            <option value="1d">过去 1 天</option>
+            <option value="3d">过去 3 天</option>
+            <option value="7d">过去 7 天</option>
+            <option value="14d">过去 14 天</option>
+            <option value="30d">过去 30 天</option>
+          </select>
+          <label for="telemetry-start">开始</label>
+          <input type="datetime-local" id="telemetry-start" step="60">
+          <label for="telemetry-end">结束</label>
+          <input type="datetime-local" id="telemetry-end" step="60">
+          <button id="telemetry-apply" class="secondary" type="button">应用自定义时段</button>
+        </div>
+      </div>
+      <div class="panel chart-panel">
+        <div class="chart-summary"><div><strong id="chart-status">等待遥测数据</strong><p id="chart-time" class="muted">正在读取最近一小时的记录</p></div><div class="axis-key"><span>左轴 温度 / 功耗</span><span>右轴 内存 / 利用率 %</span></div></div>
+        <div id="chart-legend" class="chart-legend" aria-label="遥测图例"></div>
+        <div id="telemetry-chart" class="chart-wrap" aria-label="四机 GPU 实时遥测图"></div>
+        <div id="chart-tooltip" class="chart-tooltip" role="status" aria-live="polite">选择或悬停数据点查看读数</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="providers-title">
+      <div class="section-title"><div><p class="section-kicker">PROVIDERS</p><h3 id="providers-title">云端视频 API</h3></div><span>未配置时不会产生费用</span></div>
+      <div id="providers" class="grid models"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="login-dialog">
+    <form method="dialog">
+      <h3>管理登录</h3>
+      <p>输入 Gateway 管理令牌。令牌只用于建立 HttpOnly 会话。</p>
+      <label for="admin-token">管理令牌</label>
+      <input id="admin-token" type="password" autocomplete="current-password">
+      <div class="dialog-actions"><button value="cancel" class="secondary">取消</button><button id="login-submit" value="default">登录</button></div>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </dialog>
+  <script src="/ui-core.js?v=20260923-legend-dash"></script>
+  <script src="/app.js?v=20260923-legend-dash"></script>
+</body>
+</html>

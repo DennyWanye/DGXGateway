@@ -1,0 +1,10 @@
+subject_definitions:
+<Picture 1>、<Picture 2>、<Picture 3> 展示同一名成年角色的正面、侧面和衣着。<Picture 4> 是场景参考。
+summary:
+保持同一角色在参考房间中的身份与服装，生成四秒连续镜头。
+retention_analysis:
+角色身份、发型、服装以前三张图为准，房间布局、窗户方向与光线以第四张图为准。不要把不同角度当成多个角色。
+detailed_description:
+成年角色站在窗边，从画面中景位置缓慢转头看向窗外。镜头固定，不切镜，不新增人物。不要把参考图片排成拼贴。
+overall_soundscape:
+轻微房间环境声，无对白，无音乐，不生成字幕。

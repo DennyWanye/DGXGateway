@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LongCat 数字人 · DGX Gateway</title><link rel="stylesheet" href="/avatar.css"><script src="/avatar.js" defer></script></head>
+<body><main><a href="/">← DGX Gateway</a><header><p>LONGCAT VIDEO AVATAR 1.5</p><h1>让照片开口说话</h1><p>上传人物参考图和语音，生成离线数字人视频。生成期间独占 DGX 资源，完成后自动释放。</p></header>
+<form id="avatar-form"><div class="inputs"><label>人物参考图<input id="image" type="file" accept="image/png,image/jpeg,image/webp" required><small>PNG、JPEG 或 WebP，最多 8 MB。</small></label><label>语音<input id="audio" type="file" accept="audio/wav,.wav" required><small>16 kHz、单声道、16 位 PCM WAV；需覆盖视频时长，最长 120 秒。</small></label></div>
+<label>画面描述<textarea id="prompt" rows="3" maxlength="2000" required>A person speaks naturally to the camera, with subtle head movement and a stable background.</textarea></label>
+<label>视频长度<select id="segments"><option value="1">约 3.7 秒 · 首次测试推荐</option><option value="5">约 16.5 秒</option><option value="19">约 61.3 秒</option></select></label><p class="hint">已测单机生成约需 9 分钟 / 39 分钟 / 2 小时 14 分钟。实际耗时随输入变化。</p>
+<div class="actions"><button id="submit" type="submit">生成数字人视频</button><button id="cancel" type="button" disabled>取消当前任务</button></div></form>
+<section aria-live="polite"><h2>任务状态</h2><p id="status">等待输入</p><p id="details"></p><video id="result" controls playsinline hidden></video><a id="download" hidden>下载视频</a><button id="reconcile" type="button" hidden>检查并清理未完成任务</button></section><section><h2>最近任务</h2><div id="history"></div></section></main></body></html>

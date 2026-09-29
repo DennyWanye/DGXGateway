@@ -1,0 +1,292 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+host=${DGX_HOST:-operator@192.0.2.30}
+remote_hf_token_file=${HF_TOKEN_FILE_REMOTE:-/home/operator/.cache/huggingface/token}
+root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+manifest=${VIDEO_QUEUE_MANIFEST:-$root/manifests/video-model-download-queue.json}
+remote_root=${VIDEO_QUEUE_REMOTE_ROOT:-/home/operator/dgx-models/video-generation}
+remote_log_root=${VIDEO_QUEUE_REMOTE_LOG_ROOT:-$remote_root}
+remote_worker=$remote_root/scripts/download-video-artifact-remote.sh
+remote_worker=${VIDEO_QUEUE_REMOTE_WORKER:-$remote_worker}
+pid_file=${VIDEO_QUEUE_PID_FILE:-$root/logs/video-model-download-queue.pid}
+wait_for_global_downloads=${VIDEO_QUEUE_WAIT_FOR_GLOBAL_DOWNLOADS:-1}
+
+mkdir -p "$root/logs"
+if [[ -s $pid_file ]]; then
+  old_pid=$(cat "$pid_file")
+  if kill -0 "$old_pid" 2>/dev/null; then
+    echo "queue already running pid=$old_pid" >&2
+    exit 2
+  fi
+fi
+echo $$ >"$pid_file"
+trap 'rm -f "$pid_file"' EXIT
+
+[[ $(uname -s) == Darwin ]] || { echo "queue controller must run on the Mac" >&2; exit 1; }
+jq -e 'type == "array" and length > 0' "$manifest" >/dev/null
+ssh -o BatchMode=yes -o ConnectTimeout=8 "$host" 'test "$(hostname)" = dgx-head'
+
+hf_token=
+if ssh -o BatchMode=yes "$host" "test -s '$remote_hf_token_file'"; then
+  hf_token=$(ssh -o BatchMode=yes "$host" "cat '$remote_hf_token_file'")
+fi
+
+hf_curl() {
+  if [[ -n $hf_token ]]; then
+    printf 'header = "Authorization: Bearer %s"\n' "$hf_token" | curl --config - "$@"
+  else
+    curl "$@"
+  fi
+}
+
+# Hugging Face control-plane requests and ordinary Git blobs are small. Route
+# them through the checksum-verified mirror using the same isolated direct
+# identity as model payloads because huggingface.co itself is unreliable on
+# this network. LFS/model payloads still resolve to their official signed CDN.
+remote_hf_control_curl() {
+  local mode=$1 url=$2 mirror_url encoded_url mirror_ip
+  mirror_url=${url/https:\/\/huggingface.co/https:\/\/hf-mirror.com}
+  encoded_url=$(printf '%s' "$mirror_url" | base64 | tr -d '\n')
+  mirror_ip=$(resolve_public_ipv4 hf-mirror.com)
+  ssh -o BatchMode=yes "$host" bash -s -- "$mode" "$encoded_url" "$remote_hf_token_file" "$mirror_ip" <<'REMOTE'
+set -euo pipefail
+mode=$1
+url=$(printf '%s' "$2" | base64 -d)
+token_file=$3
+mirror_ip=$4
+token=
+[[ -s $token_file ]] && token=$(<"$token_file")
+curl_args=(--resolve "hf-mirror.com:443:$mirror_ip" --silent --show-error --max-time 90)
+case $mode in
+  metadata) curl_args+=(--location --write-out $'\n%{http_code}') ;;
+  head) curl_args+=(--head --output /dev/null --write-out $'%{http_code}\t%{redirect_url}') ;;
+  body) curl_args+=(--location --fail) ;;
+  *) echo "invalid HF control mode" >&2; exit 2 ;;
+esac
+if [[ -n $token ]]; then
+  printf 'header = "Authorization: Bearer %s"\n' "$token" | sudo -n runuser -u dgx-hf-direct -- curl --config - "${curl_args[@]}" "$url"
+else
+  sudo -n runuser -u dgx-hf-direct -- curl "${curl_args[@]}" "$url"
+fi
+REMOTE
+}
+
+wait_for_video_downloads() {
+  [[ $wait_for_global_downloads == 1 ]] || return 0
+  while ssh -o BatchMode=yes "$host" "pgrep -x aria2c >/dev/null"; do
+    echo "WAIT active_video_downloads=true time=$(date -Iseconds)"
+    sleep 60
+  done
+}
+
+metadata_for() {
+  local repo=$1 revision=$2 repo_path=$3 raw response http_code metadata
+  while true; do
+    if raw=$(remote_hf_control_curl metadata \
+      "https://huggingface.co/api/models/$repo/revision/$revision?blobs=true"); then
+      http_code=${raw##*$'\n'}
+      response=${raw%$'\n'*}
+      if [[ $http_code == 401 || $http_code == 403 ]]; then
+        echo "GATED repo=$repo http=$http_code" >&2
+        return 3
+      fi
+      [[ $http_code == 200 ]] || {
+        echo "metadata HTTP $http_code repo=$repo" >&2
+        sleep 60
+        continue
+      }
+      metadata=$(jq -r --arg p "$repo_path" \
+        '.siblings[] | select(.rfilename == $p) | [(.lfs.size // .size // 0), (.lfs.sha256 // ""), (.blobId // "")] | @tsv' \
+        <<<"$response")
+      if [[ $metadata == *$'\t'* ]]; then
+        printf '%s\n' "$metadata"
+        return 0
+      fi
+      echo "metadata missing repo=$repo path=$repo_path" >&2
+    fi
+    echo "RETRY metadata repo=$repo time=$(date -Iseconds)" >&2
+    sleep 60
+  done
+}
+
+resolve_signed_url() {
+  local repo=$1 revision=$2 repo_path=$3 encoded_path origin result http_code effective_url
+  encoded_path=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe="/"))' "$repo_path")
+  origin="https://huggingface.co/$repo/resolve/$revision/$encoded_path?download=true"
+  while true; do
+    if result=$(remote_hf_control_curl head "$origin"); then
+      http_code=${result%%$'\t'*}
+      effective_url=${result#*$'\t'}
+      if [[ $http_code == 401 || $http_code == 403 ]]; then
+        echo "GATED file repo=$repo path=$repo_path http=$http_code" >&2
+        return 3
+      fi
+      if [[ $http_code == 302 && $effective_url == https://* ]]; then
+        printf '%s' "$effective_url"
+        return 0
+      fi
+      if [[ $http_code == 200 || $http_code == 206 ]]; then
+        printf '%s' "$effective_url"
+        return 0
+      fi
+      echo "signed URL HTTP $http_code repo=$repo path=$repo_path" >&2
+    fi
+    echo "RETRY signed_url repo=$repo path=$repo_path time=$(date -Iseconds)" >&2
+    sleep 60
+  done
+}
+
+resolve_public_ipv4() {
+  local host=$1 response ip
+  [[ $host =~ ^[A-Za-z0-9.-]+$ ]] || { echo "invalid CDN host: $host" >&2; return 2; }
+  while true; do
+    if response=$(ssh -o BatchMode=yes "${DGX_HOST:-operator@192.0.2.30}" \
+      "sudo -n runuser -u dgx-hf-direct -- curl -4 --fail --silent --show-error --max-time 30 --resolve doh.pub:443:1.12.12.12 'https://doh.pub/dns-query?name=$host&type=A' -H 'accept: application/dns-json'"); then
+      while IFS= read -r ip; do
+        if python3 - "$ip" <<'PY'
+import ipaddress
+import sys
+
+address = ipaddress.ip_address(sys.argv[1])
+synthetic = ipaddress.ip_network("198.18.0.0/15")
+raise SystemExit(0 if address.version == 4 and address.is_global and address not in synthetic else 1)
+PY
+        then
+          echo "PROBE public_dns host=$host ip=$ip" >&2
+          if ssh -o BatchMode=yes "${DGX_HOST:-operator@192.0.2.30}" \
+            "sudo -n runuser -u dgx-hf-direct -- curl -4 --silent --show-error --head --output /dev/null --max-time 8 --connect-timeout 4 --resolve '$host:443:$ip' 'https://$host/'"; then
+            printf '%s\n' "$ip"
+            return 0
+          fi
+        fi
+      done < <(jq -r '.Answer[]? | select(.type == 1) | .data' <<<"$response")
+    fi
+    echo "RETRY public_dns host=$host time=$(date -Iseconds)" >&2
+    sleep 60
+  done
+}
+
+download_small_git_blob() {
+  local artifact_id=$1 repo=$2 revision=$3 repo_path=$4 final_path=$5 expected_size=$6 expected_blob=$7
+  local encoded_path origin temp_dir temp_file actual_size actual_blob
+  if (( expected_size > 67108864 )); then
+    echo "ordinary Git blob exceeds 64 MiB safety limit: $artifact_id" >&2
+    return 2
+  fi
+
+  temp_dir=$(mktemp -d)
+  temp_file=$temp_dir/blob
+  encoded_path=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.quote(sys.argv[1], safe="/"))' "$repo_path")
+  origin="https://huggingface.co/$repo/resolve/$revision/$encoded_path?download=true"
+  until remote_hf_control_curl body "$origin" >"$temp_file"; do
+    echo "RETRY small_git_blob artifact=$artifact_id time=$(date -Iseconds)" >&2
+    sleep 15
+  done
+
+  actual_size=$(stat -f %z "$temp_file")
+  [[ $actual_size == "$expected_size" ]] || {
+    echo "Git blob size mismatch: $artifact_id expected=$expected_size actual=$actual_size" >&2
+    rm -rf "$temp_dir"
+    return 1
+  }
+  actual_blob=$({ printf 'blob %s\0' "$actual_size"; cat "$temp_file"; } | shasum | awk '{print $1}')
+  [[ $actual_blob == "$expected_blob" ]] || {
+    echo "git blob digest mismatch: $artifact_id" >&2
+    rm -rf "$temp_dir"
+    return 1
+  }
+
+  ssh -o BatchMode=yes "$host" "sudo -n install -d -o operator -g operator -m 0755 '$(dirname "$final_path")'"
+  ssh -o BatchMode=yes "$host" "sudo -n install -o operator -g operator -m 0644 /dev/stdin '$final_path'" <"$temp_file"
+  rm -rf "$temp_dir"
+}
+
+count=$(jq 'length' "$manifest")
+for ((index=0; index<count; index++)); do
+  id=$(jq -r ".[$index].id" "$manifest")
+  repo=$(jq -r ".[$index].repo" "$manifest")
+  revision=$(jq -r ".[$index].revision" "$manifest")
+  repo_path=$(jq -r ".[$index].path" "$manifest")
+  destination=$(jq -r ".[$index].destination" "$manifest")
+  final_path="$remote_root/$destination"
+  log_file="$remote_log_root/$id.download.log"
+  url_file="/run/dgx-video-$id.url"
+  hosts_file="$url_file.hosts"
+
+  if ssh -o BatchMode=yes "$host" "test -f '$final_path'"; then
+    echo "SKIP existing artifact=$id"
+    continue
+  fi
+
+  wait_for_video_downloads
+  if metadata=$(metadata_for "$repo" "$revision" "$repo_path"); then
+    :
+  else
+    metadata_status=$?
+    if [[ $metadata_status == 3 ]]; then
+      echo "PAUSE gated artifact=$id repo=$repo" >&2
+      exit 3
+    fi
+    exit "$metadata_status"
+  fi
+  expected_size=${metadata%%$'\t'*}
+  digest_fields=${metadata#*$'\t'}
+  expected_sha=${digest_fields%%$'\t'*}
+  expected_blob=${digest_fields#*$'\t'}
+  [[ $expected_size =~ ^[1-9][0-9]*$ ]]
+  if [[ $expected_sha =~ ^[0-9a-f]{64}$ ]]; then
+    expected_digest=$expected_sha
+  elif [[ $expected_blob =~ ^[0-9a-f]{40}$ ]]; then
+    expected_digest="gitsha1:$expected_blob"
+  else
+    echo "artifact has no usable digest: $id" >&2
+    exit 1
+  fi
+
+  if [[ $expected_digest == gitsha1:* ]]; then
+    echo "START small_git_blob artifact=$id bytes=$expected_size time=$(date -Iseconds)"
+    download_small_git_blob "$id" "$repo" "$revision" "$repo_path" "$final_path" "$expected_size" "$expected_blob"
+    echo "PASS artifact=$id time=$(date -Iseconds)"
+    continue
+  fi
+
+  echo "START artifact=$id bytes=$expected_size time=$(date -Iseconds)"
+  ssh -o BatchMode=yes "$host" "sudo -n install -d -o operator -g operator -m 0755 '$remote_log_root'"
+  if signed_url=$(resolve_signed_url "$repo" "$revision" "$repo_path"); then
+    :
+  else
+    signed_url_status=$?
+    if [[ $signed_url_status == 3 ]]; then
+      echo "PAUSE gated artifact=$id repo=$repo" >&2
+      exit 3
+    fi
+    exit "$signed_url_status"
+  fi
+  signed_host=$(python3 -c 'import sys, urllib.parse; print(urllib.parse.urlsplit(sys.argv[1]).hostname)' "$signed_url")
+  resolved_ip=$(resolve_public_ipv4 "$signed_host")
+
+  printf '%s' "$signed_url" | ssh -o BatchMode=yes "$host" \
+    "sudo -n install -o dgx-hf-direct -g dgx-hf-direct -m 0600 /dev/stdin '$url_file'"
+  printf '127.0.0.1 localhost\n::1 localhost\n%s %s\n' "$resolved_ip" "$signed_host" \
+    | ssh -o BatchMode=yes "$host" \
+      "sudo -n install -o root -g root -m 0644 /dev/stdin '$hosts_file'"
+  ssh -o BatchMode=yes "$host" \
+    "sudo -n nohup '$remote_worker' '$id' '$url_file' '$final_path' '$expected_size' '$expected_digest' >'$log_file' 2>&1 </dev/null &"
+
+  while ! ssh -o BatchMode=yes "$host" "test -f '$final_path'"; do
+    if ! ssh -o BatchMode=yes "$host" "pgrep -x aria2c >/dev/null"; then
+      echo "RETRY artifact=$id reason=no_final_file time=$(date -Iseconds)" >&2
+      break
+    fi
+    sleep 60
+  done
+  if ssh -o BatchMode=yes "$host" "test -f '$final_path'"; then
+    echo "PASS artifact=$id time=$(date -Iseconds)"
+  else
+    index=$((index-1))
+    sleep 60
+  fi
+done
+
+echo "QUEUE_COMPLETE time=$(date -Iseconds)"

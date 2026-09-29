@@ -1,0 +1,17 @@
+[Unit]
+Description=Qwen3.8 Flash Next TP2 head rank
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=operator
+Group=operator
+SupplementaryGroups=docker
+ExecStart=/usr/bin/docker compose -p qwen38-flash-next -f /opt/qwen38-flash-next/compose.head.json up -d --pull never
+ExecStop=/usr/bin/docker compose -p qwen38-flash-next -f /opt/qwen38-flash-next/compose.head.json down --timeout 30
+Restart=no
+TimeoutStartSec=120
+TimeoutStopSec=120

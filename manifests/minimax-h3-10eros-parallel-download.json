@@ -1,0 +1,9 @@
+[
+  {
+    "id": "minimax-h3-10eros-beta4-bf16",
+    "repo": "TenStrip/10Eros-Max",
+    "revision": "3c071106f5b62c02b3cb0b7d831083cdb582b289",
+    "path": "10Eros_Max_h3_TURBO-hybrid_beta4.safetensors",
+    "destination": "heretic-sources/10Eros_Max_h3_TURBO-hybrid_beta4.safetensors"
+  }
+]

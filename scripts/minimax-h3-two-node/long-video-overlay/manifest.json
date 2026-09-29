@@ -1,0 +1,29 @@
+{
+  "profile": "heretic-ref2va-hmnsfw-v1",
+  "files": [
+    {
+      "file": "api_server.py",
+      "target": "/usr/local/lib/python3.12/dist-packages/vllm_omni/entrypoints/openai/api_server.py",
+      "source_sha256": "6c7490996f5384dfee754944323d475357142eb35bf5ab65148579cc5c58bdf7",
+      "sha256": "eb3a3de1d5a975f6fed5f112d0351712ee40e2e6a919d372aae6c17ab861781c"
+    },
+    {
+      "file": "pipeline_minimax_h3.py",
+      "target": "/usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/pipeline_minimax_h3.py",
+      "source_sha256": "2156dc00a89e534e1cef969ea034a723e89d8c57b3503f80d4f6963217b6d729",
+      "sha256": "822006de6cbccd20f7cc12de6a6f2c0c8bffe804011985318d70ff7d81553d6f"
+    },
+    {
+      "file": "vae.py",
+      "target": "/usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/vae.py",
+      "source_sha256": "2d70c68f1131665bff87788b3256e76270699d142b1e0a86e960cd5e3d9fc3ad",
+      "sha256": "9eedaf2f6df2c9caab30bf533cd063ab6a9775a91810d469251f4e2eaf329a5e"
+    },
+    {
+      "file": "executor.py",
+      "target": "/opt/h3-multinode/h3_multinode/executor.py",
+      "source_sha256": "a888b7e9a89396324068e4a1ea411ecd1ba512e156524fe9f43190b6f2b56cf0",
+      "sha256": "37c2266b3bc1c326b5d0a5b88748e700c292a200519f0b7d7499a74a36543ed2"
+    }
+  ]
+}

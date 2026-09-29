@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "base_url": "http://192.0.2.30:11434/v1",
+  "wire_api": "responses",
+  "model": "deepseek-v4-flash-0731-abliterated-anchored",
+  "consumers": [
+    {
+      "id": "mac-codex",
+      "management": "managed-ephemeral",
+      "secret_file": "/Users/operator/.config/deepseek-v4-flash/gateway.token",
+      "secret_mode": "0600",
+      "injection": "temporary-process-environment",
+      "persistent_client_change": false
+    },
+    {
+      "id": "repo-smoke",
+      "management": "managed-ephemeral",
+      "secret_file": "/Users/operator/.config/deepseek-v4-flash/gateway.token",
+      "secret_mode": "0600",
+      "injection": "in-process-authorization-header",
+      "persistent_client_change": false
+    },
+    {
+      "id": "windows-codex",
+      "management": "observed-only",
+      "persistent_client_change": false,
+      "note": "This deployment never edits the Windows configuration or credential store."
+    }
+  ]
+}

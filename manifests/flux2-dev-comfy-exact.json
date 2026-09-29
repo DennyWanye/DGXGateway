@@ -1,0 +1,33 @@
+{
+  "repo": "Comfy-Org/flux2-dev",
+  "revision": "ab9055628ea245000e610f2aa2c96f4746093546",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 1608,
+      "digest": "gitsha1:0babc9e4d0e0874e89b3170d93fb07e45e8e02e5"
+    },
+    {
+      "path": "README.md",
+      "size": 1372,
+      "digest": "gitsha1:d3b19e6274dc788da305462f6393780fdb3d93bf"
+    },
+    {
+      "path": "split_files/vae/flux2-vae.safetensors",
+      "size": 336213556,
+      "digest": "d64f3a68e1cc4f9f4e29b6e0da38a0204fe9a49f2d4053f0ec1fa1ca02f9c4b5"
+    },
+    {
+      "path": "split_files/diffusion_models/flux2_dev_fp8mixed.safetensors",
+      "size": 35455599592,
+      "digest": "863a82e4ff950a42a6b0e80bea824828f129eb1a8fbbdbd9e8cb29859127b486"
+    },
+    {
+      "path": "split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors",
+      "size": 35584897447,
+      "digest": "7d79902f60b1aeb3a6de2cfad02f4367b5e300a1387de3d03ac717cfa3df117c"
+    }
+  ],
+  "total_bytes": 71376713575,
+  "variant": "standard; FP8 mixed DiT + BF16 text encoder; NOT abliterated"
+}

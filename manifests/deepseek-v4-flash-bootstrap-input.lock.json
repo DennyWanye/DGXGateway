@@ -1,0 +1,1228 @@
+{
+  "file_count": 19,
+  "files": [
+    {
+      "mode": "0644",
+      "path": "configs/deepseek-v4-flash-dspark.env.example",
+      "roles": [
+        "head",
+        "worker"
+      ],
+      "sha256": "01c264ea86f1fd81926bcf788a542bf51d4e42f8e2dea06289c0fea4a6d5ff2f",
+      "size": 2368
+    },
+    {
+      "mode": "0644",
+      "path": "gateway/deepseek-v4-flash-nginx.conf",
+      "roles": [
+        "head"
+      ],
+      "sha256": "09ffa5f4247fdf23cb1f69b7f1248f17e56829929acbd5c7e46c2fdc64a6c09d",
+      "size": 2827
+    },
+    {
+      "mode": "0644",
+      "path": "gateway/deepseek-v4-flash-nginx-staging.conf",
+      "roles": [
+        "head"
+      ],
+      "sha256": "0bdf58b79677ab3fe3019ff6b98c4669b1d1e683c48eb3c057d36acb03ff9499",
+      "size": 2823
+    },
+    {
+      "mode": "0644",
+      "path": "manifests/deepseek-v4-flash-ablit-anchored-download.json",
+      "roles": [
+        "head"
+      ],
+      "sha256": "703261055b6085215d107d5436f899f89c632be3fcb3529ebc5dbd5d70e62058",
+      "size": 22340
+    },
+    {
+      "mode": "0644",
+      "path": "manifests/deepseek-v4-flash-dspark.lock.json",
+      "roles": [
+        "head",
+        "worker"
+      ],
+      "sha256": "9cc87194ae85c9908a19979cb7cd7ef3f5466c2c0f3f8e18fe010829ee37edb4",
+      "size": 15782
+    },
+    {
+      "mode": "0644",
+      "path": "manifests/deepseek-v4-flash-official-anchor-inventory.json",
+      "roles": [
+        "head"
+      ],
+      "sha256": "9d00455aaad092f95ec0d7fd9e75b574f358c3a02d2dc98a23df86584508ea1a",
+      "size": 2272076
+    },
+    {
+      "mode": "0644",
+      "path": "manifests/deepseek-v4-flash-official-metadata.json",
+      "roles": [
+        "head"
+      ],
+      "sha256": "813c82dd671c39e0d358fdd4cf1d1644f3a2058fc52f403e5bd998269f0dc365",
+      "size": 19520
+    },
+    {
+      "mode": "0644",
+      "path": "manifests/dgx-spark-fabric-qualification.lock.json",
+      "roles": [
+        "head"
+      ],
+      "sha256": "8698d60106e65daf39cf205c1b35ccaf82cfe71a3460260df5a21b917ef519eb",
+      "size": 8779
+    },
+    {
+      "mode": "0644",
+      "path": "patches/deepseek-v4-flash-dspark-local-runtime.patch",
+      "roles": [
+        "head"
+      ],
+      "sha256": "b3eb2ad8a1fe9bab9f3bb49b6ea83a5a0d257d2bb860d99fbf17a4f27fb64bce",
+      "size": 1443
+    },
+    {
+      "mode": "0644",
+      "path": "plans/deepseek-v4-flash-dspark-2node/verification/20260829T1951/h3-lock-provenance-addendum-v1.json",
+      "roles": [
+        "head"
+      ],
+      "sha256": "3262ea3c2d9ff37dabd763bacb6ad7580f77ddef239ce419c715b613bb7ed59a",
+      "size": 3472
+    },
+    {
+      "mode": "0644",
+      "path": "scripts/deepseek-v4-flash-nccl-probe.py",
+      "roles": [
+        "head",
+        "worker"
+      ],
+      "sha256": "e142804a5fd7a9435c0d745944d2fffa914dc08c5042878b98d8ae439efc5da7",
+      "size": 2367
+    },
+    {
+      "mode": "0755",
+      "path": "scripts/prepare-deepseek-v4-flash-dspark.sh",
+      "roles": [
+        "head",
+        "worker"
+      ],
+      "sha256": "96f2db755ffeaddf680719a5c74a93a5bdb71c0d2064be42e7d05423664b5895",
+      "size": 154068
+    },
+    {
+      "mode": "0755",
+      "path": "scripts/recover-deepseek-v4-flash.py",
+      "roles": [
+        "head"
+      ],
+      "sha256": "6ecfa124a04bcc10f2e4036dc4b133144db3d217be86b3fd6f610fb8b7ddc50b",
+      "size": 22499
+    },
+    {
+      "mode": "0755",
+      "path": "scripts/run-deepseek-v4-flash-dspark.sh",
+      "roles": [
+        "head",
+        "worker"
+      ],
+      "sha256": "240debb214da49ba28c78e5a3b1897e3658d6461491058b97f91a99842588ddd",
+      "size": 41947
+    },
+    {
+      "mode": "0644",
+      "path": "systemd/deepseek-v4-flash-dspark.service",
+      "roles": [
+        "head",
+        "worker"
+      ],
+      "sha256": "702227e0bdbc6a5cfd5f563fbe157f8ba4929ac66fa6dbfe60f1bba93dc60d98",
+      "size": 678
+    },
+    {
+      "mode": "0644",
+      "path": "systemd/deepseek-v4-flash-fallback.service",
+      "roles": [
+        "head"
+      ],
+      "sha256": "4f6552ed7ad740e1252424ba1ba6454b3660267c811defb1ec511523d1341e93",
+      "size": 314
+    },
+    {
+      "mode": "0644",
+      "path": "systemd/deepseek-v4-flash-fallback.timer",
+      "roles": [
+        "head"
+      ],
+      "sha256": "72893a24b8a8c8b6ea6386cf852d6a2a3c70ba1adb593e46519d594322d2c09e",
+      "size": 395
+    },
+    {
+      "mode": "0644",
+      "path": "systemd/deepseek-v4-flash-gateway-staging.service",
+      "roles": [
+        "head"
+      ],
+      "sha256": "76dfca403edfb352cd4d937c719fd3adf7f1905d29a109b41de997d914fb5a5f",
+      "size": 1193
+    },
+    {
+      "mode": "0644",
+      "path": "systemd/deepseek-v4-flash-gateway.service",
+      "roles": [
+        "head"
+      ],
+      "sha256": "e761cb239b1ae5eb5746fe4a1a92da3527a7309a5a3aa66b6e4647fba00b1832",
+      "size": 1472
+    }
+  ],
+  "finalized": true,
+  "input_root": "/opt/deepseek-v4-flash-dspark",
+  "kind": "deepseek-v4-flash-bootstrap-input-lock",
+  "root_sha256": "620ffc89d6a1b276efd375ad4a9f6415a9adc54c918a08f1a46a9264157d2467",
+  "schema_version": 1,
+  "total_bytes": 2576363,
+  "upstream_source": {
+    "commit": "0107cef1835a56d1a2bcdabf7d9e1a085b70338b",
+    "destination": "/home/operator/dgx-models/deepseek-v4-flash-dspark/source",
+    "file_count": 171,
+    "files": [
+      {
+        "mode": "0644",
+        "path": ".env.dspark.example",
+        "sha256": "5b20b402925960c4b8c03e947a7b621b714b7d79e1016f9f315b14a23df68cd5",
+        "size": 33569
+      },
+      {
+        "mode": "0644",
+        "path": ".github/workflows/validate.yml",
+        "sha256": "7ef321f5d9800932c9b0266f8701264ede5d2f5315461efec65bef4362be61fd",
+        "size": 559
+      },
+      {
+        "mode": "0644",
+        "path": ".gitignore",
+        "sha256": "a759dd57cad558a3cb05b38f23689f50621f352244440f575debaa45ba3287cd",
+        "size": 424
+      },
+      {
+        "mode": "0644",
+        "path": "AUDIT.md",
+        "sha256": "77241ba7ff28fcb25e4da9a67f1a052e66f5c57cf396b9b940dfbd059582bed5",
+        "size": 2565
+      },
+      {
+        "mode": "0644",
+        "path": "CHANGELOG.md",
+        "sha256": "0bb705efb3fb0d123da6556f794bf9421d412095974cfd32115942b8a9d26802",
+        "size": 72276
+      },
+      {
+        "mode": "0644",
+        "path": "CREDITS.md",
+        "sha256": "278eb57f4606e86b361b57026a1f7985fc5d7c372143d2399979f24f54eb6cc9",
+        "size": 3483
+      },
+      {
+        "mode": "0644",
+        "path": "Dockerfile.gb10-dsv4-dspark",
+        "sha256": "92169723fc574b45d0afe36f0a54c808b2aa48c4a0185bf862ba3c4422e8860a",
+        "size": 16721
+      },
+      {
+        "mode": "0644",
+        "path": "LICENSE",
+        "sha256": "e45e9dafd52503a5dfd6122985f692c27b51afcfe3b695ee8c41f9d18df4439f",
+        "size": 1070
+      },
+      {
+        "mode": "0644",
+        "path": "README.md",
+        "sha256": "1d248a91f8069c055a7574b81d138d346e7345d45d8a37022a8d91e047a9c63f",
+        "size": 24578
+      },
+      {
+        "mode": "0755",
+        "path": "build-dspark-vllm-runtime.sh",
+        "sha256": "83ed1e3b610317b47511073614633a0ca05f4659b051d232973c055bd1840876",
+        "size": 2332
+      },
+      {
+        "mode": "0644",
+        "path": "docker-compose.dspark.yml",
+        "sha256": "1de6b25404787d9b9d826860a069a45271cfeb02c0fc71d82ffb018a4abb5073",
+        "size": 27462
+      },
+      {
+        "mode": "0644",
+        "path": "docker-compose.stage-c.override.yml",
+        "sha256": "9093531871a7fac65e55e7b65a21c0e1940419c9bc1d79b2159c85e9f3ef2cb0",
+        "size": 1915
+      },
+      {
+        "mode": "0644",
+        "path": "docker-compose.vl-sidecar.yml",
+        "sha256": "c8d083b7ba6ad040fb3821a494d31eabe25494e96d4f05ccae56418958bcfa19",
+        "size": 4300
+      },
+      {
+        "mode": "0644",
+        "path": "docs/DEEPSEEK_V4_FLASH_0731.md",
+        "sha256": "7363961d9e087486dc3fe4268d48e48a3183360641148eb295fd629acaca12c8",
+        "size": 6456
+      },
+      {
+        "mode": "0644",
+        "path": "docs/DSML_SYNTAX_TEMP_ASYMMETRY.md",
+        "sha256": "3989b4aea887a66125754d43ce35af5092e139d8f79e195ec84330cc2cb5d230",
+        "size": 4778
+      },
+      {
+        "mode": "0644",
+        "path": "docs/ENVS.md",
+        "sha256": "4581e118206ba0a78c9afe6db88a3d6f5d7969688cf012c0f53e02263c09a381",
+        "size": 18875
+      },
+      {
+        "mode": "0644",
+        "path": "docs/GLM-NEW-REPORT.md",
+        "sha256": "104fa277cabcf1f3264672268cf40fd17410d51563c973e6a8e4f1b19c8fc156",
+        "size": 20388
+      },
+      {
+        "mode": "0644",
+        "path": "docs/PATCHES.md",
+        "sha256": "f65ac6e6d2a812c3338b1c04c9145b68ad023a8251a1b3f292818bcef877e344",
+        "size": 28933
+      },
+      {
+        "mode": "0644",
+        "path": "docs/SETUP.md",
+        "sha256": "354973154dc3ef0c323f6b7bb71f04576d136fb59b436556cb478b6d7240cdb4",
+        "size": 3427
+      },
+      {
+        "mode": "0644",
+        "path": "docs/benchmarks.png",
+        "sha256": "dae0dcf73627b24b071db989b2f63b0a008aad6e049d3ac5c5d37697f2ffd3cf",
+        "size": 67215
+      },
+      {
+        "mode": "0644",
+        "path": "docs/concurrency_bench.png",
+        "sha256": "464b38daf8e645498201954d69d69426b0e576a27a0147f7727f2933fe38b853",
+        "size": 94683
+      },
+      {
+        "mode": "0644",
+        "path": "docs/vllm-027-new-patches.md",
+        "sha256": "e9cded74fafd083fe5cf2af5c1ad301c9deea381c08b1df5884d095b1a0266e6",
+        "size": 5634
+      },
+      {
+        "mode": "0644",
+        "path": "dspark-numeric-knobs.sh",
+        "sha256": "c5c617b49ff0f8d08b3af06b0af5056d866b1d5d23807c550d0cc8cda4fac4bc",
+        "size": 2284
+      },
+      {
+        "mode": "0644",
+        "path": "image.png",
+        "sha256": "f534a11362d12915a487399bb922d7935629acd615eb8b1fcab66e6e9fcab798",
+        "size": 1284721
+      },
+      {
+        "mode": "0644",
+        "path": "lmcache/README.md",
+        "sha256": "e1e102e3bd531c9a8aa46f8fbd1c9d17ad207e31241e5cd86b4f894c83b14cc7",
+        "size": 10289
+      },
+      {
+        "mode": "0755",
+        "path": "lmcache/patch-compose-lmcache.py",
+        "sha256": "13a33fe837a615d96c3d58bd971cc1554a6edd097cc040e051caa484adf6d844",
+        "size": 5914
+      },
+      {
+        "mode": "0755",
+        "path": "lmcache/run-lmcache-server.sh",
+        "sha256": "eb03506e24a0714ad32daadfc4c52e86a67396c0370f66aac6bce3376599271e",
+        "size": 5906
+      },
+      {
+        "mode": "0755",
+        "path": "logs-deepseek-v4-flash-dspark.sh",
+        "sha256": "243c4bb308fc0f36e873dc57ae61f1271da75e518b667d5de1e49da0de3bab79",
+        "size": 1201
+      },
+      {
+        "mode": "0644",
+        "path": "patches/fix-nvfp4-ds-mla-long-context.patch",
+        "sha256": "4fdfcc6fd00412b854b51d4b672e34821178a821103126c77e32577d4db27f68",
+        "size": 982
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-dsv4-assistant-final-continuation.py",
+        "sha256": "74ecbf37ea4e77e5264ee6eb610f0754bbea2e26123700ee570981d87d20d939",
+        "size": 10635
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-dsv4-dense-prefill-indexer-48407.sh",
+        "sha256": "6d731f1b03b6c17275c8f0af82ee5dfa3ff9d778d25468b4edc96fbd356ffa23",
+        "size": 25523
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-flashmla-workspace-50298.sh",
+        "sha256": "213fd93fb6c4dd70f38eefbd331f0ce08b64331feb2ff03643394857acd96078",
+        "size": 21241
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-grammar-advance.sh",
+        "sha256": "6318c0959816156ba0015fba9d3d56e4e128acdfb778aee373d9bf227c6faaa5",
+        "size": 14381
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-issue133-triton-specialization.py",
+        "sha256": "64d23c25fdd40bf1d6418c217c76d90b6eed8991a26f66c92d002b4b45523b3f",
+        "size": 3010
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-dsv4-issue141-sparse-mla-decode-chunk.py",
+        "sha256": "bc3d81db26a10177a4e16af5040f7cc1385cdbc6ec4f8680411725bcb5d2acdb",
+        "size": 19330
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-dsv4-issue26-hybrid-swa-min.py",
+        "sha256": "8c76a65207d5f30b898cf5f60e39b8a59e4febb3217c34fe57f6a7fb225a3c3f",
+        "size": 5040
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-issue27-partial-prefill-concurrency.py",
+        "sha256": "8d3b882a7e4121f13ff78e27322615d5239809bd57de87169774e3cd93b8f57d",
+        "size": 5515
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-issue31-v2-thinking-budget-gpu.py",
+        "sha256": "139fa1f673d9071ad309e8beb3608218d51b5905037160b7257f6aae58033762",
+        "size": 16733
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-issue43-decode-fairness-and-diag.py",
+        "sha256": "0059144ce08e825354718c8b0aa3799dcf434045f40241f75a4211fe4f199dc4",
+        "size": 12680
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-issue55-tool-truncation.py",
+        "sha256": "0dbb8a18d41325d518c221b3cfbd148c3a092e37c1816ba565b62e28172dd773",
+        "size": 7670
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-dsv4-mtp-buffer-50312.sh",
+        "sha256": "8ad604b767e09390a958cd6ffd907dd9260bb92d680b8d4d5e702ff61fb787f4",
+        "size": 17573
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-skip-empty-c128-48957.sh",
+        "sha256": "bcae8526f474f885f0af681aaa596e613fa94f8bf95847f1e71c5ea4970ccd27",
+        "size": 19137
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-dsv4-skip-topk-49486.sh",
+        "sha256": "431eff0d51c107afacc8ddb76e34c5a57d146341bf5a0d982569e8f89fc474ed",
+        "size": 19394
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-dsv4-suppress-stops-in-reasoning.py",
+        "sha256": "618a66c58fc422ae65d0f08018fac69370657e4ead1285c8104a56f507f6279f",
+        "size": 8418
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-encoding-dsv4-issue21.py",
+        "sha256": "c75d160245cb563d6e9a6adaee9bf7a4cd55ed5268b5ca89856977d293df9816",
+        "size": 2824
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-gb10-spin-wait.sh",
+        "sha256": "b7deed123348d78c8e7ae3f99d9107b59a798d0b3c7840b7cccaadfd8418de71",
+        "size": 2156
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-nvfp4-ds-mla-issue22.sh",
+        "sha256": "52de6d0cd06f571cfdbbb856bfea4a098a5118ce769de739a18b51044300772a",
+        "size": 3565
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-vllm-empty-encoder-output.py",
+        "sha256": "e417bcdcb6d62f4790885fe5c64bef3a3015a17cea00e3901eb3e2f4b7cf35a6",
+        "size": 6743
+      },
+      {
+        "mode": "0644",
+        "path": "patches/hotfix-vllm-issue136-xgrammar-termination.py",
+        "sha256": "f6c4690d3de7d7325d21c708a5c6b46aa7249665b8206785b5c4cd5c4e108ccb",
+        "size": 20609
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-vllm-issue138-responses-history.py",
+        "sha256": "b5f31e1d7b31dc556099169944db37637c82858fd5febac3f9aef005664a1923",
+        "size": 16946
+      },
+      {
+        "mode": "0755",
+        "path": "patches/hotfix-vllm-redact-api-key-log.sh",
+        "sha256": "3fe9238789ad45111074e0802571beb0184a9df774a9531953853956b2efc715",
+        "size": 8490
+      },
+      {
+        "mode": "0644",
+        "path": "patches/keys-concurrency.patch",
+        "sha256": "e702f8c51b1aaed0fb6898a18b4841e97d5329533f8b9dd10d189c65490c31e5",
+        "size": 24681
+      },
+      {
+        "mode": "0644",
+        "path": "patches/official-main-b12x-nvfp4-python.patch",
+        "sha256": "9fa58424451eb8354edada642dfeba40199fbd83add4c9d4615c912cba6165fa",
+        "size": 39596
+      },
+      {
+        "mode": "0644",
+        "path": "pi-models.dspark.example.json",
+        "sha256": "e0f7fc23179a10e2f09aff7cee4a7f7910e48109ab0a7d9f6f2aed675ddecf58",
+        "size": 1360
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/README.md",
+        "sha256": "e4f7e78ab7090934c648bc5a4aed0cc4d289feb2d3a48cafbda307e9bf9dbcbb",
+        "size": 10470
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/dspark_vision_mcp/__init__.py",
+        "sha256": "3990305c9e108e2ae58751cf073ddf4a00a5b19e2fbf475cc0a76c958ad9e638",
+        "size": 94
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/dspark_vision_mcp/images.py",
+        "sha256": "9a9494a8a410392cb02f55f7cd094ee8bb61065294fd83997fe3e7209f5d9ca3",
+        "size": 5294
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/dspark_vision_mcp/server.py",
+        "sha256": "fb9f7ef92fc15d70a3f03d583cb0f43f43ac636fe86da7783f60ecbaa76dddf4",
+        "size": 6432
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/install_harnesses.py",
+        "sha256": "7b9663e8ab115a9429442979071ea389560ee351e7764eee9e73a7f02a532d87",
+        "size": 29987
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/mcp.json.example",
+        "sha256": "ecaa0e9651f2ad1621ca531c91d88f4c490df018d18d631709b0165e3b308420",
+        "size": 395
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/prime_skill/SKILL.md",
+        "sha256": "2958892146c5a5f698eb72fe73a7e1ef939d4d52cca1566d1f794a64e3259af0",
+        "size": 1251
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/prime_skill/pyproject.toml",
+        "sha256": "2c43ebb4a7bf885081c87e0aed866ec03234604a09ecb7ba59b5a263cb34b268",
+        "size": 356
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/prime_skill/src/ds4f_vision/__init__.py",
+        "sha256": "025bcaf627bb04979c32990566e3a3d76d41793d80337dd409d6d642cda81cae",
+        "size": 6560
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/pyproject.toml",
+        "sha256": "b0b38cab7b3e63b950e680268da0b30c7e393f9e40d54a4eed6b6e9d85ced73d",
+        "size": 475
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/skill/SKILL.md",
+        "sha256": "f60d78b52a8fb9e5b475c50cfe48d134b27cf43593a5a6094623f31993bc4cf1",
+        "size": 1527
+      },
+      {
+        "mode": "0644",
+        "path": "plugins/dspark_vision_mcp/uv.lock",
+        "sha256": "492e6bfb10954bc1f63454cbd0d01ff44a05bcd333dac70336408598306133c4",
+        "size": 213112
+      },
+      {
+        "mode": "0755",
+        "path": "prepare-dspark-model-cache.sh",
+        "sha256": "ac3401192dc2f8e91a3069423fb02b548ab464d99dfb143974e2109d8cd59e34",
+        "size": 10769
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/Dockerfile.dspark-runtime-overlay",
+        "sha256": "22e28c33f43130aaf258165bcad786332d577a19555a014a044ac1a054fda925",
+        "size": 3471
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/nvfp4/Dockerfile.stage-a",
+        "sha256": "0c819cd7fc65cdecdcdcd75bf8e69010a5f327b4b83ce9f53b3291cc8bd7bad8",
+        "size": 1599
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/nvfp4/Dockerfile.stage-b",
+        "sha256": "85718fd816e7f7d572cf98c816a432e6b5aa7b62bc2a2c043cb6c9e7cfcf8ebb",
+        "size": 4033
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/nvfp4/Dockerfile.stage-c",
+        "sha256": "60c0c9d1260f25baaf26d323fc9ce32be004f73f757288d01cf6043dfe57c0b0",
+        "size": 2200
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/official-main/Dockerfile.python-patch",
+        "sha256": "6c44f78b4c04a89855c7096f063066f390de63aae41c5191ca14ba19c34c0093",
+        "size": 2401
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/config/speculative.py",
+        "sha256": "18af369e30677488f1505ceeb74a71efde93d6c6dfcec38b6bc040df74e1b338",
+        "size": 48977
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/envs.py",
+        "sha256": "53e2dbe507a0054a76ef04e8b698254c056b2a5ccc0776fd76a3488108bcebaa",
+        "size": 105516
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/model_executor/layers/fused_moe/b12x_moe.py",
+        "sha256": "ac844267fd48766d89977dd3a20c76ed3f2d82c73858506db93a0a1967fbe37b",
+        "size": 26948
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/model_executor/models/registry.py",
+        "sha256": "6e9c0b5b35cd3c25fb02471b3f924df8b2ea6257be48c53504e8f413373fa0ed",
+        "size": 57651
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/model_executor/warmup/kernel_warmup.py",
+        "sha256": "be6d60e2951228f7f2755449ddef48aaef31eb3a1c5a412cabd96542bb470584",
+        "size": 30115
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/models/deepseek_v4/__init__.py",
+        "sha256": "c62bb45e8f4165293642e5810cb68262fc521f2fae2218ec908897822c7506bb",
+        "size": 1173
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/models/deepseek_v4/common/ops/cache_utils.py",
+        "sha256": "1fb4e6be66804c55523cc7a0ae2711cbc6717869e9399ad2cb46fa972cce1501",
+        "size": 22464
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/models/deepseek_v4/nvidia/dspark.py",
+        "sha256": "bd3dcbc0cdd9318530ebcffb84a4437bb4fcc7a58e85deb4ba3ae3d3b4b0ada8",
+        "size": 45912
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/models/deepseek_v4/nvidia/dspark_kernels.py",
+        "sha256": "92adbc4239b4b6039260def69f325ff67d484d8fde3512eb4831b65f661bf8a2",
+        "size": 24199
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/models/deepseek_v4/nvidia/model.py",
+        "sha256": "88bc3bbf03041be5d17afdc866872b8515a1f3fc19acd2ca03765c8a7734969b",
+        "size": 79959
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/models/deepseek_v4/nvidia/sm120.py",
+        "sha256": "4046c06e96c9f313281ada1b04e5fc901efc66bdca8cbe3d37dc499af6c81b00",
+        "size": 19709
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/attention/backends/mla/b12x_mla_sparse.py",
+        "sha256": "d6ac6bf4afe39236852464f7467cc69c54c360ea5e80d2e200811c9dc9c2e213",
+        "size": 20537
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/attention/backends/registry.py",
+        "sha256": "ed18461b5d67d93966f5720e7dd98e249c4b82e8ab7cde49f9c57671ab45e674",
+        "size": 9958
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/core/sched/scheduler.py",
+        "sha256": "48d735c8e668682c7305153b65531aaa5f285b792cbe2b9d155bda6d247892f5",
+        "size": 109615
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/outputs.py",
+        "sha256": "a422385ecb397b5c01aaf2ca92fb7bed5a011e1066726f977f98222e30b11fd8",
+        "size": 12653
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/spec_decode/dspark.py",
+        "sha256": "e5fbedb76142b69041ec827dc37726c4b8fb14b8fdc9f6923be4dc220ce32afe",
+        "size": 25143
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/spec_decode/dspark_proposer.py",
+        "sha256": "3aea6f3814dedc45c96ceacb3ac463056da4b5dc705eddc2dabd544fd49cb85c",
+        "size": 41943
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/overlay/vllm/v1/worker/gpu_model_runner.py",
+        "sha256": "ff86e1ab85595a66851b389b070235248f5897ab52172534a7937b284bc3c298",
+        "size": 340894
+      },
+      {
+        "mode": "0644",
+        "path": "recipe/vllm/v1/spec_decode/dspark_proposer.py",
+        "sha256": "3aea6f3814dedc45c96ceacb3ac463056da4b5dc705eddc2dabd544fd49cb85c",
+        "size": 41943
+      },
+      {
+        "mode": "0644",
+        "path": "results/RESULTS-2026-08-14.md",
+        "sha256": "d2f620f05efce3fdbdd188b4dbcaffd4734d1310f5d3a2cadd62a2ccf7471d27",
+        "size": 7852
+      },
+      {
+        "mode": "0644",
+        "path": "results/bench-screenshot-matrix-20260814.json",
+        "sha256": "b104ba85219eeef0f400f12008e75072316eb4eef17f275eecc3453ddb94a743",
+        "size": 35871
+      },
+      {
+        "mode": "0644",
+        "path": "results/deepseek-v4-flash-0731-2x-dgx-spark.json",
+        "sha256": "dd2adfb7f6dd9abac4145cc70e98f126f9b786c5a57e4cc039d5e70c4be12fb0",
+        "size": 23166
+      },
+      {
+        "mode": "0644",
+        "path": "results/dspark-metrics.txt",
+        "sha256": "b24f900f2609f89616f66315b3d96511b94fba7c174aeb819ce619cc0a6df475",
+        "size": 3351
+      },
+      {
+        "mode": "0644",
+        "path": "results/smoke-solid-red.jpg",
+        "sha256": "91646d5dbc7d0c685ce5f787281ca573338a98b756700f4968c8353762507712",
+        "size": 694
+      },
+      {
+        "mode": "0644",
+        "path": "results/smoke-text-only.json",
+        "sha256": "c2180a4f43b6b0a6be4ae18d0911d6ae7129ce0addee48a320f640e2d6b48329",
+        "size": 972
+      },
+      {
+        "mode": "0644",
+        "path": "results/vl-nvfp4-coexist-2026-08-11.md",
+        "sha256": "9faf9b45d97ea4e3e4a23cabf1dc6a87bc5649bc15c67c84a85462d326e842ca",
+        "size": 5678
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/EVAL.md",
+        "sha256": "42b5dade6716d0966fbcf8b6ed61d20f41d57a799a7ce3a3acba4d2433db1fb3",
+        "size": 3652
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/ab-issue133-triton-specialization.py",
+        "sha256": "dc217c222589254b8dcfa52c5810d3e01426cd39d424f2de26b418c631b4d9f0",
+        "size": 11356
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/bench-baseline-issue22-only.sh",
+        "sha256": "82fa4e3963d91b4eb9928d13e168a38a76a9e914fba5cbd12d70c2afaacbdb41",
+        "size": 5756
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/bench-baseline-no-patches.sh",
+        "sha256": "ca5ca26d35df4568533f6334b36ed4161e393361711111ac5c0b19e01e6a79b7",
+        "size": 5271
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/bench-issue24-repro.py",
+        "sha256": "9b529bd4a33db95def1aca160f2527ca94dafac58d3888f71b6aac2e3460c76f",
+        "size": 1900
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/bench-miaai.py",
+        "sha256": "ac7537b34e3c716541a2e6ca080fb8f9501660ac28c5342b4e6331beea16448c",
+        "size": 5274
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/bench-patches.sh",
+        "sha256": "011ef7eec94561564af082dfee72fdfd9b3178f5f06d07f61bb78b661aa468a6",
+        "size": 7254
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/bench-ttft.py",
+        "sha256": "2aa66218a2424da74c5e59e8d2c5b83accaa4800f784d17fe94663e43061d954",
+        "size": 5829
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/benchmark-0731.py",
+        "sha256": "a9adc79afc83a7560f3755d5e653c4e32226fe46354ec80bdb644e19f8d555d7",
+        "size": 6629
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/boot-shape-warmup.sh",
+        "sha256": "bd58c8c1c38079caa037f93f514ab976772db316919d89ae83c431fa7f3a5a70",
+        "size": 16185
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/ci-validate.sh",
+        "sha256": "62066b5f85973a8ca8c7ddf68e3dc4918f53d98c948a413e5ae14764d4f11a53",
+        "size": 17122
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/compare-bench.py",
+        "sha256": "64322363a55e28f10570e911f0cc5e65f9c4c025ee9a2ac841d4c32ef6d7a657",
+        "size": 3083
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/context-garble-sweep.py",
+        "sha256": "2a7b8408b0fe20b01631a92aeb6f835d92fecf0e833a44a52404fa1941de968d",
+        "size": 7204
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/deepctx-tool-battery.py",
+        "sha256": "700d70323d13404e5e6615e71af0913e8cd602532e9a610af232e0173ae50cd2",
+        "size": 6290
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/fixtures/issue136/backend_xgrammar-752a3a504-pr52805.py",
+        "sha256": "6c7e23c0ae5c6836d0d56862c6e825c49727fa2409b881b44ea2526f1fd03f04",
+        "size": 12983
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/fixtures/issue136/backend_xgrammar-752a3a504.py",
+        "sha256": "231f6b9d7dab5e8d68aba486fa5912db99f8bdd3f9d8842ee3e0bb12bdb7cb67",
+        "size": 12699
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/install-ds4f-vision-mcp.sh",
+        "sha256": "b96e741b3c50392de29a9a49f0744c35e3da2dc8467927aea08e888f1c5e3b99",
+        "size": 3428
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/loop_detector.py",
+        "sha256": "7ccb49d9f380d3881f92874e02788edc660f426ee89ca80d31288c8c4c676b74",
+        "size": 7057
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/reproduce-issue26-control.py",
+        "sha256": "5465b543d1c9e3fb8f54735c0f582f16da81577077a9330a110f2035825ca830",
+        "size": 3818
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/reproduce-issue26-live.py",
+        "sha256": "fa9ab9aa80f88622c16af54ecac5a06e97f919259a699fde458ee4955a4feccf",
+        "size": 6142
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/reproduce-issue27-live.py",
+        "sha256": "efe1d962a607a5316ba5a847b7811b8a8dae338b7c01f540129be66b578219d9",
+        "size": 6840
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/reproduce-issue43-live.py",
+        "sha256": "6ea80d59bf0ed16bab235c8848080f676faa64c606c3ab328e8bdd549976c580",
+        "size": 9984
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/ruler-lite.py",
+        "sha256": "e0df73450eea0c604db3cadfbcc8061673a8ff1025702dab801397686aef78ca",
+        "size": 14891
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/run-audit.sh",
+        "sha256": "d67af645230cf40aacba57c75baff5c16d3710ce3bb284d4de252edb29d3393e",
+        "size": 3611
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/spec-acceptance.py",
+        "sha256": "3bc423d28693a855a529f3429ca4be7f6488fdb3f7541cde44fd77d9f25572de",
+        "size": 4662
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/stability-quick.py",
+        "sha256": "c68c838d54fc0c0c01ef6eeb6d168f501a95ab509a0e2b66244c52ea2d101808",
+        "size": 16980
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-assistant-final-continuation.py",
+        "sha256": "86b68c7aaae788c1a63be28e1ff6ecad9c49675819b9718d552f47a4a603caef",
+        "size": 16657
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-boot-shape-warmup.sh",
+        "sha256": "9dc62cb02264157f3fa67ea662ee5c32373594d70ca32e53a4bb444c34c2233d",
+        "size": 19282
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-draft-sample-method-gate.sh",
+        "sha256": "f4fade0d78bb4fe09436efd9dd423b880e724338f8780e6c18d0a3c9035077b6",
+        "size": 10769
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-dspark-api-keys.py",
+        "sha256": "5fb312b1bdfd39609f2a30bb34df0f8bc6d765088c2dda4876d3910efe3e217a",
+        "size": 52000
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-empty-encoder-output-hotfix.py",
+        "sha256": "cde5072e804f65f7a38cf62eb31ea39b642c1d70fe69abb17673116b5dcf5469",
+        "size": 7748
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-encoding-dsv4-issue21.py",
+        "sha256": "fa0545fcf7914e717096ce541fd709843ade695ff0494abed76bb3507bbad4dc",
+        "size": 3758
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-env-normalisation.py",
+        "sha256": "f9dec4ff218feef6f1342f643cdb2dc326be23e623fc09ef45db6c3b28953545",
+        "size": 7651
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-hotfix-atomic-transaction.py",
+        "sha256": "32f9065432db811e948ae9fdd5dd06975c716bb5fe24f8cc738d010d778827f0",
+        "size": 41981
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-issue136-xgrammar-termination.py",
+        "sha256": "967423d408bfeedcfc39beef8cf0422460c72215aab380aff77f32a4bb1bc7b8",
+        "size": 30385
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-issue138-responses-history-hotfix.py",
+        "sha256": "bf16d055ffcf898541f6230ce76bde59cdafe629dd5e07692b2107134a66a868",
+        "size": 23378
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-issue138-responses-history-live.py",
+        "sha256": "63eb72f886214202a4f5a2181ed97c13585a8a2a35028d28b9acbe94bb27cee7",
+        "size": 9340
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-issue141-sparse-mla-decode-chunk.py",
+        "sha256": "fa5fe1cdf87257036841823ef18d4575d2124cb5576fa72382360ee2ec97b975",
+        "size": 24949
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-issue26-swa-min-v2.py",
+        "sha256": "2fce7d0ce5b0478f3591c3e1acba69bb3a3f3abf4dbc60139b64d1c5c3e589f4",
+        "size": 2141
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-issue31-thinking-budget-gpu.py",
+        "sha256": "83848c30fd0ff8797202f6a2bd8483993a46449909e06fbcd0c85209f56caadb",
+        "size": 4709
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-issue55-tool-truncation.py",
+        "sha256": "e1a0bab50d0602b7510f967bc019a504638bbf7170ea372f868c0ad424c7dfb9",
+        "size": 6183
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-lmcache-compose-gate.sh",
+        "sha256": "94afb8efb7359502bc10fa4fca05bdbb7790d7ba06f121f0c2b50beadf6b6d81",
+        "size": 16117
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-nccl-fabric-passthrough.sh",
+        "sha256": "f49e6f3d590e6060cda766a59a4459d6bcd835b78ecbf659737e25845d95e2e3",
+        "size": 5919
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-nccl-ib-hca-gid-resolve.sh",
+        "sha256": "b4ab2171bfd90fb38dbc960559081a248555e32744ca4137520232baf0ca496d",
+        "size": 23612
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-numeric-knob-validation.py",
+        "sha256": "5a372534df818f24beacaafe1188d74aa53cd2eb0cc17b2fa80afdc640d62581",
+        "size": 5882
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-python-hotfix-failclosed.py",
+        "sha256": "8f3cc03aa6d6c3e625060dfadb6b0714e89767545f96886e3037e234e857ea50",
+        "size": 18701
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-redact-api-key-log.py",
+        "sha256": "c7c30fc996daca4a184a46f8879e12a1d05459695a37c292f5945701b5dc6263",
+        "size": 6583
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-responses-api-live.py",
+        "sha256": "9c355f7096e72767460d7664c1b4df99faae9ca4912699871cc99a6fe5ffe3a5",
+        "size": 7134
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-ruler-lite-pad.py",
+        "sha256": "3e8dd74f78535a8f5a5d0926ae8f2c32b46d49c17fc7dfc19b30309018801be3",
+        "size": 6069
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/test-spec-acceptance.py",
+        "sha256": "a3213b46bd061d58e5c49023dcca6ca46a24ae8335ef73ad6f967d558a9877d4",
+        "size": 4144
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/test-suppress-stops-in-reasoning.py",
+        "sha256": "6c93c4b0586d410980afc7e22d57194413d6d8532ef676edb7c2b41dda7cd72f",
+        "size": 3829
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/tool-battery.py",
+        "sha256": "cc71f8094ca8bb421354bfaada49189998749343fc7a00c6100b3de7d7d740b1",
+        "size": 7574
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/verify-dsv4-027-equality-gate.py",
+        "sha256": "77b3bf45ee52677cb9da500cde028478891640dcb2343e7a0b57a76b02f79952",
+        "size": 8429
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/verify-issue136-xgrammar-live.py",
+        "sha256": "f57010bf3e8be45f311c53382f0e2058be7a868318e155e6467257c2da08e7c3",
+        "size": 15408
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/verify-issue138-responses-history-live.py",
+        "sha256": "830cb3589a0cc510e7b7fa4ce8d66e7076ad0fe2b40d66ffc140f110652253f5",
+        "size": 13992
+      },
+      {
+        "mode": "0755",
+        "path": "scripts/verify-overlay-sources.sh",
+        "sha256": "870f7ee56a75f1d9d0e9891c7dafd8e92f7d9eabe3ea8d316c552afdbbbabe6c",
+        "size": 612
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/verify-responses-api-live.py",
+        "sha256": "26d1845a36c2553a1adc3a49458dc8b53b5975d57b2a5ed404484723bfbb02f7",
+        "size": 22012
+      },
+      {
+        "mode": "0644",
+        "path": "scripts/vision-reason.py",
+        "sha256": "b699e25074bf8b54cd69ef5b39295f0034b3a5f42b4c1e8fa2f6c3a065a47ea5",
+        "size": 4402
+      },
+      {
+        "mode": "0755",
+        "path": "smoke-deepseek-v4-flash-dspark.sh",
+        "sha256": "5b92db0d5c0c114882a40594ac2a885691e65ff9b05c1838bd28332cff7a54ae",
+        "size": 3132
+      },
+      {
+        "mode": "0755",
+        "path": "start-deepseek-v4-flash-dspark.sh",
+        "sha256": "38d777e5ff8d1c21b642f3720ffe25a6320d1345c1b0da9ba3a1631feaa9bb7a",
+        "size": 58125
+      },
+      {
+        "mode": "0755",
+        "path": "status-deepseek-v4-flash-dspark.sh",
+        "sha256": "25b0f5edadfff8a3b75068212541a8be095efe23b7a8450929e02e67af8c2f96",
+        "size": 3833
+      },
+      {
+        "mode": "0755",
+        "path": "stop-deepseek-v4-flash-dspark.sh",
+        "sha256": "5f973d7a1e9ff821097fdddf7d9b008df55e14b2a766ed8ff52755fdd540baee",
+        "size": 8601
+      },
+      {
+        "mode": "0644",
+        "path": "tests/sim/test_issue43_scheduler_sim.py",
+        "sha256": "6d2b5eaa31fd45970390be20717abb52960837915cba95d45c2f3d086a04e628",
+        "size": 12681
+      },
+      {
+        "mode": "0755",
+        "path": "tests/test_dspark_stacked_mapping.py",
+        "sha256": "ae8ae05301ae742bcdc9cdd51749981180e947401be2506eb3b7ec8556107cdb",
+        "size": 1818
+      },
+      {
+        "mode": "0644",
+        "path": "tests/test_issue133_triton_specialization.py",
+        "sha256": "8fe22e8a01de40937ef98575fc293895910dd8e0c2d45da97ee3bd797e0cb363",
+        "size": 13224
+      },
+      {
+        "mode": "0644",
+        "path": "tests/test_issue27_inflight_cap.py",
+        "sha256": "e046c7c00f98a3f5c11a12481cfb57c6c4561561b4168c8501ac4f2125b750d5",
+        "size": 4991
+      },
+      {
+        "mode": "0644",
+        "path": "tests/test_issue43_patchapply.py",
+        "sha256": "c533bb26ccf827639aab1458e477fe42aad0fd6cf196263b286f0b7137106a0a",
+        "size": 3539
+      },
+      {
+        "mode": "0755",
+        "path": "validate-dspark-config.sh",
+        "sha256": "e7d0a11ceea41bce2fae4c7977d58689b06977c261ffddb81040bd0be1613e54",
+        "size": 5759
+      },
+      {
+        "mode": "0644",
+        "path": "vllm_patch_gb10/README.md",
+        "sha256": "e7a5777c9b470c0b5bbffbd7083b27917e987f87cad61ac25703f030da5d78f5",
+        "size": 1118
+      },
+      {
+        "mode": "0644",
+        "path": "vllm_patch_gb10/pyproject.toml",
+        "sha256": "4196e789f710e0d007532d2d0dcd6e0488d6b21774dfeab581952f2b7fe33882",
+        "size": 479
+      },
+      {
+        "mode": "0644",
+        "path": "vllm_patch_gb10/vllm_gb10_hybrid_nvfp4/__init__.py",
+        "sha256": "bf43dc70ad637fb7a44b3d606cff3a5e3c0bcf6c3f1b0d20dcef4f7719d8e7cc",
+        "size": 577
+      },
+      {
+        "mode": "0644",
+        "path": "vllm_patch_gb10/vllm_gb10_hybrid_nvfp4/config.py",
+        "sha256": "d0e88aad0c37b3b09a438115bcd1678bedac473ae076276118add1336e026841",
+        "size": 2637
+      },
+      {
+        "mode": "0644",
+        "path": "vllm_patch_gb10/vllm_gb10_hybrid_nvfp4/kernel.py",
+        "sha256": "880fc9c29d7432817e580a57c22285aa27df95f42545f08392192bc4b9c31fde",
+        "size": 6694
+      }
+    ],
+    "git_tree": "a5258a8070b62fe77ed4bdb8887b39ef388e3a24",
+    "identity_path": ".deepseek-source-identity.json",
+    "repository": "https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark.git",
+    "root_sha256": "83bea7e3d33dfac0e778ea1bd2bb885429a6e51d9cab34e6130342f7a7e8d2c8",
+    "schema_version": 1,
+    "total_bytes": 4293967,
+    "variant": "upstream"
+  }
+}

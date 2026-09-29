@@ -1,0 +1,13 @@
+[Unit]
+Description=Mia DeepSeek V4.1 Abliterated authenticated LAN gateway
+After=network-online.target docker.service
+Requires=docker.service
+ConditionPathExists=/run/mia-dsv41-ablit/active-nginx.conf
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/docker run --rm --name mia-dsv41-ablit-gateway --network host --read-only --tmpfs /var/cache/nginx:rw,nosuid,nodev,noexec,size=32m --tmpfs /var/run:rw,nosuid,nodev,noexec,size=1m --tmpfs /var/log/nginx:rw,nosuid,nodev,noexec,size=4m -v /run/mia-dsv41-ablit:/run/mia-dsv41-ablit:ro -v /run/secrets/mia-dsv41-auth.conf:/run/secrets/mia-dsv41-auth.conf:ro --entrypoint nginx sha256:35f3cbee4fb77c3efb39f2723a21ce181906139442a37de8ffc52d89641d9936 -c /run/mia-dsv41-ablit/active-nginx.conf -g "daemon off;"
+ExecStop=/usr/bin/docker stop --time 30 mia-dsv41-ablit-gateway
+Restart=no
+TimeoutStartSec=60
+TimeoutStopSec=45

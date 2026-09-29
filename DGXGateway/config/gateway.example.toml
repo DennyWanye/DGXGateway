@@ -1,0 +1,85 @@
+[gateway]
+lan_no_auth = false
+bind = "127.0.0.1"
+port = 18082
+allowed_origins = ["http://127.0.0.1:18082"]
+state_dir = "/Users/operator/.local/state/dgx-cluster-gateway"
+admin_token_file = "/Users/operator/.config/dgx-cluster-gateway/admin.token"
+
+[drama]
+# Optional CPU-only project and editing workbench. No model is started by this flag.
+enabled = false
+
+[cluster]
+repo_root = "/Users/operator/projects/DGXSpark"
+lock_root = "/Users/operator/.codex/locks/dgx-spark-two-node"
+lock_cli = "/Users/operator/projects/DGXSpark/scripts/dgx-spark-deployment-lock.py"
+token_dir = "/Users/operator/.codex/locks/dgx-cluster-gateway-tokens"
+
+[authority]
+id = "mac-dgx-gateway"
+record = "/Users/operator/.config/dgx-cluster-gateway/authority.json"
+credential = "/Users/operator/.config/dgx-cluster-gateway/authority.credential"
+mutation_enabled = false
+remote_fence_enabled = true
+remote_fence_path = "/home/operator/.local/state/dgx-cluster-gateway/authority.json"
+
+[models.deepseek]
+journal = "/Users/operator/.codex/state/deepseek-v4-flash-dspark/journal.jsonl"
+gateway_secret = "/Users/operator/.config/deepseek-v4-flash/gateway.token"
+drain_timeout_seconds = 120
+
+[models.deepseek_vision]
+journal = "/Users/operator/.codex/state/deepseek-v4-flash-vision-exp/journal.jsonl"
+gateway_secret = "/Users/operator/.config/deepseek-v4-flash-vision-exp/gateway.token"
+drain_timeout_seconds = 120
+internal_port = 18889
+
+[models.h3]
+queue_url = "http://192.0.2.41:8188/queue"
+
+[models.music3]
+root = "/home/operator/ai/ComfyUI"
+python = "/home/operator/ai/comfyui-env/bin/python"
+port = 8188
+
+[models.personaplex]
+root = "/home/operator/dgx-models/personaplex"
+
+# Catalog no longer registers deepseek-v4-flash, deepseek-v4-flash-vision-exp, or
+# qwen38-flash-next. Keep [models.deepseek] / [models.deepseek_vision] as the
+# required secret backing for mia-dsv41-ablit; do not delete those sections.
+# dsv41-ring-tp4 is a four-Spark Ring identity. Do not rename or replace mia-dsv41-ablit.
+# Loopback API is 127.0.0.1:8891 on rank0 (192.0.2.41); credential file:
+# ~/.config/dgx-cluster-gateway/dsv41-ring.token
+
+[nodes.head]
+hostname = "dgx-head"
+address = "192.0.2.41"
+user = "operator"
+
+[nodes.worker]
+hostname = "dgx-worker"
+address = "192.0.2.42"
+user = "operator"
+
+[nodes.rank2]
+hostname = "dgx-rank2"
+address = "192.0.2.39"
+user = "operator"
+
+[nodes.rank3]
+hostname = "dgx-rank3"
+address = "192.0.2.40"
+user = "operator"
+
+# Runtime history is independent of an open browser. NAS receiver uses SSH keys.
+[recording]
+nas_monthly_retention = true
+enabled = true
+sample_seconds = 15
+flush_seconds = 300
+# nas_host = "agentos@192.0.2.29"
+# nas_identity_file = "/Users/operator/.ssh/agentos-k6"
+# nas_python = "/home/agentos/.local/state/dgx-recording-python/bin/python3"
+# nas_receiver = "/home/agentos/.local/lib/dgx-gateway/receive-recording.py"

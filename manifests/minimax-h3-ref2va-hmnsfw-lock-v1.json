@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "profile_id": "heretic-ref2va-hmnsfw-v1",
+  "task_type": "ref2va",
+  "tree_sha256": "7c8702055be7bfa4a95d1f26455e67eb30f543ec772b7f19563c6b783103bfad",
+  "file_count": 81,
+  "parent_profile_id": "heretic-ref2va-v1",
+  "parent_tree_sha256": "3931daffa3b60c6976a8b903d5319db8c74deb4c0e723f2cd1fad232e2953276",
+  "hmnsfw_sha256": "a07732a84fd733085eb5d910f602f918fa7a3658117116927e4329f5951a9d2d",
+  "strength": 0.5,
+  "target_count": 100,
+  "builder_sha256": "9e24c00b84f4c9885e937ed2a7c26733b17bdc1800cfcf0f2bb2c17a47d85860",
+  "license_attestation_sha256": "3642300415fb0cf870eefd95d8e22b9e0b1f069a8f68143ffed6b1bcdd9547c6",
+  "status": "resolved"
+}

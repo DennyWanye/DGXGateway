@@ -1,0 +1,1028 @@
+{
+  "updated_at": "2026-09-10",
+  "tools": [
+    {
+      "name": "text_capabilities",
+      "description": "Read text generation qualification and safe unavailable reason; does not load models.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "text_submit",
+      "description": "Create a persistent frozen text draft task. Generation is unavailable until qualified. Never approves business content or retries ambiguous inference.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "task_kind": {
+            "type": "string",
+            "enum": [
+              "extract_entities",
+              "draft_beats",
+              "draft_script",
+              "draft_storyboard",
+              "draft_video_prompt"
+            ]
+          },
+          "inputs": {
+            "type": "object"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "task_kind",
+          "inputs",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "text_job",
+      "description": "Read text job result and resource ownership separately.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "text_job_find",
+      "description": "Find the original text job by key; read only, never redispatch.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "text_cancel",
+      "description": "Persist cancel intent. In-flight model completion and safe release still require confirmation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "text_reconcile",
+      "description": "Explicitly reconcile existing text ownership; never infer again or silently retry a prompt.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "comfy_cancel",
+      "description": "Request durable cancellation of an image job. Interrupts owned Comfy sampling at a safe checkpoint, then saves available outputs and releases. Poll comfy_job; cancellation is not instantaneous.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "video_cancel",
+      "description": "Cancel an H3 batch at the current load/clip boundary. Retains finished clips, skips remaining clips and releases both nodes. An in-flight clip is allowed to finish. Poll video_job.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "video_register_audio",
+      "description": "Register an exact four-second mono PCM16 24 kHz WAV reference (base64, up to 256 KiB). Does not start a model. Returns a reusable content-addressed audio_asset_id.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180
+          },
+          "audio_base64": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 349528
+          }
+        },
+        "required": [
+          "filename",
+          "audio_base64"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "comfy_register_image",
+      "description": "Register a PNG/JPEG/WebP (base64, up to 8 MiB) on Gateway for later reference editing. Does not start a model. Returns asset_id and the Comfy filename; filenames must be plain basenames.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 180
+          },
+          "image_base64": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 11184812
+          }
+        },
+        "required": [
+          "filename",
+          "image_base64"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "prepare_image_cutout",
+      "description": "Remove the background from a registered image with pinned local U2Net on the Mac. Returns a media job immediately; poll media_job for a reusable transparent PNG asset. Does not use DGX memory.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "asset_id": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "asset_id",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "compose_image_layers",
+      "description": "Create a deterministic composite from one registered background and 1–16 transparent registered image layers. Coordinates are pixels in the background canvas. Returns a media job; poll media_job. Does not use DGX memory.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "background_asset_id": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "layers": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 16,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "asset_id": {
+                  "type": "string",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "x": {
+                  "type": "integer",
+                  "minimum": -4096,
+                  "maximum": 4096
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": -4096,
+                  "maximum": 4096
+                },
+                "width": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4096
+                },
+                "height": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4096
+                },
+                "opacity": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+                },
+                "flip_x": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "name",
+                "asset_id",
+                "x",
+                "y",
+                "width",
+                "height",
+                "opacity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "background_asset_id",
+          "layers",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "media_job",
+      "description": "Read a local background-removal or layer-composition job and its reusable output_asset. These jobs do not load a DGX model.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "edit_image",
+      "description": "Edit references with Qwen Image Edit 2511 (default, 1–3 references; first sets aspect ratio) or LLaDA Image Turbo (exactly one complete reference, 4 steps, explicit width/height). Generate a user-selected positive number of candidates with user-selected native GPU group size. Memory and execution capacity still apply. Returns job_id; poll comfy_job for saved output and memory release.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "enum": [
+              "qwen-image-edit-2511",
+              "llada-image-turbo"
+            ]
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 256,
+            "maximum": 1536
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 256,
+            "maximum": 1536
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "asset_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 3
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 18446744073709551615
+          },
+          "steps": {
+            "type": "integer",
+            "minimum": 4,
+            "maximum": 40
+          },
+          "encoder": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "huihui-abliterated-bf16"
+            ]
+          },
+          "model_precision": {
+            "type": "string",
+            "enum": [
+              "fp8",
+              "bf16"
+            ]
+          },
+          "batch_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "parallelism": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "candidate_indices": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "prompt",
+          "asset_ids",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "generate_image",
+      "description": "Generate a user-selected positive number of candidates with a selected local image model (Z-Image Turbo, FLUX.2 dev or LLaDA Image Turbo), with user-selected native GPU group size. Memory and execution capacity still apply. Returns job_id immediately. Poll comfy_job; final artifacts persist on Mac and model memory is released. Existing GPU work may return busy.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "enum": [
+              "z-image-turbo",
+              "flux2-dev",
+              "flux2-dev-abliterated",
+              "llada-image-turbo"
+            ]
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 8000
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 256,
+            "maximum": 1536
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 256,
+            "maximum": 1536
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 18446744073709551615
+          },
+          "batch_count": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "parallelism": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "candidate_indices": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "prompt",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "retry_image_candidates",
+      "description": "Explicitly retry only selected known failed image candidates from a released typed image job, with their original indices/seeds and a new idempotency key. Saved or unknown candidates cannot regenerate; use comfy_reconcile for saved download recovery.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          },
+          "candidate_indices": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "job_id",
+          "candidate_indices",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "personaplex_session",
+      "description": "Get PersonaPlex voice/session connection information. First switch model to personaplex and wait for operation completion. No model mutation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "comfy_reconcile",
+      "description": "Recover an interrupted creative job after queue finishes, collect its result without resubmitting, then release model memory.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "comfy_catalog",
+      "description": "Inspect head ComfyUI installed model loaders and nodes. Does not load weights.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "comfy_submit",
+      "description": "Submit a saved-media ComfyUI API-format workflow as a persistent job. Gateway starts Comfy, generates, saves artifacts, and stops it to release all model memory. Query comfy_job. Serial hardware; busy returns error. No automatic retries of ambiguous submissions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "workflow": {
+            "type": "object"
+          },
+          "input_assets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 16
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "workflow",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "comfy_job",
+      "description": "Read persistent job state, memory_released, errors and downloadable artifacts. SUCCEEDED means output saved and model stopped.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "generate_video",
+      "description": "Submit one four-second H3 Ref2VA clip. Gateway loads the qualified two-node profile, sends registered image/audio references, saves the MP4, then stops H3. Poll video_job until SUCCEEDED and memory_released.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "prompt": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2048
+          },
+          "image_asset_id": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "audio_asset_id": {
+            "type": "string",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2147483647
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          },
+          "non_preemptive": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "prompt",
+          "image_asset_id",
+          "audio_asset_id",
+          "seed",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "video_batch_submit",
+      "description": "Submit 1–32 ordered H3 Ref2VA clips with one frozen profile per batch (stable 4s; long profile allowed 4-15s, workbench qualified direct endpoints 4/15s) as one persistent batch. H3 loads once, executes serially on the current single engine, saves each MP4, and releases after the batch. This is queued batching, not parallel GPU execution.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "shots": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 32,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "prompt": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048
+                },
+                "image_asset_id": {
+                  "type": "string",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "audio_asset_id": {
+                  "type": "string",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "seed": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 2147483647
+                },
+                "request_duration_seconds": {
+                  "type": "integer",
+                  "minimum": 4,
+                  "maximum": 15
+                },
+                "contract_version": {
+                  "type": "string",
+                  "enum": [
+                    "h3-ref2va-v1"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "prompt",
+                "image_asset_id",
+                "audio_asset_id",
+                "seed"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "profile": {
+            "type": "string",
+            "enum": [
+              "heretic-ref2va-v1",
+              "heretic-ref2va-hmnsfw-v1"
+            ]
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          },
+          "non_preemptive": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "shots",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "video_job",
+      "description": "Read a persistent H3 video batch, including per-shot state, saved MP4 URLs, execution_mode and memory_released.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "video_job_find",
+      "description": "Read-only lookup of an existing H3 batch by its original idempotency key. Never submits or resumes a clip. Returns job or null.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "video_reconcile",
+      "description": "Stop/release H3 for an interrupted video batch while preserving completed MP4s. It never resubmits a clip whose outcome is ambiguous.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "job_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dgx_recover_stop",
+      "description": "Recover a failed switch to all-models-stopped using its existing live Gateway lease. Only for RECOVERY_REQUIRED operations.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operation_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "operation_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dgx_status",
+      "description": "Read live cluster/model readiness and active operation. Does not start models. Credentials are omitted.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dgx_switch_model",
+      "description": "Start/switch a model through the unique DGX Gateway lifecycle. Returns operation_id immediately; poll dgx_operation. Busy generation is never interrupted.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "model",
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dgx_stop",
+      "description": "Stop current model and release its memory through Gateway. Poll returned operation; never equate submission with completion.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "idempotency_key": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 128
+          }
+        },
+        "required": [
+          "idempotency_key"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dgx_operation",
+      "description": "Query a model lifecycle operation and its outcome.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operation_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "operation_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "dgx_cancel_operation",
+      "description": "Request cancellation of an unfinished model switch at its safe boundary.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operation_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "operation_id"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

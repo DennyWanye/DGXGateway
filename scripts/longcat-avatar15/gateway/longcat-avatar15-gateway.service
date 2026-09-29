@@ -1,0 +1,15 @@
+[Unit]
+Description=LongCat Avatar 1.5 guarded video job service
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=operator
+Group=operator
+SupplementaryGroups=docker
+ExecStart=/usr/bin/python3 /opt/longcat-avatar15-gateway/worker.py
+Restart=no
+TimeoutStopSec=120
+KillMode=control-group
+UMask=0077

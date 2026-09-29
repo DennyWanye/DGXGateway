@@ -1,0 +1,15 @@
+{
+  "state_root": "/srv/h3-ring",
+  "base_model_root": "/srv/h3-ring/models/MiniMax-H3",
+  "heretic_root": "/srv/h3-ring/models/encoders/Heretic-Qwen3VL32B",
+  "hybrid_root": "/srv/h3-ring/models/hybrid/Singularity-v1.3",
+  "assets_root": "/srv/h3-ring/assets",
+  "image": "local/h3-ring:e970453b433e",
+  "image_id": "sha256:497d375972b5fe6b4ed4cb68c544b12484cf4efbebabb6d03fdce4eeb8e55359",
+  "source_commit": "e970453b433e1467e22f6d925f270563417540b5",
+  "master_addr": "192.0.2.18",
+  "dist_port": 20221,
+  "api_port": 30021,
+  "api_bind": "127.0.0.1",
+  "image_layers_sha256": "97f00f429ba2f2fbe3e051a568267e16df6e81a2849a675311df796860099e2a"
+}

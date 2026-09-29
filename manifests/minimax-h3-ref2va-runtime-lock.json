@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "required_architecture": "aarch64",
+  "vllm_omni_source": {
+    "repository": "https://github.com/vllm-project/vllm-omni.git",
+    "commit": "a65e89cbd47fe7c9f39dba558200c0bc16a758f3"
+  },
+  "base_image": {
+    "reference": "vllm/vllm-omni:minimax-h3@sha256:e930db8e225162d01e17a49dddc43fd0e844208908d8356a028e5c4e7357696e",
+    "architecture": "arm64",
+    "child_digest": "sha256:474d635dc5dc2cf66f0df692ddef19967a920253826f431689af2b0e010afc4e",
+    "config_digest": "sha256:c3cbf972d026ba07223135b1d6b603edb980aa3123c1ead1dc918f057f21f4e3"
+  },
+  "build_parent": {
+    "tag": "minimax-h3-two-node:production",
+    "final_image_id": "sha256:2c8b61d92a7f1205e8445e6ea6ba27b9922fde308b9daf121a8b4dcd50727d11"
+  },
+  "local_inputs": [
+    {"path": "patches/minimax-h3-two-node/0001-rank1-first-and-evidence.patch", "sha256": "1b01359e2760b7c318e252e24a1a8b25e5c590af0c51bb720615069fc22ec67e", "role": "production-parent-provenance"},
+    {"path": "patches/minimax-h3-two-node/0002-require-ray-token-auth.patch", "sha256": "5753956e899df275c9778545ef09f07cd4000f78f062a3281f9fc00920f3a538", "role": "production-parent-provenance"},
+    {"path": "patches/minimax-h3-two-node/0003-offline-ray-wheelhouse.patch", "sha256": "d67e0bb74fd460247ee85b881981dd95a440ca56db64709d37700b61d4176979", "role": "production-parent-provenance"},
+    {"path": "patches/minimax-h3-two-node/0004-worker-plugin-import.patch", "sha256": "2c586d361d8ae4702d4e7f62c806404e74782613bc1970712d39ade149ac1c61", "role": "production-parent-provenance"},
+    {"path": "overlays/minimax-h3-two-node/worker.py", "sha256": "f17239d6a5fc361e1e482f25e02273de5285c902f5a36340a10e3d9a9a901b93", "role": "runtime-overlay"},
+    {"path": "patches/minimax-h3-ref2va/0001-share-heretic-fl2va-components.patch", "sha256": "093ecfa663f5baa6d6bb9ff09d3a7f3a2cc28b87a8dc4342cd05dacfaeaeda81", "role": "vllm-omni-source-patch"}
+  ],
+  "deployment_overlays": [
+    {
+      "path": "overlays/minimax-h3-two-node/worker.py",
+      "target": "/opt/h3-multinode/h3_multinode/worker.py",
+      "sha256": "f17239d6a5fc361e1e482f25e02273de5285c902f5a36340a10e3d9a9a901b93"
+    }
+  ],
+  "candidate": {
+    "tag": "minimax-h3-two-node:ref2va-candidate",
+    "status": "resolved",
+    "final_image_id": "sha256:b0d338b9637963f94774bfba6b90f5d5dfe45b90063386d012ee46c948fd6e69",
+    "sealed_at": "2026-09-01T11:22:51.530960Z"
+  },
+  "rollback": {
+    "tag": "minimax-h3-two-node:production",
+    "final_image_id": "sha256:2c8b61d92a7f1205e8445e6ea6ba27b9922fde308b9daf121a8b4dcd50727d11"
+  }
+}

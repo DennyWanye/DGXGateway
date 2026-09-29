@@ -1,0 +1,49 @@
+{
+  "root": "/srv/h3-ring/net",
+  "nodes": [
+    {
+      "rank": 0,
+      "label": "node0",
+      "management_ip": "192.0.2.41",
+      "management_iface": "wlP9s9",
+      "prev_iface": "enp1s0f0np0",
+      "prev_cidr": "192.0.2.22/30",
+      "next_iface": "enp1s0f1np1",
+      "next_cidr": "192.0.2.14/30",
+      "mesh_gid_index": 3
+    },
+    {
+      "rank": 1,
+      "label": "node1",
+      "management_ip": "192.0.2.42",
+      "management_iface": "wlP9s9",
+      "prev_iface": "enp1s0f0np0",
+      "prev_cidr": "192.0.2.15/30",
+      "next_iface": "enp1s0f1np1",
+      "next_cidr": "192.0.2.16/30",
+      "mesh_gid_index": 3
+    },
+    {
+      "rank": 2,
+      "label": "node2",
+      "management_ip": "192.0.2.39",
+      "management_iface": "wlP9s9",
+      "prev_iface": "enp1s0f0np0",
+      "prev_cidr": "192.0.2.17/30",
+      "next_iface": "enp1s0f1np1",
+      "next_cidr": "192.0.2.18/30",
+      "mesh_gid_index": 3
+    },
+    {
+      "rank": 3,
+      "label": "node3",
+      "management_ip": "192.0.2.40",
+      "management_iface": "wlP9s9",
+      "prev_iface": "enp1s0f0np0",
+      "prev_cidr": "192.0.2.19/30",
+      "next_iface": "enp1s0f1np1",
+      "next_cidr": "192.0.2.21/30",
+      "mesh_gid_index": 3
+    }
+  ]
+}

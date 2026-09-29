@@ -1,0 +1,11 @@
+[
+  {
+    "id": "qwen-image-edit-2511-bf16",
+    "repo": "Comfy-Org/Qwen-Image-Edit_ComfyUI",
+    "revision": "984166f60a9b1fcede5e9b9287b7a7aebc050010",
+    "path": "split_files/diffusion_models/qwen_image_edit_2511_bf16.safetensors",
+    "destination": "diffusion_models/qwen_image_edit_2511_bf16.safetensors",
+    "expected_size": 40861031560,
+    "expected_sha256": "ae42d927b5fac4f278b9a894554c727e619727a63622976f2d95625be4bce08c"
+  }
+]

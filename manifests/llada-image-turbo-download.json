@@ -1,0 +1,128 @@
+[
+  {
+    "id": "llada-turbo-000",
+    "repo": "realrebelai/LLaDa-Image-Turbo_ComfyUI",
+    "revision": "abfa94e506b4901198e8cda42aa6370165cfebea",
+    "path": "LLaDA-Image-Turbo-INT8.safetensors",
+    "destination": "weights/LLaDA-Image-Turbo-INT8.safetensors",
+    "size": 6592330548,
+    "digest": "9b48c9b44b1c766b67cd95cf9207ecebef8a3dd98004c8b587a765d3fcc84e81"
+  },
+  {
+    "id": "llada-turbo-001",
+    "repo": "realrebelai/LLaDa-Image-Turbo_ComfyUI",
+    "revision": "abfa94e506b4901198e8cda42aa6370165cfebea",
+    "path": "LLaDA-Image-Turbo-text_encoder-Q4_K_M.gguf",
+    "destination": "weights/LLaDA-Image-Turbo-text_encoder-Q4_K_M.gguf",
+    "size": 9181912960,
+    "digest": "1f928bfaab1b59a9aa7a622f268e28c4bdffed383d1f7a9997fd13f6fef651c4"
+  },
+  {
+    "id": "llada-turbo-002",
+    "repo": "realrebelai/LLaDa-Image-Turbo_ComfyUI",
+    "revision": "abfa94e506b4901198e8cda42aa6370165cfebea",
+    "path": "LLaDa_VAE.safetensors",
+    "destination": "weights/LLaDa_VAE.safetensors",
+    "size": 168120872,
+    "digest": "19874383f29bd4a716be716520647261e38aeaa50dcc29559e5f8d8186cf8f43"
+  },
+  {
+    "id": "llada-turbo-003",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "model_index.json",
+    "destination": "aux/model_index.json",
+    "size": 659,
+    "digest": "gitsha1:8b3f6ac39b6d63f8003ebc494c6239576d1fc746"
+  },
+  {
+    "id": "llada-turbo-004",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "queryformer/config.json",
+    "destination": "aux/queryformer/config.json",
+    "size": 257,
+    "digest": "gitsha1:1343469c68b46bb1a97c8b8663380c421c0c48fb"
+  },
+  {
+    "id": "llada-turbo-005",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "queryformer/diffusion_pytorch_model.safetensors",
+    "destination": "aux/queryformer/diffusion_pytorch_model.safetensors",
+    "size": 101749704,
+    "digest": "0702ceebf4e9a856127bdff4bd28f067a8e39bef5af42d1434338f17480a5c1f"
+  },
+  {
+    "id": "llada-turbo-006",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "scheduler/scheduler_config.json",
+    "destination": "aux/scheduler/scheduler_config.json",
+    "size": 516,
+    "digest": "gitsha1:aa7144eb0592d9f2530a0ea4e4be737b34494a90"
+  },
+  {
+    "id": "llada-turbo-007",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "sigvq/config.json",
+    "destination": "aux/sigvq/config.json",
+    "size": 414,
+    "digest": "gitsha1:a86ae33a2bc6af29b7485fdc5d6d5c37ec94f4bd"
+  },
+  {
+    "id": "llada-turbo-008",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "sigvq/diffusion_pytorch_model.safetensors",
+    "destination": "aux/sigvq/diffusion_pytorch_model.safetensors",
+    "size": 2594014384,
+    "digest": "e4681b698911069c8d7fa8e89505ba16d4c76b9926e2795ea81483f97d79f960"
+  },
+  {
+    "id": "llada-turbo-009",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "text_projection/config.json",
+    "destination": "aux/text_projection/config.json",
+    "size": 274,
+    "digest": "gitsha1:d296d41fff2d4cc7e494072189c448e4439e050e"
+  },
+  {
+    "id": "llada-turbo-010",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "text_projection/diffusion_pytorch_model.safetensors",
+    "destination": "aux/text_projection/diffusion_pytorch_model.safetensors",
+    "size": 652457384,
+    "digest": "5878406da35d48a4b51880d7203fcd02a598de5f5af4dc3bef695dd29bf95515"
+  },
+  {
+    "id": "llada-turbo-011",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "tokenizer/special_tokens_map.json",
+    "destination": "aux/tokenizer/special_tokens_map.json",
+    "size": 723,
+    "digest": "gitsha1:941100b8820b10dc87c865aab8b12cbb67203290"
+  },
+  {
+    "id": "llada-turbo-012",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "tokenizer/tokenizer.json",
+    "destination": "aux/tokenizer/tokenizer.json",
+    "size": 15297062,
+    "digest": "2197aeddaf09785316673451ca6fb86dcfcfdb108972a3145d106b8fa4c927e6"
+  },
+  {
+    "id": "llada-turbo-013",
+    "repo": "inclusionAI/LLaDA-Image-Turbo",
+    "revision": "f4afc52d925bbac4e22a1c947111fc1f127e37e5",
+    "path": "tokenizer/tokenizer_config.json",
+    "destination": "aux/tokenizer/tokenizer_config.json",
+    "size": 2981052,
+    "digest": "gitsha1:e111a407305cbb13a51d0fd794c56d4eea322ed9"
+  }
+]

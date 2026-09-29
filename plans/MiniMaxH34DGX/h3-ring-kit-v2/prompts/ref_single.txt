@@ -1,0 +1,12 @@
+subject_definitions:
+<Subject 1> 是 <Picture 1> 中的成年角色。该图只用于身份、发型和服装参考，不要求复制其背景和构图。
+summary:
+同一个角色在窗边缓慢转头的四秒写实镜头。
+retention_analysis:
+保持 <Subject 1> 的身份、发型、衣服颜色和材质；背景为安静的室内窗边。
+detailed_description:
+一个连续中景镜头，镜头固定。成年角色站在窗边，缓慢转头看向窗外，不切镜、不出现额外人物。
+overall_soundscape:
+轻微房间环境声和远处雨声。没有对白。
+non_diegetic_music:
+无背景音乐，不生成字幕。

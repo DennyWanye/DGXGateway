@@ -1,0 +1,19 @@
+{
+  "id": "hybrid-experimental",
+  "model_variant": "hybrid",
+  "online_quantization": "none",
+  "encoder_override": false,
+  "transformer_override": true,
+  "performance_mode": "auto",
+  "experimental": true,
+  "asset_ids": [
+    "official-fl",
+    "official-ref",
+    "hybrid-singularity"
+  ],
+  "tasks": [
+    "t2va",
+    "fl2va",
+    "ref2va"
+  ]
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "flux2-dev-000",
+    "repo": "Comfy-Org/flux2-dev",
+    "revision": "ab9055628ea245000e610f2aa2c96f4746093546",
+    "path": ".gitattributes",
+    "destination": ".gitattributes"
+  },
+  {
+    "id": "flux2-dev-001",
+    "repo": "Comfy-Org/flux2-dev",
+    "revision": "ab9055628ea245000e610f2aa2c96f4746093546",
+    "path": "README.md",
+    "destination": "README.md"
+  },
+  {
+    "id": "flux2-dev-002",
+    "repo": "Comfy-Org/flux2-dev",
+    "revision": "ab9055628ea245000e610f2aa2c96f4746093546",
+    "path": "split_files/vae/flux2-vae.safetensors",
+    "destination": "split_files/vae/flux2-vae.safetensors"
+  },
+  {
+    "id": "flux2-dev-003",
+    "repo": "Comfy-Org/flux2-dev",
+    "revision": "ab9055628ea245000e610f2aa2c96f4746093546",
+    "path": "split_files/diffusion_models/flux2_dev_fp8mixed.safetensors",
+    "destination": "split_files/diffusion_models/flux2_dev_fp8mixed.safetensors"
+  },
+  {
+    "id": "flux2-dev-004",
+    "repo": "Comfy-Org/flux2-dev",
+    "revision": "ab9055628ea245000e610f2aa2c96f4746093546",
+    "path": "split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors",
+    "destination": "split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors"
+  }
+]

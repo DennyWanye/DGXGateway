@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "profile_id": "10eros-fl2va-v1",
+  "task_type": "fl2va",
+  "tree_sha256": "a2eca1dffa1b1fea1099068499cd0110aa519352b25b9e986243f3636177bf4d",
+  "file_count": 69,
+  "source_sha256": "bf34b4c9d2fa973ae84c480a1a5a04d2978958023bb6be7375b3b9e4818965e3",
+  "source_revision": "3c071106f5b62c02b3cb0b7d831083cdb582b289",
+  "curve_payload_sha256": "b282720b33297e4edee017ccc3761360f7fa82c9e3d2697006d8f1d0c97d4f91",
+  "curve_interpolation_f32le_sha256": "2f9a7b61694dc5ebee353055c956136a5ceceea9d1037152230829412fb32fb4",
+  "builder_sha256": "970af5ef9632e1524cbb15d484e415c5a2c89a6dc998caf17c80832b7e094794",
+  "license_attestation_sha256": "3642300415fb0cf870eefd95d8e22b9e0b1f069a8f68143ffed6b1bcdd9547c6",
+  "status": "resolved"
+}

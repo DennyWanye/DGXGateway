@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+@theme inline {
+--color-background:var(--background);--color-foreground:var(--foreground);--color-card:var(--card);--color-card-foreground:var(--card-foreground);--color-popover:var(--popover);--color-popover-foreground:var(--popover-foreground);--color-primary:var(--primary);--color-primary-foreground:var(--primary-foreground);--color-secondary:var(--secondary);--color-secondary-foreground:var(--secondary-foreground);--color-muted:var(--muted);--color-muted-foreground:var(--muted-foreground);--color-accent:var(--accent);--color-accent-foreground:var(--accent-foreground);--color-destructive:var(--destructive);--color-border:var(--border);--color-input:var(--input);--color-ring:var(--ring);--radius-sm:calc(var(--radius) - 4px);--radius-md:calc(var(--radius) - 2px);--radius-lg:var(--radius);--radius-xl:calc(var(--radius) + 4px);
+}
+:root { color-scheme:dark;--radius:.75rem;--background:#101113;--foreground:#efefef;--card:#18191d;--card-foreground:#efefef;--popover:#202126;--popover-foreground:#efefef;--primary:#c2bcff;--primary-foreground:#252044;--secondary:#27282e;--secondary-foreground:#e5e5ea;--muted:#24252a;--muted-foreground:#aaaab5;--accent:#2d2a40;--accent-foreground:#e1ddff;--destructive:#f28a92;--border:#303139;--input:#393b43;--ring:#c2bcff; }
+@layer base { * {@apply border-border outline-ring/50} body {@apply bg-background text-foreground; margin:0; font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei",sans-serif;font-size:14px;line-height:1.6;} button,a,input,select,textarea{touch-action:manipulation;} button:not(:disabled){cursor:pointer;} button:disabled{cursor:not-allowed;} input,textarea,select{font-size:14px;} img,video{max-width:100%;} select option {background:var(--popover);} }
+.studio-scroll {scrollbar-width:thin;scrollbar-color:#42434c transparent;}
+.studio-scroll::-webkit-scrollbar{width:6px;height:6px;}.studio-scroll::-webkit-scrollbar-thumb{background:#42434c;border-radius:4px;}
+.studio-panel{animation:appear .18s ease-out;}@keyframes appear{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;}}

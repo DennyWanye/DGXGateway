@@ -1,0 +1,6 @@
+{
+  "rank": 0,
+  "control_iface": "CHANGE_ME_TO_CONTROL_IFACE",
+  "network_mode": "ib",
+  "hcas": "CHANGE_ME_TO_VERIFIED_EXACT_HCA_LIST"
+}

@@ -1,0 +1,13 @@
+{
+  "repo": "silveroxides/FLUX.2-dev-fp8_scaled",
+  "revision": "a8e566fd208b5b6735c1611622fa3999fdfe9b9d",
+  "variant": "silveroxides-mistral-abliterated-v2-fp8mixed",
+  "files": [
+    {
+      "path": "mistral_small_3_abliterated_v2_fp8mixed.safetensors",
+      "size": 18034679973,
+      "digest": "47aea33853146036a9113fcc34ff11cdbd7ff5f987ee4ab6cd57284c423ef626"
+    }
+  ],
+  "total_bytes": 18034679973
+}

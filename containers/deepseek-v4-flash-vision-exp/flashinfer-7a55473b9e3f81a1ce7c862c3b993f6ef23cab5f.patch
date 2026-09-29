@@ -1,0 +1,69 @@
+From 7a55473b9e3f81a1ce7c862c3b993f6ef23cab5f Mon Sep 17 00:00:00 2001
+From: Luca Motz <luca.motz@icloud.com>
+Date: Wed, 2 Sep 2026 06:14:10 +0200
+Subject: [PATCH] fix(sm120): dispatch runtime extra top-k for DSV4 Vision
+
+Instantiate the 2-token extra-cache page layout for primary top-k 512 and stop gating on the runtime extra top-k value. Cover the serving failure geometry for both H=32 and H=64.
+
+Co-authored-by: tacos8me <181669716+tacos8me@users.noreply.github.com>
+---
+ csrc/sparse_mla_sm120_prefill.cu         | 31 +++++++++++++++++-------
+ tests/attention/test_sparse_mla_sm120.py |  2 ++
+ 2 files changed, 24 insertions(+), 9 deletions(-)
+
+diff --git a/csrc/sparse_mla_sm120_prefill.cu b/csrc/sparse_mla_sm120_prefill.cu
+index 98f2bae101..3e375ab1a3 100644
+--- a/csrc/sparse_mla_sm120_prefill.cu
++++ b/csrc/sparse_mla_sm120_prefill.cu
+@@ -369,15 +369,28 @@ inline bool dispatch_dsv4_dual(int num_heads, int topk, int topk_extra, int extr
+       stream)
+ 
+   // DeepSeek V4 Vision widens the primary causal-SWA candidate set from
+-  // 128 to 512 entries and pairs it with a 512-entry global cache. Keep this
+-  // instantiation limited to the live-tested TP shape and cache layout.
+-  if (num_heads == 32 && topk == 512 && topk_extra == 512 && extra_page_block_size == 64) {
+-    DISPATCH_DUAL_MG_CM(BF16, 32, 512, 64, 2);
+-    return true;
+-  }
+-  if (num_heads == 64 && topk == 512 && topk_extra == 512 && extra_page_block_size == 64) {
+-    DISPATCH_DUAL_MG_CM(BF16, 64, 512, 64, 2);
+-    return true;
++  // 128 to 512 entries. topk_extra remains runtime, and the extra cache uses
++  // both enumerated page layouts in serving.
++  if (topk == 512) {
++    if (extra_page_block_size == 64) {
++      if (num_heads == 32) {
++        DISPATCH_DUAL_MG_CM(BF16, 32, 512, 64, 2);
++        return true;
++      }
++      if (num_heads == 64) {
++        DISPATCH_DUAL_MG_CM(BF16, 64, 512, 64, 2);
++        return true;
++      }
++    } else if (extra_page_block_size == 2) {
++      if (num_heads == 32) {
++        DISPATCH_DUAL_MG_CM(BF16, 32, 512, 2, 2);
++        return true;
++      }
++      if (num_heads == 64) {
++        DISPATCH_DUAL_MG_CM(BF16, 64, 512, 2, 2);
++        return true;
++      }
++    }
+   }
+ 
+ #define DISPATCH_BY_NH_PBSX(PBSX)                     \
+diff --git a/tests/attention/test_sparse_mla_sm120.py b/tests/attention/test_sparse_mla_sm120.py
+index e3504e057e..05aa40a5ed 100644
+--- a/tests/attention/test_sparse_mla_sm120.py
++++ b/tests/attention/test_sparse_mla_sm120.py
+@@ -1110,7 +1110,9 @@ def test_sparse_mla_sm120_prefill_dsv4_topk_length_truncation(
+     for extra_topk, extra_pbs in [(128, 64), (512, 64), (512, 2)]
+ ] + [
+     (32, 512, 512, 64),
++    (32, 512, 128, 2),
+     (64, 512, 512, 64),
++    (64, 512, 128, 2),
+ ]
+ 
+ 

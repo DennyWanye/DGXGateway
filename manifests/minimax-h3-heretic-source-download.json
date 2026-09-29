@@ -1,0 +1,23 @@
+[
+  {
+    "id": "minimax-h3-hmnsfw-v2-5",
+    "repo": "Hearmeman/minimax-h3-loras",
+    "revision": "931f7258f0f628eb481333b88e0b7407d1ff3493",
+    "path": "HMNSFW-AIO-V2.5.safetensors",
+    "destination": "heretic-sources/HMNSFW-AIO-V2.5.safetensors"
+  },
+  {
+    "id": "minimax-h3-heretic-encoder-bf16",
+    "repo": "ethanfel/Qwen3-VL-32B-Ultra-Heretic-H3-ComfyUI-INT8-ConvRot",
+    "revision": "e8967f6a39ea5b4939a1aff81be3e8706490c0e8",
+    "path": "qwen3vl_32b_h3_ultra_uncensored_heretic_bf16.safetensors",
+    "destination": "heretic-sources/qwen3vl_32b_h3_ultra_uncensored_heretic_bf16.safetensors"
+  },
+  {
+    "id": "minimax-h3-10eros-beta4-bf16",
+    "repo": "TenStrip/10Eros-Max",
+    "revision": "3c071106f5b62c02b3cb0b7d831083cdb582b289",
+    "path": "10Eros_Max_h3_TURBO-hybrid_beta4.safetensors",
+    "destination": "heretic-sources/10Eros_Max_h3_TURBO-hybrid_beta4.safetensors"
+  }
+]

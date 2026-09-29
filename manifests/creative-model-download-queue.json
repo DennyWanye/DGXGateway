@@ -1,0 +1,9 @@
+[
+  {"id":"pixal3d-dino-v3-l-fp32","repo":"Comfy-Org/Pixal3D","revision":"e69bd0b6c7b959661a87051187aab18e8e5abcdf","path":"clip_vision/dino_v3_L_naf_fp32.safetensors","destination":"clip_vision/dino_v3_L_naf_fp32.safetensors"},
+  {"id":"pixal3d-main-bf16","repo":"Comfy-Org/Pixal3D","revision":"e69bd0b6c7b959661a87051187aab18e8e5abcdf","path":"diffusion_models/pixal3d_bf16.safetensors","destination":"diffusion_models/pixal3d_bf16.safetensors"},
+  {"id":"pixal3d-shape-vae-bf16","repo":"Comfy-Org/Pixal3D","revision":"e69bd0b6c7b959661a87051187aab18e8e5abcdf","path":"vae/trellis_2_shape_vae_bf16.safetensors","destination":"vae/trellis_2_shape_vae_bf16.safetensors"},
+  {"id":"pixal3d-texture-vae-bf16","repo":"Comfy-Org/Pixal3D","revision":"e69bd0b6c7b959661a87051187aab18e8e5abcdf","path":"vae/trellis_2_texture_vae_bf16.safetensors","destination":"vae/trellis_2_texture_vae_bf16.safetensors"},
+  {"id":"minimax-music3-dit-fp16","repo":"Comfy-Org/MiniMax-Music-3","revision":"6baad88896848433857c170ba4f05d2ea9d5f218","path":"diffusion_models/minimax_music3_dit_fp16.safetensors","destination":"diffusion_models/minimax_music3_dit_fp16.safetensors"},
+  {"id":"minimax-music3-text-encoder-bf16","repo":"Comfy-Org/MiniMax-Music-3","revision":"6baad88896848433857c170ba4f05d2ea9d5f218","path":"text_encoders/minimax_music3_text_encoder_bf16.safetensors","destination":"text_encoders/minimax_music3_text_encoder_bf16.safetensors"},
+  {"id":"minimax-music3-dav","repo":"Comfy-Org/MiniMax-Music-3","revision":"6baad88896848433857c170ba4f05d2ea9d5f218","path":"vae/minimax_music3_dav.safetensors","destination":"vae/minimax_music3_dav.safetensors"}
+]

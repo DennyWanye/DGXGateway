@@ -1,0 +1,25 @@
+{
+  "id": "fl2va-official",
+  "model_variant": "fl2va",
+  "online_quantization": "fp8",
+  "encoder_override": false,
+  "transformer_override": false,
+  "performance_mode": "memory",
+  "component_residency": [
+    "dit=layerwise-offload",
+    "text_encoder=layerwise-offload",
+    "vae=layerwise-offload"
+  ],
+  "warmup_mode": "off",
+  "dit_offload_prefetch_size": 0,
+  "dit_layerwise_resident_layers": 0,
+  "pin_cpu_memory": false,
+  "experimental": false,
+  "asset_ids": [
+    "official-fl"
+  ],
+  "tasks": [
+    "t2va",
+    "fl2va"
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "zimage-0",
+    "repo": "Comfy-Org/z_image_turbo",
+    "revision": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "path": "split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+    "destination": "artifacts/z-image-turbo/diffusion_models/z_image_turbo_bf16.safetensors"
+  },
+  {
+    "id": "zimage-1",
+    "repo": "Comfy-Org/z_image_turbo",
+    "revision": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "path": "split_files/text_encoders/qwen_3_4b.safetensors",
+    "destination": "artifacts/z-image-turbo/text_encoders/qwen_3_4b.safetensors"
+  },
+  {
+    "id": "zimage-2",
+    "repo": "Comfy-Org/z_image_turbo",
+    "revision": "08d04455279082882deaabc8d0d09fc914c071e1",
+    "path": "split_files/vae/ae.safetensors",
+    "destination": "artifacts/z-image-turbo/vae/ae.safetensors"
+  }
+]

@@ -1,0 +1,275 @@
+[
+  {
+    "id": "llada-base-000",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": ".gitattributes",
+    "destination": ".gitattributes"
+  },
+  {
+    "id": "llada-base-001",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "README.md",
+    "destination": "README.md"
+  },
+  {
+    "id": "llada-base-002",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "assets/demo.jpg",
+    "destination": "assets/demo.jpg"
+  },
+  {
+    "id": "llada-base-003",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "assets/demo_p2.jpg",
+    "destination": "assets/demo_p2.jpg"
+  },
+  {
+    "id": "llada-base-004",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "assets/edit_demo.jpg",
+    "destination": "assets/edit_demo.jpg"
+  },
+  {
+    "id": "llada-base-005",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "assets/qwen-imagebench.png",
+    "destination": "assets/qwen-imagebench.png"
+  },
+  {
+    "id": "llada-base-006",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "model_index.json",
+    "destination": "model_index.json"
+  },
+  {
+    "id": "llada-base-007",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "queryformer/config.json",
+    "destination": "queryformer/config.json"
+  },
+  {
+    "id": "llada-base-008",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "queryformer/diffusion_pytorch_model.safetensors",
+    "destination": "queryformer/diffusion_pytorch_model.safetensors"
+  },
+  {
+    "id": "llada-base-009",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "scheduler/scheduler_config.json",
+    "destination": "scheduler/scheduler_config.json"
+  },
+  {
+    "id": "llada-base-010",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "sigvq/config.json",
+    "destination": "sigvq/config.json"
+  },
+  {
+    "id": "llada-base-011",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "sigvq/diffusion_pytorch_model.safetensors",
+    "destination": "sigvq/diffusion_pytorch_model.safetensors"
+  },
+  {
+    "id": "llada-base-012",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/config.json",
+    "destination": "text_encoder/config.json"
+  },
+  {
+    "id": "llada-base-013",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/configuration_llada2uni_moe.py",
+    "destination": "text_encoder/configuration_llada2uni_moe.py"
+  },
+  {
+    "id": "llada-base-014",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/fused_moe_ops.py",
+    "destination": "text_encoder/fused_moe_ops.py"
+  },
+  {
+    "id": "llada-base-015",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00001-of-00009.safetensors",
+    "destination": "text_encoder/model-00001-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-016",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00002-of-00009.safetensors",
+    "destination": "text_encoder/model-00002-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-017",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00003-of-00009.safetensors",
+    "destination": "text_encoder/model-00003-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-018",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00004-of-00009.safetensors",
+    "destination": "text_encoder/model-00004-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-019",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00005-of-00009.safetensors",
+    "destination": "text_encoder/model-00005-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-020",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00006-of-00009.safetensors",
+    "destination": "text_encoder/model-00006-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-021",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00007-of-00009.safetensors",
+    "destination": "text_encoder/model-00007-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-022",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00008-of-00009.safetensors",
+    "destination": "text_encoder/model-00008-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-023",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model-00009-of-00009.safetensors",
+    "destination": "text_encoder/model-00009-of-00009.safetensors"
+  },
+  {
+    "id": "llada-base-024",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/model.safetensors.index.json",
+    "destination": "text_encoder/model.safetensors.index.json"
+  },
+  {
+    "id": "llada-base-025",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_encoder/modeling_llada2uni_moe.py",
+    "destination": "text_encoder/modeling_llada2uni_moe.py"
+  },
+  {
+    "id": "llada-base-026",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_projection/config.json",
+    "destination": "text_projection/config.json"
+  },
+  {
+    "id": "llada-base-027",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "text_projection/diffusion_pytorch_model.safetensors",
+    "destination": "text_projection/diffusion_pytorch_model.safetensors"
+  },
+  {
+    "id": "llada-base-028",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "tokenizer/special_tokens_map.json",
+    "destination": "tokenizer/special_tokens_map.json"
+  },
+  {
+    "id": "llada-base-029",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "tokenizer/tokenizer.json",
+    "destination": "tokenizer/tokenizer.json"
+  },
+  {
+    "id": "llada-base-030",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "tokenizer/tokenizer_config.json",
+    "destination": "tokenizer/tokenizer_config.json"
+  },
+  {
+    "id": "llada-base-031",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "transformer/config.json",
+    "destination": "transformer/config.json"
+  },
+  {
+    "id": "llada-base-032",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "transformer/diffusion_pytorch_model-00001-of-00004.safetensors",
+    "destination": "transformer/diffusion_pytorch_model-00001-of-00004.safetensors"
+  },
+  {
+    "id": "llada-base-033",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "transformer/diffusion_pytorch_model-00002-of-00004.safetensors",
+    "destination": "transformer/diffusion_pytorch_model-00002-of-00004.safetensors"
+  },
+  {
+    "id": "llada-base-034",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "transformer/diffusion_pytorch_model-00003-of-00004.safetensors",
+    "destination": "transformer/diffusion_pytorch_model-00003-of-00004.safetensors"
+  },
+  {
+    "id": "llada-base-035",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "transformer/diffusion_pytorch_model-00004-of-00004.safetensors",
+    "destination": "transformer/diffusion_pytorch_model-00004-of-00004.safetensors"
+  },
+  {
+    "id": "llada-base-036",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "transformer/diffusion_pytorch_model.safetensors.index.json",
+    "destination": "transformer/diffusion_pytorch_model.safetensors.index.json"
+  },
+  {
+    "id": "llada-base-037",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "vae/config.json",
+    "destination": "vae/config.json"
+  },
+  {
+    "id": "llada-base-038",
+    "repo": "inclusionAI/LLaDA-Image",
+    "revision": "e4e2703f410f7ddb6ee8d6b09dac6a8ec5093039",
+    "path": "vae/diffusion_pytorch_model.safetensors",
+    "destination": "vae/diffusion_pytorch_model.safetensors"
+  }
+]

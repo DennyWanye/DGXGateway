@@ -1,0 +1,42 @@
+{
+  "1": {
+    "class_type": "LLaDAImageLoader",
+    "inputs": {
+      "diffusion_model": "LLaDA-Image-Turbo-INT8.safetensors",
+      "text_encoder": "LLaDA-Image-Turbo-text_encoder-Q4_K_M.gguf",
+      "vae": "LLaDa_VAE.safetensors",
+      "dtype": "bfloat16",
+      "offload": "cuda",
+      "vae_tiling": "Off"
+    }
+  },
+  "10": {
+    "class_type": "DGXLLaDATurboBatch",
+    "inputs": {
+      "pipeline": [
+        "1",
+        0
+      ],
+      "prompt": "A cinematic still of a young adult woman in a blue coat in a quiet bookshop, soft morning light",
+      "width": 1344,
+      "height": 768,
+      "seed": 42,
+      "steps": 4,
+      "candidate_indices": "[0, 1]"
+    }
+  },
+  "11": {
+    "class_type": "DGXBatchSaveImage",
+    "inputs": {
+      "images": [
+        "10",
+        0
+      ],
+      "batch_info": [
+        "10",
+        1
+      ],
+      "filename_prefix": "dgx-llada-turbo-g01"
+    }
+  }
+}

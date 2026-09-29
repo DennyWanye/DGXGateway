@@ -1,0 +1,3 @@
+# Extend the qualified runtime; retain its pinned ComfyUI and dependencies.
+FROM dgx-comfyui-h3:0.1.0
+COPY custom_nodes/dgx_remote_h3/ /opt/ComfyUI/custom_nodes/dgx_remote_h3/

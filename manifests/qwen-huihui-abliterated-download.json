@@ -1,0 +1,11 @@
+[
+  {
+    "id": "qwen-huihui-abliterated-bf16",
+    "repo": "ethanfel/Qwen2.5-VL-7B-Huihui-Abliterated-ComfyUI-ConvRot-INT8",
+    "revision": "7b977aaa08da1c8376e86fc3bd5581b56d9d2e10",
+    "path": "qwen_2.5_vl_7b_huihui_abliterated_bf16.safetensors",
+    "destination": "text_encoders/qwen_2.5_vl_7b_huihui_abliterated_bf16.safetensors",
+    "expected_size": 16584415728,
+    "expected_sha256": "82343dee991fe55532d6cd6b5eeae86f16803dfb38f1382b86dbe3c478f4cafe"
+  }
+]

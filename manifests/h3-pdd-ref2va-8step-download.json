@@ -1,0 +1,9 @@
+[
+  {
+    "id": "h3-pdd-ref2va-8step-335001f",
+    "repo": "alibaba-pai/MiniMax-H3-Acc-LoRAs",
+    "revision": "335001fb9e5455d68a0caa18ec2e319072150328",
+    "path": "MiniMax-H3-Ref2VA-Acc-8Step.safetensors",
+    "destination": "MiniMax-H3-Ref2VA-Acc-8Step.safetensors"
+  }
+]

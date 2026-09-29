@@ -1,0 +1,52 @@
+[gateway]
+bind = "0.0.0.0"
+port = 18082
+allowed_origins = ["http://127.0.0.1:19083"]
+state_dir = "/state"
+admin_token_file = "/run/secrets/admin.token"
+
+[cluster]
+repo_root = "/workspace"
+lock_root = "/run/dgx-authority/dgx-spark-two-node"
+lock_cli = "/workspace/scripts/dgx-spark-deployment-lock.py"
+token_dir = "/state/tokens"
+
+[authority]
+id = "agentos-dgx-gateway"
+record = "/run/dgx-authority/authority.json"
+credential = "/run/secrets/authority.credential"
+mutation_enabled = false
+remote_fence_enabled = true
+remote_fence_path = "/home/operator/.local/state/dgx-cluster-gateway/authority.json"
+
+[models.deepseek]
+journal = "/state/deepseek-journal.jsonl"
+gateway_secret = "/run/secrets/deepseek.token"
+drain_timeout_seconds = 120
+
+[models.deepseek_vision]
+journal = "/state/deepseek-vision-journal.jsonl"
+gateway_secret = "/run/secrets/deepseek-vision.token"
+drain_timeout_seconds = 120
+internal_port = 18889
+
+[models.h3]
+queue_url = "http://192.0.2.41:8188/queue"
+
+[models.music3]
+root = "/home/operator/ai/ComfyUI"
+python = "/home/operator/ai/comfyui-env/bin/python"
+port = 8188
+
+[models.personaplex]
+root = "/home/operator/dgx-models/personaplex"
+
+[nodes.head]
+hostname = "dgx-head"
+address = "192.0.2.30"
+user = "operator"
+
+[nodes.worker]
+hostname = "dgx-worker"
+address = "192.0.2.31"
+user = "operator"

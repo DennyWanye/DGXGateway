@@ -1,0 +1,49 @@
+# Credentials / live overrides
+.env
+.env.*
+!**/.env.example
+!**/*.env.example
+*.key
+*.pem
+*.token
+*.credential
+gateway.toml
+authority.json
+config/cluster.json
+# Production state / personal media
+state/
+logs/
+evidence/
+creative-projects/
+private/
+exports/
+*.sqlite*
+*.db
+*.log
+*.pid
+*.mp4
+*.mov
+*.wav
+*.mp3
+*.png
+*.jpg
+*.jpeg
+# Large model / container assets
+*.safetensors
+*.gguf
+*.bin
+*.pt
+*.pth
+*.onnx
+*.tar
+*.tar.gz
+*.zip
+models/
+.cache/
+# Development outputs
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store

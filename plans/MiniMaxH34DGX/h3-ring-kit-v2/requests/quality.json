@@ -1,0 +1,9 @@
+{
+  "task": "t2va",
+  "prompt": "A single continuous cinematic shot in a quiet woodworking workshop. An adult craftsperson slowly places a wooden cup on a table. The camera gently moves forward. Soft daylight, realistic hand motion, natural room ambience and a clearly audible gentle wooden tap. No music, no subtitles.",
+  "conditions": [],
+  "target": {"short_edge": 768, "aspect_ratio": "16:9", "duration_seconds": 4},
+  "seed": 17,
+  "num_inference_steps": 50,
+  "quality": "lossless"
+}

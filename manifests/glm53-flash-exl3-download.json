@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "glm53-1",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": ".gitattributes",
+    "destination": ".gitattributes"
+  },
+  {
+    "id": "glm53-2",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "LICENSE",
+    "destination": "LICENSE"
+  },
+  {
+    "id": "glm53-3",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "MANIFEST.json",
+    "destination": "MANIFEST.json"
+  },
+  {
+    "id": "glm53-4",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "MIRROR.json",
+    "destination": "MIRROR.json"
+  },
+  {
+    "id": "glm53-5",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "ORIGINAL_MODEL_CARD.md",
+    "destination": "ORIGINAL_MODEL_CARD.md"
+  },
+  {
+    "id": "glm53-6",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "PROVENANCE.md",
+    "destination": "PROVENANCE.md"
+  },
+  {
+    "id": "glm53-7",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "README.md",
+    "destination": "README.md"
+  },
+  {
+    "id": "glm53-8",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "SHA256SUMS",
+    "destination": "SHA256SUMS"
+  },
+  {
+    "id": "glm53-9",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "THIRD_PARTY_LICENSES/B12X-APACHE-2.0.txt",
+    "destination": "THIRD_PARTY_LICENSES/B12X-APACHE-2.0.txt"
+  },
+  {
+    "id": "glm53-10",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "THIRD_PARTY_NOTICES.md",
+    "destination": "THIRD_PARTY_NOTICES.md"
+  },
+  {
+    "id": "glm53-11",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "chat_template.jinja",
+    "destination": "chat_template.jinja"
+  },
+  {
+    "id": "glm53-12",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "config.json",
+    "destination": "config.json"
+  },
+  {
+    "id": "glm53-13",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "exl3-mcg-storage-abi.json",
+    "destination": "exl3-mcg-storage-abi.json"
+  },
+  {
+    "id": "glm53-14",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "generation_config.json",
+    "destination": "generation_config.json"
+  },
+  {
+    "id": "glm53-15",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "materialization-receipt.json",
+    "destination": "materialization-receipt.json"
+  },
+  {
+    "id": "glm53-16",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00001-of-00120.safetensors",
+    "destination": "model-00001-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-17",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00002-of-00120.safetensors",
+    "destination": "model-00002-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-18",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00003-of-00120.safetensors",
+    "destination": "model-00003-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-19",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00004-of-00120.safetensors",
+    "destination": "model-00004-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-20",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00005-of-00120.safetensors",
+    "destination": "model-00005-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-21",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00006-of-00120.safetensors",
+    "destination": "model-00006-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-22",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00007-of-00120.safetensors",
+    "destination": "model-00007-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-23",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00008-of-00120.safetensors",
+    "destination": "model-00008-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-24",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00009-of-00120.safetensors",
+    "destination": "model-00009-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-25",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00010-of-00120.safetensors",
+    "destination": "model-00010-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-26",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00011-of-00120.safetensors",
+    "destination": "model-00011-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-27",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00012-of-00120.safetensors",
+    "destination": "model-00012-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-28",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00013-of-00120.safetensors",
+    "destination": "model-00013-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-29",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00014-of-00120.safetensors",
+    "destination": "model-00014-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-30",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00015-of-00120.safetensors",
+    "destination": "model-00015-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-31",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00016-of-00120.safetensors",
+    "destination": "model-00016-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-32",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00017-of-00120.safetensors",
+    "destination": "model-00017-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-33",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00018-of-00120.safetensors",
+    "destination": "model-00018-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-34",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00019-of-00120.safetensors",
+    "destination": "model-00019-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-35",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00020-of-00120.safetensors",
+    "destination": "model-00020-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-36",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00021-of-00120.safetensors",
+    "destination": "model-00021-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-37",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00022-of-00120.safetensors",
+    "destination": "model-00022-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-38",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00023-of-00120.safetensors",
+    "destination": "model-00023-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-39",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00024-of-00120.safetensors",
+    "destination": "model-00024-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-40",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00025-of-00120.safetensors",
+    "destination": "model-00025-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-41",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00026-of-00120.safetensors",
+    "destination": "model-00026-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-42",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00027-of-00120.safetensors",
+    "destination": "model-00027-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-43",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00028-of-00120.safetensors",
+    "destination": "model-00028-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-44",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00029-of-00120.safetensors",
+    "destination": "model-00029-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-45",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00030-of-00120.safetensors",
+    "destination": "model-00030-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-46",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00031-of-00120.safetensors",
+    "destination": "model-00031-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-47",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00032-of-00120.safetensors",
+    "destination": "model-00032-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-48",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00033-of-00120.safetensors",
+    "destination": "model-00033-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-49",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00034-of-00120.safetensors",
+    "destination": "model-00034-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-50",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00035-of-00120.safetensors",
+    "destination": "model-00035-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-51",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00036-of-00120.safetensors",
+    "destination": "model-00036-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-52",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00037-of-00120.safetensors",
+    "destination": "model-00037-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-53",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00038-of-00120.safetensors",
+    "destination": "model-00038-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-54",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00039-of-00120.safetensors",
+    "destination": "model-00039-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-55",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00040-of-00120.safetensors",
+    "destination": "model-00040-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-56",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00041-of-00120.safetensors",
+    "destination": "model-00041-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-57",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00042-of-00120.safetensors",
+    "destination": "model-00042-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-58",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00043-of-00120.safetensors",
+    "destination": "model-00043-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-59",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00044-of-00120.safetensors",
+    "destination": "model-00044-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-60",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00045-of-00120.safetensors",
+    "destination": "model-00045-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-61",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00046-of-00120.safetensors",
+    "destination": "model-00046-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-62",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00047-of-00120.safetensors",
+    "destination": "model-00047-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-63",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00048-of-00120.safetensors",
+    "destination": "model-00048-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-64",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00049-of-00120.safetensors",
+    "destination": "model-00049-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-65",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00050-of-00120.safetensors",
+    "destination": "model-00050-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-66",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00051-of-00120.safetensors",
+    "destination": "model-00051-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-67",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00052-of-00120.safetensors",
+    "destination": "model-00052-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-68",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00053-of-00120.safetensors",
+    "destination": "model-00053-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-69",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00054-of-00120.safetensors",
+    "destination": "model-00054-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-70",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00055-of-00120.safetensors",
+    "destination": "model-00055-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-71",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00056-of-00120.safetensors",
+    "destination": "model-00056-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-72",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00057-of-00120.safetensors",
+    "destination": "model-00057-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-73",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00058-of-00120.safetensors",
+    "destination": "model-00058-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-74",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00059-of-00120.safetensors",
+    "destination": "model-00059-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-75",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00060-of-00120.safetensors",
+    "destination": "model-00060-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-76",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00061-of-00120.safetensors",
+    "destination": "model-00061-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-77",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00062-of-00120.safetensors",
+    "destination": "model-00062-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-78",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00063-of-00120.safetensors",
+    "destination": "model-00063-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-79",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00064-of-00120.safetensors",
+    "destination": "model-00064-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-80",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00065-of-00120.safetensors",
+    "destination": "model-00065-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-81",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00066-of-00120.safetensors",
+    "destination": "model-00066-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-82",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00067-of-00120.safetensors",
+    "destination": "model-00067-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-83",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00068-of-00120.safetensors",
+    "destination": "model-00068-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-84",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00069-of-00120.safetensors",
+    "destination": "model-00069-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-85",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00070-of-00120.safetensors",
+    "destination": "model-00070-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-86",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00071-of-00120.safetensors",
+    "destination": "model-00071-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-87",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00072-of-00120.safetensors",
+    "destination": "model-00072-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-88",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00073-of-00120.safetensors",
+    "destination": "model-00073-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-89",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00074-of-00120.safetensors",
+    "destination": "model-00074-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-90",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00075-of-00120.safetensors",
+    "destination": "model-00075-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-91",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00076-of-00120.safetensors",
+    "destination": "model-00076-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-92",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00077-of-00120.safetensors",
+    "destination": "model-00077-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-93",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00078-of-00120.safetensors",
+    "destination": "model-00078-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-94",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00079-of-00120.safetensors",
+    "destination": "model-00079-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-95",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00080-of-00120.safetensors",
+    "destination": "model-00080-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-96",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00081-of-00120.safetensors",
+    "destination": "model-00081-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-97",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00082-of-00120.safetensors",
+    "destination": "model-00082-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-98",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00083-of-00120.safetensors",
+    "destination": "model-00083-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-99",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00084-of-00120.safetensors",
+    "destination": "model-00084-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-100",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00085-of-00120.safetensors",
+    "destination": "model-00085-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-101",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00086-of-00120.safetensors",
+    "destination": "model-00086-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-102",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00087-of-00120.safetensors",
+    "destination": "model-00087-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-103",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00088-of-00120.safetensors",
+    "destination": "model-00088-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-104",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00089-of-00120.safetensors",
+    "destination": "model-00089-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-105",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00090-of-00120.safetensors",
+    "destination": "model-00090-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-106",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00091-of-00120.safetensors",
+    "destination": "model-00091-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-107",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00092-of-00120.safetensors",
+    "destination": "model-00092-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-108",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00093-of-00120.safetensors",
+    "destination": "model-00093-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-109",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00094-of-00120.safetensors",
+    "destination": "model-00094-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-110",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00095-of-00120.safetensors",
+    "destination": "model-00095-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-111",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00096-of-00120.safetensors",
+    "destination": "model-00096-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-112",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00097-of-00120.safetensors",
+    "destination": "model-00097-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-113",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00098-of-00120.safetensors",
+    "destination": "model-00098-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-114",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00099-of-00120.safetensors",
+    "destination": "model-00099-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-115",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00100-of-00120.safetensors",
+    "destination": "model-00100-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-116",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00101-of-00120.safetensors",
+    "destination": "model-00101-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-117",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00102-of-00120.safetensors",
+    "destination": "model-00102-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-118",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00103-of-00120.safetensors",
+    "destination": "model-00103-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-119",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00104-of-00120.safetensors",
+    "destination": "model-00104-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-120",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00105-of-00120.safetensors",
+    "destination": "model-00105-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-121",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00106-of-00120.safetensors",
+    "destination": "model-00106-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-122",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00107-of-00120.safetensors",
+    "destination": "model-00107-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-123",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00108-of-00120.safetensors",
+    "destination": "model-00108-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-124",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00109-of-00120.safetensors",
+    "destination": "model-00109-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-125",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00110-of-00120.safetensors",
+    "destination": "model-00110-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-126",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00111-of-00120.safetensors",
+    "destination": "model-00111-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-127",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00112-of-00120.safetensors",
+    "destination": "model-00112-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-128",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00113-of-00120.safetensors",
+    "destination": "model-00113-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-129",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00114-of-00120.safetensors",
+    "destination": "model-00114-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-130",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00115-of-00120.safetensors",
+    "destination": "model-00115-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-131",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00116-of-00120.safetensors",
+    "destination": "model-00116-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-132",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00117-of-00120.safetensors",
+    "destination": "model-00117-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-133",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00118-of-00120.safetensors",
+    "destination": "model-00118-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-134",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00119-of-00120.safetensors",
+    "destination": "model-00119-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-135",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model-00120-of-00120.safetensors",
+    "destination": "model-00120-of-00120.safetensors"
+  },
+  {
+    "id": "glm53-136",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "model.safetensors.index.json",
+    "destination": "model.safetensors.index.json"
+  },
+  {
+    "id": "glm53-137",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "processor_config.json",
+    "destination": "processor_config.json"
+  },
+  {
+    "id": "glm53-138",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "provenance/source-model-revision.json",
+    "destination": "provenance/source-model-revision.json"
+  },
+  {
+    "id": "glm53-139",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "quantization/recipe.json",
+    "destination": "quantization/recipe.json"
+  },
+  {
+    "id": "glm53-140",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "quantization_config.json",
+    "destination": "quantization_config.json"
+  },
+  {
+    "id": "glm53-141",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "receipts/checkpoint.json",
+    "destination": "receipts/checkpoint.json"
+  },
+  {
+    "id": "glm53-142",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "runtime-results-v44.json",
+    "destination": "runtime-results-v44.json"
+  },
+  {
+    "id": "glm53-143",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "tokenizer.json",
+    "destination": "tokenizer.json"
+  },
+  {
+    "id": "glm53-144",
+    "repo": "Mia-AiLab/GLM-5.3-Flash-EXL3-TR3-4bpw",
+    "revision": "25a44fdbf16862a46b7cc9921142c6c81350af2f",
+    "path": "tokenizer_config.json",
+    "destination": "tokenizer_config.json"
+  }
+]

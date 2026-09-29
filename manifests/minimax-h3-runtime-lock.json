@@ -1,0 +1,108 @@
+{
+  "historical_layer1_image_id": "sha256:2383642e221530d3dc26a8f8632c37e00470b051979f0845c2ec0ff9513e04b2",
+  "layer1_acceptance": "pinned-source-and-target-hashes",
+  "deployment_overlays": [
+    {
+      "path": "overlays/minimax-h3-two-node/worker.py",
+      "target": "/opt/h3-multinode/h3_multinode/worker.py",
+      "sha256": "f17239d6a5fc361e1e482f25e02273de5285c902f5a36340a10e3d9a9a901b93"
+    }
+  ],
+  "canonical_profile": {
+    "allocator": "expandable_segments:True",
+    "attention_backend": "CUDNN_ATTN",
+    "cache_dit": false,
+    "force_cutlass_fp8": true,
+    "fp8_activation_scheme": "dynamic",
+    "fp8_ignored_layers": [
+      "video_patch_proj",
+      "audio_patch_proj",
+      "time_embedder.proj_in",
+      "time_embedder.proj_out",
+      "final_layer.video_out",
+      "final_layer.audio_out"
+    ],
+    "num_gpus": 2,
+    "ring": 1,
+    "usp": 2,
+    "vae_parallel_mode": "tile",
+    "vae_patch_parallel_size": 2,
+    "vae_use_tiling": true
+  },
+  "patch_targets": [
+    {
+      "path": "/usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py",
+      "preimage_sha256": "f13187f3972bb95dd4721611a408a09dc83d99e2e1ab2c024aea653de3ec8533",
+      "result_sha256": "5cdc9078215f1d07fe617d8dba6309c64f1987e8f83c82b0e22c50ac062f3826"
+    },
+    {
+      "path": "/usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/executor/abstract.py",
+      "preimage_sha256": "a26169ac697164f6d9e2b716c70ef336203dbad7f371497f27e5272c2af60f44",
+      "result_sha256": "e5ebe9dc9595d8751378e60e03e7fa9ad317e65a8d1f17e45d848372ed3cee46"
+    }
+  ],
+  "production": {
+    "final_image_id": "sha256:2c8b61d92a7f1205e8445e6ea6ba27b9922fde308b9daf121a8b4dcd50727d11",
+    "oci_archive_sha256": "e8a61679574e8d7e4ffdccfd6380542b5b3948fe3a5cef47fae8e9dc70d52ab5"
+  },
+  "required_architecture": "aarch64",
+  "runtime_versions": {
+    "cuda": "13.0",
+    "diffusers": "0.38.0",
+    "flashinfer-python": "0.6.14",
+    "python": "3.12.13",
+    "pytorch": "2.11.0+cu130",
+    "ray": "2.56.1",
+    "transformers": "5.14.1",
+    "vllm": "0.26.0",
+    "vllm-omni": "0.1.dev2381+g310b4b477"
+  },
+  "schema_version": 1,
+  "source_patches": [
+    {
+      "path": "patches/minimax-h3-two-node/0001-rank1-first-and-evidence.patch",
+      "sha256": "1b01359e2760b7c318e252e24a1a8b25e5c590af0c51bb720615069fc22ec67e"
+    },
+    {
+      "path": "patches/minimax-h3-two-node/0002-require-ray-token-auth.patch",
+      "sha256": "5753956e899df275c9778545ef09f07cd4000f78f062a3281f9fc00920f3a538"
+    },
+    {
+      "path": "patches/minimax-h3-two-node/0003-offline-ray-wheelhouse.patch",
+      "sha256": "d67e0bb74fd460247ee85b881981dd95a440ca56db64709d37700b61d4176979"
+    },
+    {
+      "path": "patches/minimax-h3-two-node/0004-worker-plugin-import.patch",
+      "sha256": "2c586d361d8ae4702d4e7f62c806404e74782613bc1970712d39ade149ac1c61"
+    }
+  ],
+  "sources": {
+    "companion": {
+      "archive": "minimax-h3-single-8bd7628dbdb51a0ea00c301ddcb1a098874870e4.tar.gz",
+      "archive_sha256": "04bbd7ab03de641cbf9ed534d822e79a846ee768bc20f4e2c680c8db70f28946",
+      "commit": "8bd7628dbdb51a0ea00c301ddcb1a098874870e4",
+      "content_tree_sha256": "b332ed9de81353962d54a9ef8e04fc0d336888d2fca8695c386320c74b644219"
+    },
+    "two_node": {
+      "archive": "minimax-h3-two-node-b2a1bf9414c78e5d98c67f0a625c16c03d3897cd.tar.gz",
+      "archive_sha256": "2ba39d9f7e9207d0b3583c9c740c1ef7a8bab4741c6eaaf77425a8e806150129",
+      "commit": "b2a1bf9414c78e5d98c67f0a625c16c03d3897cd",
+      "content_tree_sha256": "921ed5e9b8b05c479f55c1ed080d7fe94222e0cfe7425362385eb13072d325d6"
+    }
+  },
+  "status": "resolved",
+  "upstream_image": "vllm/vllm-omni:minimax-h3@sha256:e930db8e225162d01e17a49dddc43fd0e844208908d8356a028e5c4e7357696e",
+  "upstream_platform": {
+    "architecture": "arm64",
+    "child_digest": "sha256:474d635dc5dc2cf66f0df692ddef19967a920253826f431689af2b0e010afc4e",
+    "compressed_size_bytes": 10825926989,
+    "config_digest": "sha256:c3cbf972d026ba07223135b1d6b603edb980aa3123c1ead1dc918f057f21f4e3",
+    "os": "linux"
+  },
+  "wheelhouse": {
+    "requirements_lock_path": "manifests/minimax-h3-ray-requirements.lock",
+    "requirements_lock_sha256": "8abd9b0cdfc34efedeb4c6f1d8d4ceef7c80ccc9562b50a33960dc52f08d7891",
+    "status": "resolved",
+    "tree_sha256": "15d0d0b971531559fdaf33e7cd4475c83fb5f7577f6290b4c55eca7646b88b94"
+  }
+}

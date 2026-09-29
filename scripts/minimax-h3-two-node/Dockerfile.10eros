@@ -1,0 +1,8 @@
+FROM minimax-h3-two-node:production
+COPY patch-10eros-runtime.py /tmp/patch-10eros-runtime.py
+COPY patch-10eros-schedule.py /tmp/patch-10eros-schedule.py
+RUN python3 /tmp/patch-10eros-runtime.py /usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py \
+    && python3 /tmp/patch-10eros-schedule.py /usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/time_request.py \
+    && python3 -m py_compile /usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/minimax_h3_transformer.py \
+    && python3 -m py_compile /usr/local/lib/python3.12/dist-packages/vllm_omni/diffusion/models/minimax_h3/time_request.py \
+    && rm -f /tmp/patch-10eros-runtime.py /tmp/patch-10eros-schedule.py

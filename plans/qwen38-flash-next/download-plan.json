@@ -1,0 +1,268 @@
+{
+  "model": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+  "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+  "total_bytes": 135234133076,
+  "files": [
+    {
+      "path": "LICENSE",
+      "size": 3235,
+      "lfs_sha256": null,
+      "git_blob_id": "9557a8961782792814714b7488346732c043793d",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "size": 8485,
+      "lfs_sha256": null,
+      "git_blob_id": "48b1a24aaf6bb4aa1de8f903ad5f1e62ccb769bc",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/README.md"
+    },
+    {
+      "path": "chat_template.jinja",
+      "size": 8952,
+      "lfs_sha256": null,
+      "git_blob_id": "c0c686f9c38d70d179fb7b5f5aa7530bc913dda3",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/chat_template.jinja"
+    },
+    {
+      "path": "config.json",
+      "size": 21410,
+      "lfs_sha256": null,
+      "git_blob_id": "caa1e8299ba8c8a996e3516c7074f85c67e06dec",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/config.json"
+    },
+    {
+      "path": "generation_config.json",
+      "size": 219,
+      "lfs_sha256": null,
+      "git_blob_id": "3ef979b678c8e828c637b6437b6db4c3b2962db1",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/generation_config.json"
+    },
+    {
+      "path": "merges.txt",
+      "size": 3353259,
+      "lfs_sha256": null,
+      "git_blob_id": "a494e019ca1502219fd0128658b979e5f05ae8e8",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/merges.txt"
+    },
+    {
+      "path": "model-00001-of-00009.safetensors",
+      "size": 10003000020,
+      "lfs_sha256": "6b7fff8d0c465fdf379f21d1f10eb43cad223d026c688b66f3b9266f11aaad02",
+      "git_blob_id": "ad2a9fc500f7518b174733edff9b676f13b24a68",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00001-of-00009.safetensors"
+    },
+    {
+      "path": "model-00002-of-00009.safetensors",
+      "size": 10003955676,
+      "lfs_sha256": "d2ef0e734c51c0c2c7a61b58e536f5caea7ae4a002a41f7a9914574d62d3d4df",
+      "git_blob_id": "b58c16c5656251d76114e083734863fccd282c09",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00002-of-00009.safetensors"
+    },
+    {
+      "path": "model-00003-of-00009.safetensors",
+      "size": 10003990420,
+      "lfs_sha256": "7f294fc1f90dc41cc81d6cf15bbd6ad8fb0e222f8d001cd9cf723ba47acd3e33",
+      "git_blob_id": "b23edc2608b910da7962580bc9490e88e4ce3067",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00003-of-00009.safetensors"
+    },
+    {
+      "path": "model-00004-of-00009.safetensors",
+      "size": 10003976484,
+      "lfs_sha256": "58324b9e5436e9f91332325f2ac01552e55a717ece393cf37c40bc96709b1778",
+      "git_blob_id": "62c65dc32b4f2ec821c7b80358a415c87571a42e",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00004-of-00009.safetensors"
+    },
+    {
+      "path": "model-00005-of-00009.safetensors",
+      "size": 10000632272,
+      "lfs_sha256": "3e0afc3d3eb1294b70e99e1f1130a0bee6bffe80f4618da0f9bc77d687c715d8",
+      "git_blob_id": "0dc83f657e924f7ad5d94ba8561e45edf6661bc6",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00005-of-00009.safetensors"
+    },
+    {
+      "path": "model-00006-of-00009.safetensors",
+      "size": 10003647528,
+      "lfs_sha256": "629804d1fbb91e703f6dcb61b6626d1920343e6c7782f0336e5ca0735dbbd582",
+      "git_blob_id": "06d8681c7f5e37e460901a1069034965e5a65986",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00006-of-00009.safetensors"
+    },
+    {
+      "path": "model-00007-of-00009.safetensors",
+      "size": 10003976500,
+      "lfs_sha256": "51a1153e4f41b66c52b98dba41bc8bf98dfcd03996b6c8f71343553a0ae70a87",
+      "git_blob_id": "43f39d140328e85f284d7dee012306578a317bdc",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00007-of-00009.safetensors"
+    },
+    {
+      "path": "model-00009-of-00009.safetensors",
+      "size": 7850914028,
+      "lfs_sha256": "2ef497b7b5b36a4b0a41126a347f9415e4b21cff260be59abcfbf5705b8de27a",
+      "git_blob_id": "491adb01723ae9b18a951f9af238279577039bf9",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00009-of-00009.safetensors"
+    },
+    {
+      "path": "model-00010-of-00010-graft.safetensors",
+      "size": 6112204584,
+      "lfs_sha256": "0853c440e001862383a7b695ab7125080dd1b1b9ec5c6bf670059586c6e985a8",
+      "git_blob_id": "872b7f6b1b16641ea1359a69e9b83ae0f577461f",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-00010-of-00010-graft.safetensors"
+    },
+    {
+      "path": "model-plefp8-00000-of-00008.safetensors",
+      "size": 6400033450,
+      "lfs_sha256": "f8fbc923642730af4663627271d8bf124163fbbb9c84640f5ed0c501a70cf802",
+      "git_blob_id": "908fa3c55ed01ebcb480f3dedb021c1df6c7ef9d",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00000-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00001-of-00008.safetensors",
+      "size": 6400033328,
+      "lfs_sha256": "a7c2d38f642bac3061fc0974ff5c01921287fed8ec2e71854422a9e57feb5d76",
+      "git_blob_id": "58b963232865613f2bd56a8db90572371f9f0128",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00001-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00002-of-00008.safetensors",
+      "size": 6400033328,
+      "lfs_sha256": "603a74ab95afd2364e8a54cda2867be86340feebca170a21643ab89b13486958",
+      "git_blob_id": "2d655fdea0ad33a513254fad15da8080036bc90f",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00002-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00003-of-00008.safetensors",
+      "size": 6400033328,
+      "lfs_sha256": "b7000061eb9c643938bde28e15398da2cb7be57f049372fb58fbf8fdda979b05",
+      "git_blob_id": "5f10c8e73868a05d6e710ad3b5da1546b6e1ff46",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00003-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00004-of-00008.safetensors",
+      "size": 6400033328,
+      "lfs_sha256": "8ab9c6e18e237e4b91538e0c169a15ebdc4de0f80c41da72d71aac272a5b48e8",
+      "git_blob_id": "6ffefb66b5d837b7f167e94b203f92664b1736dd",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00004-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00005-of-00008.safetensors",
+      "size": 6400033328,
+      "lfs_sha256": "62ecfc3bac852c2982df52e84475e22cd69bbfcfe7eab33f7d0e4cae5d69d701",
+      "git_blob_id": "e0aa0c1a2903ef9774fc79088084c8a2883937c4",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00005-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00006-of-00008.safetensors",
+      "size": 6400033336,
+      "lfs_sha256": "f6c1682f3f381110fdd58abaa480e794349c8c6f6e44aa4ac365cac4b7d6e18e",
+      "git_blob_id": "b0b98462798ff0751df3e1e46fc3302e427d062c",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00006-of-00008.safetensors"
+    },
+    {
+      "path": "model-plefp8-00007-of-00008.safetensors",
+      "size": 6400033344,
+      "lfs_sha256": "c522bcdd090a58abe4c7a93a0c28a6dc1cf2cacc1340f6692a77d47cd07fb9c8",
+      "git_blob_id": "b0075906ac419647be331095e5e97cfa009b2112",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model-plefp8-00007-of-00008.safetensors"
+    },
+    {
+      "path": "model.safetensors.index.json",
+      "size": 24622452,
+      "lfs_sha256": "a82fbc0c5a40195993f3692edecfc094227f901f48689c7195be7903c5f1ae3b",
+      "git_blob_id": "7de34edece997e20dd647b281433fa5c7207f6c9",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/model.safetensors.index.json"
+    },
+    {
+      "path": "preprocessor_config.json",
+      "size": 390,
+      "lfs_sha256": null,
+      "git_blob_id": "2ea84a437d448ff71b08df68fdd949d5cc4ebb64",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/preprocessor_config.json"
+    },
+    {
+      "path": "tokenizer.json",
+      "size": 12809320,
+      "lfs_sha256": "0997f410c57a1f4e53b09e4be8f4a172d90edd9564368fb0847030937229b9f3",
+      "git_blob_id": "9328ce9c41e80f6dd7bc2c66d8ae1fc93bf87440",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/tokenizer.json"
+    },
+    {
+      "path": "tokenizer_config.json",
+      "size": 17928,
+      "lfs_sha256": null,
+      "git_blob_id": "5de744b3fca2129d7186979ae47c06be33903243",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/tokenizer_config.json"
+    },
+    {
+      "path": "video_preprocessor_config.json",
+      "size": 385,
+      "lfs_sha256": null,
+      "git_blob_id": "3ba673a5ad7d4d13f54155ecd38b2a94a6dac8fe",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/video_preprocessor_config.json"
+    },
+    {
+      "path": "vocab.json",
+      "size": 6722759,
+      "lfs_sha256": null,
+      "git_blob_id": "0aa0ce0658d60ac4a5d609f4eadb0e8e43514176",
+      "repo": "gorbatjovy/qwen3.8-flash-next-abliterated-NVFP4-plefp8",
+      "revision": "2065365912e46b205c64a70ac5b85b4869674d31",
+      "destination": "qwen3.8-flash-next-abliterated-NVFP4-plefp8/vocab.json"
+    }
+  ]
+}

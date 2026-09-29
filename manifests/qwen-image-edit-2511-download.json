@@ -1,0 +1,29 @@
+[
+  {
+    "id": "qwen-edit-2511-0",
+    "repo": "Comfy-Org/Qwen-Image-Edit_ComfyUI",
+    "revision": "984166f60a9b1fcede5e9b9287b7a7aebc050010",
+    "path": "split_files/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors",
+    "destination": "diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors",
+    "expected_size": 20533762817,
+    "expected_sha256": "c9fdc158e46d3b61ef75f21ae866ca2fe808bf4a53643120d1c1e87c19280a4e"
+  },
+  {
+    "id": "qwen-edit-2511-1",
+    "repo": "Comfy-Org/Qwen-Image_ComfyUI",
+    "revision": "7beb7b647f04469fbe64ba8adc2bb0d7e5e9f73f",
+    "path": "split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "destination": "text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "expected_size": 9384670680,
+    "expected_sha256": "cb5636d852a0ea6a9075ab1bef496c0db7aef13c02350571e388aea959c5c0b4"
+  },
+  {
+    "id": "qwen-edit-2511-2",
+    "repo": "Comfy-Org/Qwen-Image_ComfyUI",
+    "revision": "7beb7b647f04469fbe64ba8adc2bb0d7e5e9f73f",
+    "path": "split_files/vae/qwen_image_vae.safetensors",
+    "destination": "vae/qwen_image_vae.safetensors",
+    "expected_size": 253806246,
+    "expected_sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f"
+  }
+]

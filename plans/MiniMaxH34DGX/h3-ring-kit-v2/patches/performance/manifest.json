@@ -1,0 +1,35 @@
+{
+  "source_commit": "e970453b433e1467e22f6d925f270563417540b5",
+  "contract": "h3-performance-diagnostic-v1",
+  "files": {
+    "sampling.py": {
+      "target": "configs/sample/minimax_h3.py",
+      "sha256": "54611470b044e3e602b70f05bd46aee8e15921a3981e6e18127f656e6ddb21c0"
+    },
+    "denoising.py": {
+      "target": "runtime/pipelines_core/stages/model_specific_stages/minimax_h3/stages/denoising.py",
+      "sha256": "4288a5714308614c6d1f18aa293fef317164e3498217abd8bf322d01b2a70c45"
+    },
+    "diagnostic.py": {
+      "target": "runtime/utils/h3_diagnostic.py",
+      "sha256": "d864bb1bf0ba4056f96e2ad3f163ad61a462b08d414b7d53738ab10822bb7a9d"
+    },
+    "memory_placement.py": {
+      "target": "runtime/utils/h3_memory_placement.py",
+      "sha256": "ea189df5e7fbd5c1cbd5d8a4d9ee6bd3ff65e710e4e8469706da606593c7510a"
+    },
+    "gpu_worker.py": {
+      "target": "runtime/managers/gpu_worker.py",
+      "sha256": "177850455ba5f6fbcd6438b66209949dfc7de03d341707637cd0a5fe50c0cd21"
+    },
+    "fp8_probe.py": {
+      "target": "runtime/utils/h3_fp8_probe.py",
+      "sha256": "259396d735cb6da02a354edb86511ce0bf6c001130b98271bd6a9114e4b68b3d"
+    },
+    "fp8_aligned.py": {
+      "target": "runtime/utils/h3_fp8_aligned.py",
+      "sha256": "fd5a73f171df160da718322d2f543b6bbfeed74e22b060d3eb5667f6dc720566"
+    }
+  },
+  "attention_candidate": "m128n64-t256-15s"
+}

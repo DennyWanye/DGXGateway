@@ -1,0 +1,476 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+umask 077
+
+die() { echo "FAIL: $*" >&2; exit 1; }
+
+[[ $# == 1 ]] || die "exactly one runtime action is required"
+ACTION=$1
+CONFIG_PATH=${H3_CONFIG_PATH:-/etc/minimax-h3/minimax-h3.env}
+STATE_DIR=${H3_RUNTIME_STATE_DIR:-/var/lib/minimax-h3/lifecycle}
+LLM_BASELINE=$STATE_DIR/llm-baseline.json
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+COMMON_PATH=${H3_COMMON_PATH:-$SCRIPT_DIR/common.sh}
+
+case "$ACTION" in
+  preflight|quiesce-llm|assert-llm-quiesced|assert-h3-stopped|measure-concurrent|admit-concurrent|start-ray-head|wait-worker-stable|start-rank1|wait-rank1-stable|start-rank0|wait-ranks-ready|start-api|start-gateway|wait-ready|drain-requests|stop-gateway|stop-api|stop-rank0|stop-ray-head|restore-llm|rollback-h3|status-local) ;;
+  *) die "refused runtime action" ;;
+esac
+
+[[ -f "$CONFIG_PATH" && ! -L "$CONFIG_PATH" ]] || die "runtime config is missing or unsafe"
+[[ -f "$COMMON_PATH" && ! -L "$COMMON_PATH" ]] || die "runtime common library is missing or unsafe"
+if [[ ${H3_TESTING:-0} != 1 ]]; then
+  [[ $(stat -c '%u' "$CONFIG_PATH") == 0 ]] || die "runtime config must be root-owned"
+  [[ $(stat -c '%a' "$CONFIG_PATH") == 600 ]] || die "runtime config must have mode 0600"
+fi
+# shellcheck disable=SC1090
+source "$CONFIG_PATH"
+ATTESTATION_PATH=${H3_MAC_LOCK_ATTESTATION_PATH:-/run/minimax-h3-two-node/mac-lock-attestation.json}
+# shellcheck disable=SC1090
+source "$COMMON_PATH"
+case "$ACTION" in
+  preflight|start-ray-head|start-rank1)
+    h3_apply_profile "${H3_SELECTED_PROFILE_OVERRIDE:-$H3_SELECTED_PROFILE}" || die "profile selection failed"
+    ;;
+esac
+
+require_values() {
+  local name
+  for name in H3_HEAD_HOSTNAME H3_WORKER_HOSTNAME H3_HEAD_FABRIC_A H3_WORKER_FABRIC_A \
+    H3_HEAD_FABRIC_B H3_WORKER_FABRIC_B H3_NCCL_SOCKET_IFNAME H3_NCCL_IB_HCA \
+    H3_NCCL_IB_GID_INDEX H3_EXTERNAL_BIND H3_EXTERNAL_PORT H3_INTERNAL_API_BIND H3_INTERNAL_API_PORT H3_RAY_PORT \
+    H3_RENDEZVOUS_PORT H3_RUNTIME_LOCK H3_RUNTIME_IMAGE H3_RUNTIME_OVERLAY H3_OUTPUT_DIR \
+    H3_RANK_EVIDENCE_DIR H3_RAY_AUTH_TOKEN_PATH H3_WORKER_SSH \
+    H3_WORKER_SSH_IDENTITY H3_WORKER_SSH_KNOWN_HOSTS H3_LLM_COEXISTENCE_MODE \
+    H3_EXPECTED_USER; do
+    [[ -n ${!name:-} ]] || die "required config is empty: $name"
+  done
+  [[ $H3_NCCL_SOCKET_IFNAME == enp1s0f0np0,enP2p1s0f0np0 ]] || die "production socket interfaces drifted"
+  [[ $H3_NCCL_IB_HCA == '=rocep1s0f0:1,roceP2p1s0f0:1' ]] || die "production HCA binding drifted"
+  [[ $H3_NCCL_IB_GID_INDEX == 3 ]] || die "production GID index drifted"
+  [[ $H3_INTERNAL_API_BIND == "$H3_HEAD_FABRIC_A" && $H3_INTERNAL_API_PORT == 8000 ]] || die "internal API binding drifted"
+  [[ $H3_EXTERNAL_BIND == 192.0.2.30 && $H3_EXTERNAL_PORT == 18081 ]] || die "external gateway binding drifted"
+  [[ $H3_RAY_PORT == 6379 && $H3_RENDEZVOUS_PORT == 29500 ]] || die "cluster port drifted"
+  [[ $H3_EXPECTED_USER == operator ]] || die "LLM user identity drifted"
+  [[ $H3_LLM_COEXISTENCE_MODE == exclusive || $H3_LLM_COEXISTENCE_MODE == concurrent ]] || die "invalid coexistence mode"
+}
+require_values
+
+is_mutation() {
+  case "$1" in
+    quiesce-llm|admit-concurrent|start-ray-head|start-rank1|start-gateway|drain-requests|stop-gateway|stop-api|stop-rank0|stop-ray-head|restore-llm|rollback-h3) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+authorize_mutation() {
+  [[ ${H3_ALLOW_RUNTIME_ACTIONS:-0} == 1 ]] || die "H3_ALLOW_RUNTIME_ACTIONS=1 is required"
+  [[ -f "$ATTESTATION_PATH" && ! -L "$ATTESTATION_PATH" ]] || die "Mac lock attestation is missing or unsafe"
+  if [[ ${H3_TESTING:-0} != 1 ]]; then
+    [[ $(stat -c '%u' "$ATTESTATION_PATH") == 0 ]] || die "Mac lock attestation must be root-owned"
+    [[ $(stat -c '%a' "$ATTESTATION_PATH") == 600 ]] || die "Mac lock attestation must have mode 0600"
+  fi
+  python3 - "$ATTESTATION_PATH" <<'PY'
+import json,re,sys
+from datetime import datetime,timezone
+try:
+    value=json.load(open(sys.argv[1],encoding="utf-8"))
+    expires=datetime.fromisoformat(value["expires_at"].replace("Z","+00:00"))
+except Exception as exc:
+    raise SystemExit(f"invalid Mac lock attestation: {exc}")
+valid=(
+    value.get("schema_version")==1
+    and value.get("cluster_id")=="dgx-head+dgx-worker"
+    and value.get("state")=="ACTIVE"
+    and value.get("owner") in {"minimax-h3-two-node","minimax-h3-ref2va-continuity","minimax-h3-multi-profile","dgx-cluster-gateway"}
+    and re.fullmatch(r"[0-9a-f]{64}",str(value.get("token_sha256","")))
+    and re.fullmatch(r"[0-9a-f]{32}",str(value.get("lease_generation","")))
+    and expires.tzinfo is not None
+    and expires.astimezone(timezone.utc)>datetime.now(timezone.utc)
+)
+if not valid: raise SystemExit("Mac lock attestation is not a live H3 lease")
+PY
+}
+is_mutation "$ACTION" && authorize_mutation
+
+expected_image_id() {
+  printf '%s\n' "$H3_EXPECTED_IMAGE_ID"
+}
+
+require_image() {
+  local expected actual
+  expected=$(expected_image_id)
+  actual=$(docker image inspect "$H3_RUNTIME_IMAGE" --format '{{.Id}}')
+  [[ $actual == "$expected" ]] || die "runtime image ID mismatch"
+}
+
+require_overlay() {
+  [[ -f "$H3_RUNTIME_OVERLAY" && ! -L "$H3_RUNTIME_OVERLAY" ]] || die "runtime overlay is missing or unsafe"
+  local expected actual
+  expected=$(python3 - "$H3_RUNTIME_LOCK" <<'PY'
+import json,sys
+items=json.load(open(sys.argv[1],encoding="utf-8")).get("deployment_overlays",[])
+if len(items)!=1 or items[0].get("target")!="/opt/h3-multinode/h3_multinode/worker.py": raise SystemExit(1)
+print(items[0]["sha256"])
+PY
+)
+  actual=$(sha256sum "$H3_RUNTIME_OVERLAY" | cut -d' ' -f1)
+  [[ $actual == "$expected" ]] || die "runtime overlay hash mismatch"
+}
+
+container_exists() { docker ps -a --filter "name=^/$1$" --format '{{.Names}}' | grep -Fxq "$1"; }
+container_running() { [[ $(docker inspect --format '{{.State.Status}}' "$1" 2>/dev/null || true) == running ]]; }
+
+assert_absent() { ! container_exists "$1" || die "stale H3 container exists: $1"; }
+
+archive_rank_evidence() {
+  local rank=$1 current archive suffix
+  current="$H3_RANK_EVIDENCE_DIR/rank-$rank.jsonl"
+  [[ -e $current ]] || return 0
+  [[ -f $current && ! -L $current ]] || die "unsafe rank evidence path: $current"
+  archive="$H3_RANK_EVIDENCE_DIR/archive"
+  install -d -m 0700 "$archive"
+  suffix=$(date -u +%Y%m%dT%H%M%S%NZ)-$$
+  mv -- "$current" "$archive/rank-$rank-$suffix.jsonl"
+}
+
+common_docker_args() {
+  COMMON_ARGS=(
+    --restart=no --network host --ipc host --gpus all --device /dev/infiniband --cap-add IPC_LOCK
+    -e NCCL_NET=IB -e NCCL_IB_DISABLE=0 -e "NCCL_IB_HCA=$H3_NCCL_IB_HCA"
+    -e NCCL_IB_ADDR_FAMILY=AF_INET -e NCCL_IB_ROCE_VERSION_NUM=2
+    -e "NCCL_SOCKET_IFNAME=$H3_NCCL_SOCKET_IFNAME" -e "GLOO_SOCKET_IFNAME=$H3_NCCL_SOCKET_IFNAME"
+    -e NCCL_CROSS_NIC=0 -e NCCL_CUMEM_ENABLE=0 -e NCCL_NVLS_ENABLE=0
+    -e NCCL_IGNORE_CPU_AFFINITY=1 -e NCCL_DEBUG=INFO
+    -e FLASHINFER_DISABLE_VERSION_CHECK=1 -e VLLM_WORKER_MULTIPROC_METHOD=spawn
+    -e VLLM_OMNI_VIDEO_SYNC_TIMEOUT=3600 -e PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+    -e RAY_memory_monitor_refresh_ms=0 -e RAY_AUTH_MODE=token
+    -e RAY_AUTH_TOKEN_PATH=/run/credentials/ray.token -e "H3_RANK_EVIDENCE_DIR=$H3_RANK_EVIDENCE_DIR"
+    -v "$H3_RAY_AUTH_TOKEN_PATH:/run/credentials/ray.token:ro"
+    -v "$H3_RUNTIME_OVERLAY:/opt/h3-multinode/h3_multinode/worker.py:ro"
+    -v "$H3_RANK_EVIDENCE_DIR:$H3_RANK_EVIDENCE_DIR"
+    -v "$H3_MODEL_ROOT:$H3_MODEL_ROOT:ro"
+  )
+  if [[ $H3_SELECTED_PROFILE == heretic-ref2va-v1 || $H3_SELECTED_PROFILE == heretic-ref2va-hmnsfw-v1 ]]; then
+    source "$SCRIPT_DIR/long-video-mounts.sh"
+    h3_long_video_args
+    COMMON_ARGS+=("${H3_LONG_VIDEO_ARGS[@]}")
+  fi
+}
+
+ray_ports() {
+  RAY_PORT_ARGS=(
+    --min-worker-port=10002 --max-worker-port=10031
+    --node-manager-port=8076 --object-manager-port=8077
+    --metrics-export-port=8078 --runtime-env-agent-port=8079
+  )
+}
+
+worker_call() {
+  ssh -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+    -o "UserKnownHostsFile=$H3_WORKER_SSH_KNOWN_HOSTS" -o ClearAllForwardings=yes \
+    -o RequestTTY=no -i "$H3_WORKER_SSH_IDENTITY" "$H3_WORKER_SSH" "$1"
+}
+
+write_json_atomic() {
+  local destination=$1
+  mkdir -p "$(dirname "$destination")"
+  local temporary="$destination.tmp.$$"
+  cat >"$temporary"
+  chmod 0600 "$temporary"
+  mv -f "$temporary" "$destination"
+}
+
+preflight() {
+  [[ $(hostname -s) == "$H3_HEAD_HOSTNAME" || ${H3_TESTING:-0} == 1 ]] || die "head hostname mismatch"
+  for command in docker systemctl ssh curl python3; do command -v "$command" >/dev/null || die "missing command: $command"; done
+  [[ -d "$H3_MODEL_ROOT" && -e "$H3_MODEL_PATH" && -f "$H3_RUNTIME_LOCK" ]] || die "runtime/model inputs missing"
+  [[ -f "$H3_RAY_AUTH_TOKEN_PATH" && ! -L "$H3_RAY_AUTH_TOKEN_PATH" ]] || die "Ray token path unsafe"
+  [[ $(stat -c '%a' "$H3_RAY_AUTH_TOKEN_PATH") == 600 ]] || die "Ray token must have mode 0600"
+  require_image
+  require_overlay
+  install -d -m 0755 "$(dirname "$ATTESTATION_PATH")"
+  for container in minimax-h3-2x-ray-head minimax-h3-2x-api; do assert_absent "$container"; done
+  mkdir -p "$H3_OUTPUT_DIR" "$H3_RANK_EVIDENCE_DIR" "$STATE_DIR"
+}
+
+capture_llm_baseline() {
+  local listener pid cgroup owner scope unit
+  listener=$(ss -H -lntp 'sport = :11434' | head -n1) || true
+  [[ -n $listener ]] || die "11434 has no baseline listener"
+  pid=$(sed -nE 's/.*pid=([0-9]+).*/\1/p' <<<"$listener" | head -n1)
+  [[ -n $pid ]] || die "cannot identify 11434 listener pid"
+  if [[ ${H3_TESTING:-0} == 1 && -n ${H3_TEST_LLM_OWNER_UNIT:-} ]]; then
+    unit=$H3_TEST_LLM_OWNER_UNIT
+    scope=${H3_TEST_LLM_OWNER_SCOPE:-system}
+  else
+    cgroup=$(cat "/proc/$pid/cgroup")
+    unit=$(sed -nE 's#.*system\.slice/([^/]+\.service).*#\1#p' <<<"$cgroup" | head -n1)
+    scope=system
+    if [[ -z $unit ]]; then
+      unit=$(sed -nE 's#.*app\.slice/([^/]+\.service).*#\1#p' <<<"$cgroup" | head -n1)
+      scope=user
+    fi
+  fi
+  [[ -n $unit ]] || die "cannot identify 11434 owner unit"
+  owner=$unit
+  python3 - "$owner" "$scope" "$H3_EXPECTED_USER" <<'PY' | write_json_atomic "$LLM_BASELINE"
+import hashlib,json,subprocess,sys
+owner,scope,user=sys.argv[1:]
+base=["systemctl"]
+if scope=="user": base += ["--user",f"--machine={user}@.host"]
+units=[]
+for unit in (owner,"ollama.service","dgx-codex-production.service"):
+    if unit in [row["unit"] for row in units]: continue
+    show=subprocess.run(base+["show",unit,"--property=ActiveState,UnitFileState,FragmentPath"],capture_output=True,text=True)
+    values=dict(line.split("=",1) for line in show.stdout.splitlines() if "=" in line)
+    path=values.get("FragmentPath","")
+    digest=hashlib.sha256(open(path,"rb").read()).hexdigest() if path else None
+    units.append({"unit":unit,"scope":scope,"active_state":values.get("ActiveState",""),"unit_file_state":values.get("UnitFileState",""),"fragment_path":path,"fragment_sha256":digest})
+print(json.dumps({"schema_version":1,"listener_owner":owner,"listener_scope":scope,"units":units},sort_keys=True))
+PY
+}
+
+unit_systemctl() {
+  local scope=$1 action=$2 unit=$3
+  if [[ $scope == user ]]; then
+    systemctl --user --machine="${H3_EXPECTED_USER}@.host" "$action" "$unit"
+  else
+    systemctl "$action" "$unit"
+  fi
+}
+
+quiesce_llm() {
+  [[ ! -e $LLM_BASELINE ]] || die "LLM baseline already exists; run restore first"
+  capture_llm_baseline
+  python3 - "$LLM_BASELINE" <<'PY' | while read -r scope unit; do unit_systemctl "$scope" stop "$unit"; done
+import json,sys
+for row in json.load(open(sys.argv[1]))["units"]:
+    if row["active_state"] in ("active","activating","reloading"): print(row["scope"],row["unit"])
+PY
+  ! ss -H -lnt 'sport = :11434' | grep -q . || die "11434 listener survived quiesce"
+}
+
+restore_llm() {
+  [[ -f $LLM_BASELINE ]] || return 0
+  if [[ ${H3_RESTORE_LLM_ON_STOP:-1} == 0 ]]; then
+    rm -f -- "$LLM_BASELINE"
+    return 0
+  fi
+  python3 - "$LLM_BASELINE" <<'PY' | while read -r scope unit; do unit_systemctl "$scope" start "$unit"; done
+import json,sys
+value=json.load(open(sys.argv[1]))
+owner=value["listener_owner"]
+for row in value["units"]:
+    if row["unit"]==owner and row["active_state"] in ("active","activating","reloading"): print(row["scope"],row["unit"])
+PY
+  local oracle=${H3_LLM_ORACLE_HELPER:-/usr/local/libexec/minimax-h3-llm-oracle}
+  [[ -x $oracle ]] || die "LLM oracle hook is missing"
+  "$oracle"
+  rm -f -- "$LLM_BASELINE"
+}
+
+assert_llm_quiesced() {
+  ! ss -H -lnt 'sport = :11434' | grep -q . || die "11434 is active; refusing profile switch without exclusive quiesce"
+}
+
+assert_h3_stopped() {
+  ! container_exists minimax-h3-2x-api || die "H3 API container remains"
+  ! container_exists minimax-h3-2x-ray-head || die "H3 Ray head container remains"
+  ! systemctl is-active --quiet minimax-h3-gateway.service || die "H3 gateway remains active"
+  ! ss -H -lnt "sport = :$H3_EXTERNAL_PORT" | grep -q . || die "H3 gateway listener remains"
+  ! ss -H -lnt "sport = :$H3_INTERNAL_API_PORT" | grep -q . || die "H3 internal API listener remains"
+}
+
+measure_concurrent() {
+  local head worker
+  head=$(awk '/^MemAvailable:/ {print $2*1024}' /proc/meminfo)
+  worker=$(worker_call memory-bytes)
+  python3 - "$head" "$worker" "$H3_HEAD_HOSTNAME" "$H3_WORKER_HOSTNAME" <<'PY'
+import json,sys
+print(json.dumps({sys.argv[3]:int(sys.argv[1]),sys.argv[4]:int(sys.argv[2])},sort_keys=True))
+PY
+}
+
+start_ray_head() {
+  require_image; assert_absent minimax-h3-2x-ray-head
+  mkdir -p "$H3_RANK_EVIDENCE_DIR"
+  archive_rank_evidence 0
+  common_docker_args; ray_ports
+  docker run -d --name minimax-h3-2x-ray-head "${COMMON_ARGS[@]}" \
+    -v minimax-h3-2x-ray-head-tmp:/tmp/ray --entrypoint ray "$H3_RUNTIME_IMAGE" \
+    start --head "--node-ip-address=$H3_HEAD_FABRIC_A" "--port=$H3_RAY_PORT" \
+    --include-dashboard=false "${RAY_PORT_ARGS[@]}" --num-cpus=8 --num-gpus=1 \
+    --object-store-memory=2000000000 --disable-usage-stats --block >/dev/null
+}
+
+wait_exact_two() {
+  local deadline=$((SECONDS + ${H3_WAIT_WORKER_TIMEOUT_SECONDS:-180})) stable=0 payload
+  while (( SECONDS < deadline )); do
+    payload=$(docker exec minimax-h3-2x-ray-head python -c \
+      'import json,ray;ray.init(address="auto",namespace="minimax-h3-2x",ignore_reinit_error=True);print(json.dumps(sorted(n["NodeManagerAddress"] for n in ray.nodes() if n.get("Alive"))))' 2>/dev/null || true)
+    if [[ $payload == "[\"$H3_HEAD_FABRIC_A\", \"$H3_WORKER_FABRIC_A\"]" ]]; then
+      ((stable+=1)); (( stable >= 15 )) && return 0
+    else
+      stable=0
+    fi
+    sleep 1
+  done
+  die "Ray did not remain exact-two for 15 seconds"
+}
+
+start_api_driver() {
+  require_image; assert_absent minimax-h3-2x-api
+  mkdir -p "$H3_OUTPUT_DIR" "$H3_RANK_EVIDENCE_DIR"
+  common_docker_args
+  local -a profile_args=(--diffusion-attention-backend CUDNN_ATTN)
+  local quantization_config
+  quantization_config='{"method":"fp8","activation_scheme":"dynamic","ignored_layers":["video_patch_proj","audio_patch_proj","time_embedder.proj_in","time_embedder.proj_out","final_layer.video_out","final_layer.audio_out"]}'
+  local -a quantization_args=(--diffusion-quantization-config "$quantization_config" --force-cutlass-fp8)
+  if [[ $H3_TASK_TYPE == ref2va ]]; then
+    # Ref2VA's reference-token layout changes the first-request graph shape.
+    # Regional torch.compile has deadlocked the two USP ranks on an AllToAll;
+    # keep FL2VA compiled, but run Ref2VA eagerly until that upstream path is
+    # independently qualified.
+    profile_args+=(--enforce-eager)
+    # Preserve native encode/diffuse/decode timings for the stable production
+    # shape. This instruments existing methods; it does not alter sampling.
+    # The profiler synchronizes at phase boundaries, so A/B comparisons must
+    # use the same setting and account for that diagnostic overhead.
+    if [[ $H3_SELECTED_PROFILE == heretic-ref2va-v1 ]]; then
+      profile_args+=(--enable-diffusion-pipeline-profiler)
+      profile_args+=(${H3_PERFORMANCE_PROFILE_ARGS[@]+"${H3_PERFORMANCE_PROFILE_ARGS[@]}"})
+    fi
+    if [[ $H3_SELECTED_PROFILE == heretic-ref2va-hmnsfw-v1 ]]; then
+      profile_args+=(--text-encoder-tp-size 2)
+    fi
+  elif [[ $H3_SELECTED_PROFILE == 10eros-fl2va-v1 ]]; then
+    # TenStrip publishes this candidate as BF16.  Dynamic FP8 conversion is a
+    # different, unqualified artifact and collapses its generated contrast.
+    quantization_args=()
+    # The BF16 DiT and the full Qwen3-VL encoder do not fit together on rank 0.
+    # Shard the encoder across the same two qualified DiT ranks so neither
+    # Spark crosses its physical-memory-plus-swap boundary during cold load.
+    profile_args+=(--text-encoder-tp-size 2)
+  fi
+  docker run -d --name minimax-h3-2x-api "${COMMON_ARGS[@]}" \
+    --pid=container:minimax-h3-2x-ray-head \
+    -e "H3_HEAD_IP=$H3_HEAD_FABRIC_A" -e "H3_WORKER_IP=$H3_WORKER_FABRIC_A" \
+    -e "H3_HEAD_GID_INDEX=$H3_NCCL_IB_GID_INDEX" -e "H3_WORKER_GID_INDEX=$H3_NCCL_IB_GID_INDEX" \
+    -e "H3_RAY_ADDRESS=$H3_HEAD_FABRIC_A:$H3_RAY_PORT" -e "H3_MASTER_PORT=$H3_RENDEZVOUS_PORT" \
+    -e H3_WORKER_START_TIMEOUT=2400 -e "H3_API_PORT=$H3_INTERNAL_API_PORT" \
+    -v minimax-h3-2x-ray-head-tmp:/tmp/ray -v "$H3_OUTPUT_DIR:/output" \
+    --entrypoint vllm "$H3_RUNTIME_IMAGE" serve "$H3_MODEL_PATH" --omni --trust-remote-code \
+    --host "$H3_INTERNAL_API_BIND" --port "$H3_INTERNAL_API_PORT" --num-gpus 2 --usp 2 --ring 1 \
+    --vae-patch-parallel-size 2 --vae-parallel-mode tile --vae-use-tiling --num-weight-load-threads 2 \
+    "${quantization_args[@]}" "${profile_args[@]}" --distributed-executor-backend ray --stage-init-timeout 1800 --init-timeout 2400 >/dev/null
+}
+
+rank_status() {
+  local rank=$1 path
+  path="$H3_RANK_EVIDENCE_DIR/rank-$rank.jsonl"
+  [[ -s $path ]] || return 1
+  python3 - "$path" "$rank" <<'PY'
+import json,sys
+rows=[json.loads(x) for x in open(sys.argv[1]) if x.strip()]
+rank=int(sys.argv[2])
+if any(x.get("rank")!=rank or x.get("world_size")!=2 for x in rows): raise SystemExit(1)
+print(json.dumps({"pre":sum(x.get("event")=="PRE_RENDEZVOUS_RUNNING" for x in rows),"ready":any(x.get("event")=="READY" for x in rows),"first_ns":rows[0]["monotonic_ns"],"last_ns":rows[-1]["monotonic_ns"]},sort_keys=True))
+PY
+}
+
+wait_rank1_stable() {
+  local deadline=$((SECONDS + 180)) payload
+  while (( SECONDS < deadline )); do
+    payload=$(worker_call rank1-status 2>/dev/null || true)
+    if python3 - "$payload" <<'PY'
+import json,sys
+try: x=json.loads(sys.argv[1])
+except Exception: raise SystemExit(1)
+raise SystemExit(0 if x.get("pre",0)>=2 and x.get("last_ns",0)-x.get("first_ns",0)>=15_000_000_000 else 1)
+PY
+    then return 0; fi
+    sleep 1
+  done
+  die "rank 1 did not publish a stable 15-second pre-rendezvous marker"
+}
+
+wait_rank0_started() {
+  local deadline=$((SECONDS + 180))
+  while (( SECONDS < deadline )); do rank_status 0 >/dev/null 2>&1 && return 0; sleep 1; done
+  die "rank 0 pre-rendezvous marker not observed after rank 1 stability"
+}
+
+wait_ranks_ready() {
+  local deadline=$((SECONDS + ${H3_WAIT_RANKS_TIMEOUT_SECONDS:-2400})) head worker
+  while (( SECONDS < deadline )); do
+    head=$(rank_status 0 2>/dev/null || true); worker=$(worker_call rank1-status 2>/dev/null || true)
+    if python3 - "$head" "$worker" <<'PY'
+import json,sys
+try: a,b=json.loads(sys.argv[1]),json.loads(sys.argv[2])
+except Exception: raise SystemExit(1)
+raise SystemExit(0 if a.get("ready") is True and b.get("ready") is True else 1)
+PY
+    then return 0; fi
+    sleep 5
+  done
+  die "both ranks did not become READY"
+}
+
+wait_internal_api() {
+  local deadline=$((SECONDS + ${H3_WAIT_API_TIMEOUT_SECONDS:-300})) code
+  while (( SECONDS < deadline )); do
+    code=$(curl -sS --max-time 3 -o /dev/null -w '%{http_code}' "http://$H3_INTERNAL_API_BIND:$H3_INTERNAL_API_PORT/health" || true)
+    [[ $code == 200 ]] && return 0
+    sleep 2
+  done
+  die "internal H3 API did not become healthy"
+}
+
+wait_gateway_listener() {
+  local deadline=$((SECONDS + ${H3_WAIT_GATEWAY_TIMEOUT_SECONDS:-30}))
+  while (( SECONDS < deadline )); do
+    if systemctl is-active --quiet minimax-h3-gateway.service \
+      && ss -H -ltn | awk -v endpoint="$H3_EXTERNAL_BIND:$H3_EXTERNAL_PORT" '$4 == endpoint { found=1 } END { exit !found }'; then
+      return 0
+    fi
+    sleep 1
+  done
+  die "authenticated H3 gateway did not become active on the fixed endpoint"
+}
+
+status_local() {
+  local head=STOPPED api=STOPPED healthy=false code
+  container_running minimax-h3-2x-ray-head && head=RUNNING
+  container_running minimax-h3-2x-api && api=RUNNING
+  if [[ $api == RUNNING && $head == RUNNING ]]; then
+    code=$(curl -sS --max-time 3 -o /dev/null -w '%{http_code}' "http://$H3_INTERNAL_API_BIND:$H3_INTERNAL_API_PORT/health" || true)
+    [[ $code != 200 ]] || healthy=true
+  fi
+  printf '{"api":"%s","ray_head":"%s","api_healthy":%s}\n' "$api" "$head" "$healthy"
+}
+
+case "$ACTION" in
+  preflight) preflight ;;
+  quiesce-llm) quiesce_llm ;;
+  assert-llm-quiesced) assert_llm_quiesced ;;
+  assert-h3-stopped) assert_h3_stopped ;;
+  measure-concurrent) measure_concurrent ;;
+  admit-concurrent) ss -H -lnt 'sport = :11434' | grep -q . || die "concurrent mode requires live 11434" ;;
+  start-ray-head) start_ray_head ;;
+  wait-worker-stable) wait_exact_two ;;
+  start-rank1) start_api_driver ;;
+  wait-rank1-stable) wait_rank1_stable ;;
+  start-rank0) wait_rank0_started ;;
+  wait-ranks-ready) wait_ranks_ready ;;
+  start-api) wait_internal_api ;;
+  start-gateway) systemctl start minimax-h3-gateway.service ;;
+  wait-ready) wait_internal_api; wait_gateway_listener; worker_call lifecycle-status | grep -Fxq READY ;;
+  drain-requests|stop-gateway) systemctl stop minimax-h3-gateway.service ;;
+  stop-api|stop-rank0) docker rm -f minimax-h3-2x-api >/dev/null 2>&1 || true ;;
+  stop-ray-head) docker rm -f minimax-h3-2x-ray-head >/dev/null 2>&1 || true ;;
+  restore-llm) restore_llm ;;
+  rollback-h3) docker rm -f minimax-h3-2x-api minimax-h3-2x-ray-head >/dev/null 2>&1 || true ;;
+  status-local) status_local ;;
+esac

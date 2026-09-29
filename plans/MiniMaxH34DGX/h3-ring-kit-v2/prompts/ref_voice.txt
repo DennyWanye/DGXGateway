@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> 是 <Picture 1> 中的成年角色。<Audio 1> 是已获得使用授权的成年配音演员声音参考。
+summary:
+生成成年角色说一句简短中文对白的四秒写实镜头。
+detailed_description:
+固定近景，角色自然看向镜头，用 <Audio 1> 的声音特征平静地说：<d>[Chinese] 我们现在出发。</d> 只说一次，说完后嘴部自然停止动作。不生成字幕。
+overall_soundscape:
+清晰对白和低音量室内环境声，不复制参考音频的背景杂音或音乐。
+non_diegetic_music:
+无背景音乐。

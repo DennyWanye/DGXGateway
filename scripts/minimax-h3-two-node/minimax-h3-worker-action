@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+umask 077
+die() { echo "FAIL: $*" >&2; exit 1; }
+[[ $# == 1 || $# == 2 ]] || die "one worker action and optional profile are required"
+ACTION=$1
+PROFILE_OVERRIDE=${2:-${H3_SELECTED_PROFILE_OVERRIDE:-}}
+CONFIG_PATH=${H3_CONFIG_PATH:-/etc/minimax-h3/minimax-h3.env}
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+COMMON_PATH=${H3_COMMON_PATH:-$SCRIPT_DIR/common.sh}
+case "$ACTION" in start-ray-worker|stop-ray-worker|cleanup|status|assert-stopped|rank1-status|memory-bytes) ;; *) die "refused worker action" ;; esac
+[[ -f $CONFIG_PATH && ! -L $CONFIG_PATH ]] || die "worker runtime config is missing or unsafe"
+[[ -f $COMMON_PATH && ! -L $COMMON_PATH ]] || die "worker common library is missing or unsafe"
+# shellcheck disable=SC1090
+source "$CONFIG_PATH"
+ATTESTATION_PATH=${H3_MAC_LOCK_ATTESTATION_PATH:-/run/minimax-h3-two-node/mac-lock-attestation.json}
+# shellcheck disable=SC1090
+source "$COMMON_PATH"
+if [[ $ACTION == start-ray-worker ]]; then
+  h3_apply_profile "${PROFILE_OVERRIDE:-$H3_SELECTED_PROFILE}" || die "profile selection failed"
+fi
+
+authorize() {
+  [[ ${H3_ALLOW_RUNTIME_ACTIONS:-0} == 1 ]] || die "H3_ALLOW_RUNTIME_ACTIONS=1 is required"
+  [[ -f $ATTESTATION_PATH && ! -L $ATTESTATION_PATH ]] || die "Mac lock attestation is missing or unsafe"
+  if [[ ${H3_TESTING:-0} != 1 ]]; then
+    [[ $(stat -c '%u' "$CONFIG_PATH") == 0 && $(stat -c '%a' "$CONFIG_PATH") == 600 ]] || die "worker config ownership/mode invalid"
+    [[ $(stat -c '%u' "$ATTESTATION_PATH") == 0 && $(stat -c '%a' "$ATTESTATION_PATH") == 600 ]] || die "attestation ownership/mode invalid"
+  fi
+  python3 - "$ATTESTATION_PATH" <<'PY'
+import json,re,sys
+from datetime import datetime,timezone
+x=json.load(open(sys.argv[1],encoding="utf-8")); expiry=datetime.fromisoformat(x["expires_at"].replace("Z","+00:00"))
+ok=x.get("schema_version")==1 and x.get("cluster_id")=="dgx-head+dgx-worker" and x.get("state")=="ACTIVE" and x.get("owner") in {"minimax-h3-two-node","minimax-h3-ref2va-continuity","minimax-h3-multi-profile","dgx-cluster-gateway"} and re.fullmatch(r"[0-9a-f]{64}",str(x.get("token_sha256",""))) and re.fullmatch(r"[0-9a-f]{32}",str(x.get("lease_generation",""))) and expiry.tzinfo and expiry.astimezone(timezone.utc)>datetime.now(timezone.utc)
+if not ok: raise SystemExit("Mac lock attestation is not a live H3 lease")
+PY
+}
+case "$ACTION" in start-ray-worker|stop-ray-worker|cleanup) authorize ;; esac
+
+require_overlay() {
+  [[ -f "$H3_RUNTIME_OVERLAY" && ! -L "$H3_RUNTIME_OVERLAY" ]] || die "runtime overlay is missing or unsafe"
+  local expected actual
+  expected=$(python3 - "$H3_RUNTIME_LOCK" <<'PY'
+import json,sys
+items=json.load(open(sys.argv[1],encoding="utf-8")).get("deployment_overlays",[])
+if len(items)!=1 or items[0].get("target")!="/opt/h3-multinode/h3_multinode/worker.py": raise SystemExit(1)
+print(items[0]["sha256"])
+PY
+)
+  actual=$(sha256sum "$H3_RUNTIME_OVERLAY" | cut -d' ' -f1)
+  [[ $actual == "$expected" ]] || die "runtime overlay hash mismatch"
+}
+
+container_exists() { docker ps -a --filter "name=^/$1$" --format '{{.Names}}' | grep -Fxq "$1"; }
+container_running() { [[ $(docker inspect --format '{{.State.Status}}' "$1" 2>/dev/null || true) == running ]]; }
+
+archive_rank_evidence() {
+  local rank=$1 current archive suffix
+  current="$H3_RANK_EVIDENCE_DIR/rank-$rank.jsonl"
+  [[ -e $current ]] || return 0
+  [[ -f $current && ! -L $current ]] || die "unsafe rank evidence path: $current"
+  archive="$H3_RANK_EVIDENCE_DIR/archive"
+  install -d -m 0700 "$archive"
+  suffix=$(date -u +%Y%m%dT%H%M%S%NZ)-$$
+  mv -- "$current" "$archive/rank-$rank-$suffix.jsonl"
+}
+
+start_worker() {
+  [[ $(hostname -s) == "$H3_WORKER_HOSTNAME" || ${H3_TESTING:-0} == 1 ]] || die "worker hostname mismatch"
+  [[ $(docker image inspect "$H3_RUNTIME_IMAGE" --format '{{.Id}}') == "$H3_EXPECTED_IMAGE_ID" ]] || die "runtime image ID mismatch"
+  require_overlay
+  ! container_exists minimax-h3-2x-ray-worker || die "stale worker container exists"
+  mkdir -p "$H3_RANK_EVIDENCE_DIR"
+  archive_rank_evidence 1
+  local -a H3_LONG_VIDEO_ARGS=()
+  if [[ $H3_SELECTED_PROFILE == heretic-ref2va-v1 || $H3_SELECTED_PROFILE == heretic-ref2va-hmnsfw-v1 ]]; then
+    source "$SCRIPT_DIR/long-video-mounts.sh"
+    h3_long_video_args
+  fi
+  docker run -d --name minimax-h3-2x-ray-worker --restart=no --network host --ipc host --gpus all \
+    ${H3_LONG_VIDEO_ARGS[@]+"${H3_LONG_VIDEO_ARGS[@]}"} \
+    --device /dev/infiniband --cap-add IPC_LOCK \
+    -e NCCL_NET=IB -e NCCL_IB_DISABLE=0 -e "NCCL_IB_HCA=$H3_NCCL_IB_HCA" \
+    -e NCCL_IB_ADDR_FAMILY=AF_INET -e NCCL_IB_ROCE_VERSION_NUM=2 \
+    -e "NCCL_SOCKET_IFNAME=$H3_NCCL_SOCKET_IFNAME" -e "GLOO_SOCKET_IFNAME=$H3_NCCL_SOCKET_IFNAME" \
+    -e NCCL_CROSS_NIC=0 -e NCCL_CUMEM_ENABLE=0 -e NCCL_NVLS_ENABLE=0 \
+    -e "NCCL_IB_GID_INDEX=$H3_NCCL_IB_GID_INDEX" -e RAY_memory_monitor_refresh_ms=0 -e RAY_AUTH_MODE=token \
+    -e RAY_AUTH_TOKEN_PATH=/run/credentials/ray.token -e "H3_RANK_EVIDENCE_DIR=$H3_RANK_EVIDENCE_DIR" \
+    -v "$H3_RAY_AUTH_TOKEN_PATH:/run/credentials/ray.token:ro" \
+    -v "$H3_RUNTIME_OVERLAY:/opt/h3-multinode/h3_multinode/worker.py:ro" \
+    -v "$H3_RANK_EVIDENCE_DIR:$H3_RANK_EVIDENCE_DIR" \
+    -v "$H3_MODEL_ROOT:$H3_MODEL_ROOT:ro" -v minimax-h3-2x-ray-worker-tmp:/tmp/ray \
+    --entrypoint ray "$H3_RUNTIME_IMAGE" start "--address=$H3_HEAD_FABRIC_A:$H3_RAY_PORT" \
+    "--node-ip-address=$H3_WORKER_FABRIC_A" --min-worker-port=10002 --max-worker-port=10031 \
+    --node-manager-port=8076 --object-manager-port=8077 --metrics-export-port=8078 \
+    --runtime-env-agent-port=8079 --num-cpus=8 --num-gpus=1 --object-store-memory=2000000000 \
+    --disable-usage-stats --block >/dev/null
+}
+
+rank1_status() {
+  local path="$H3_RANK_EVIDENCE_DIR/rank-1.jsonl"
+  [[ -s $path ]] || { echo '{"pre":0,"ready":false}'; return 1; }
+  python3 - "$path" <<'PY'
+import json,sys
+rows=[json.loads(x) for x in open(sys.argv[1]) if x.strip()]
+if any(x.get("rank")!=1 or x.get("world_size")!=2 for x in rows): raise SystemExit(1)
+print(json.dumps({"pre":sum(x.get("event")=="PRE_RENDEZVOUS_RUNNING" for x in rows),"ready":any(x.get("event")=="READY" for x in rows),"first_ns":rows[0]["monotonic_ns"],"last_ns":rows[-1]["monotonic_ns"]},sort_keys=True))
+PY
+}
+
+case "$ACTION" in
+  start-ray-worker) start_worker ;;
+  stop-ray-worker|cleanup) docker rm -f minimax-h3-2x-ray-worker >/dev/null 2>&1 || true ;;
+  status) if container_running minimax-h3-2x-ray-worker; then echo READY; else echo STOPPED; fi ;;
+  assert-stopped) ! container_exists minimax-h3-2x-ray-worker || die "H3 Ray worker container remains" ;;
+  rank1-status) rank1_status ;;
+  memory-bytes) awk '/^MemAvailable:/ {printf "%.0f\n",$2*1024}' /proc/meminfo ;;
+esac

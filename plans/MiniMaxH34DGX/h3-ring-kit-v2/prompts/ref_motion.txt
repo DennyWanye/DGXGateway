@@ -1,0 +1,10 @@
+subject_definitions:
+<Subject 1> 是 <Picture 1> 中的成年角色。<Video 1> 只作为身体运动节奏的参考，不采用视频中的人物身份或背景。
+summary:
+生成一个四秒的写实连续镜头，角色缓慢从椅子站起，身体运动节奏参考 <Video 1>。
+retention_analysis:
+保留 <Picture 1> 的角色身份、发型和服装；不复制参考视频中的额外人物。参考视频已由用户制作成无声素材，避免引入无关声音。
+detailed_description:
+固定中景，成年角色从椅子平稳站起，动作自然且连续，不进行复杂运镜和多镜头切换。
+overall_soundscape:
+轻微衣物摩擦和房间环境声，无对白，无音乐，不生成字幕。

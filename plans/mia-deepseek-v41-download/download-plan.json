@@ -1,0 +1,482 @@
+{
+  "files": [
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": ".gitattributes",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/.gitattributes",
+      "size": 1701,
+      "git_blob_id": "9b59a7525c7b7870bd2cbdc41a4e91fd63fcb6cb",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "LICENSE",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/LICENSE",
+      "size": 1084,
+      "git_blob_id": "d62e3bef9f054f21b7fc616365850fbf879a99ff",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "README.md",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/README.md",
+      "size": 4797,
+      "git_blob_id": "88ebc26bbc50a3482866b353c0aaa7effcefeaee",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "chat_template.jinja",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/chat_template.jinja",
+      "size": 11410,
+      "git_blob_id": "f01484ca7c16bbf507c077c2b99456bbfe9e3d3a",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "config.json",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/config.json",
+      "size": 4482,
+      "git_blob_id": "eeec94126b6dfaa83b737a4d69aa9226e4720ce4",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "tokenizer.json",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/tokenizer.json",
+      "size": 6367257,
+      "git_blob_id": "6a15814dd25c934028034531da744c689f87ff21",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "tokenizer_config.json",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/tokenizer_config.json",
+      "size": 12719,
+      "git_blob_id": "436f58e5d72bf8233e1022a77a77b22e1e6f1b39",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "revision": "dba1be0a40aa45a94ad051997016db3960a90277",
+      "path": "config.json",
+      "destination": "DeepSeek-V4.1-Flash/config.json",
+      "size": 3311,
+      "git_blob_id": "09917a9139b22d5bf8be52132787f435147b1020",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "revision": "dba1be0a40aa45a94ad051997016db3960a90277",
+      "path": "model.safetensors.index.json",
+      "destination": "DeepSeek-V4.1-Flash/model.safetensors.index.json",
+      "size": 7470294,
+      "git_blob_id": "54c85064dd92c8550471302e9ae59bedbbf96ca4",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "DeepSeek_V41_Tech_Report.pdf",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/DeepSeek_V41_Tech_Report.pdf",
+      "size": 1809802,
+      "git_blob_id": "9a327deea3393d204f789f261ceb4eb472ea910d",
+      "lfs_sha256": "ba68e2e40408125ae6d2f63a9a241b61c73910691c74ec1a2a7023c851eac08d"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00001-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00001-of-00039.safetensors",
+      "size": 6548044501,
+      "git_blob_id": "e664eed7a4cc39e74def4ebe46b5484cd3bef26a",
+      "lfs_sha256": "a4f64372b9b62839b74af245583d0bbfd716c183f1fa7b5c5efbf43ce1641e65"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00002-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00002-of-00039.safetensors",
+      "size": 5321600229,
+      "git_blob_id": "c058519e0222ef659e6cafd8cf4a46ee6ac9e12c",
+      "lfs_sha256": "7c6f42288584c66e73089d18c30ba117c4040d273a97d44af5806431065f5957"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00003-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00003-of-00039.safetensors",
+      "size": 5230052995,
+      "git_blob_id": "b42878395f14a136876c2bf153374046a64a84cd",
+      "lfs_sha256": "96b53052025480f6b3bb77c71740f67549ec1c4e799799d4b4abd1f8b944de76"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00004-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00004-of-00039.safetensors",
+      "size": 5223068306,
+      "git_blob_id": "73190abc1222aef1a77689e35f13fe63952fca8e",
+      "lfs_sha256": "00b6755b2be1e23209133fa530bad3075daf393635f24dcee4568c6286242656"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00005-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00005-of-00039.safetensors",
+      "size": 5223068306,
+      "git_blob_id": "4ce7df392931786864fe490f0b9332e306bf9557",
+      "lfs_sha256": "cf600746d279a9cc72002d5c9fca19470fa895f04e3717e27a25a7a9e9039cde"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00006-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00006-of-00039.safetensors",
+      "size": 5223068306,
+      "git_blob_id": "53225617ebbf432d30da1a17e939a21a2557a023",
+      "lfs_sha256": "69d9d4cc8020f84dd4a8313a9abc9567f9ff30b761abf48edeb50e3208797ffa"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00007-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00007-of-00039.safetensors",
+      "size": 5223068306,
+      "git_blob_id": "160f56d82c65be837941e9807250dacf0347dded",
+      "lfs_sha256": "fe30eae28340d8f6b3dba8a8de56fcff6582951a31c5e52fe31950d40ae49ef4"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00008-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00008-of-00039.safetensors",
+      "size": 5223068306,
+      "git_blob_id": "a997e4b787348685b717672800b937ea2c3a7afe",
+      "lfs_sha256": "59f5ddeb5a707bea4ea79b73a542becf68905e6968819b160c6deda93bfc74cf"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00009-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00009-of-00039.safetensors",
+      "size": 5230052995,
+      "git_blob_id": "a2b8cebd8d49b162709863408d999c5ffaf3fe3f",
+      "lfs_sha256": "525eb19e98d128e5d44f9815246a08d698b67ee8cab86322d041c3d3553c027c"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00010-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00010-of-00039.safetensors",
+      "size": 5223068306,
+      "git_blob_id": "1498ee9c424e830359c9ffa150802d54024fbcc9",
+      "lfs_sha256": "e21d19cd05240c92390d1fe79f3182749b4dffb56a76d1cbb4f9f909a8dfec7c"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00011-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00011-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "3ade689f7dfe80b0a1f51e1701fbc8a4edd30476",
+      "lfs_sha256": "b3ce83d74704866b5cefdb5b7c32ad7d1d3690c9ffc2374af27cf8dfab83490d"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00012-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00012-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "f147ccdb679dcb378947a957748392ff820f503c",
+      "lfs_sha256": "46aca54ebbcb9db7caab8eef397c87f4688b63291a6772b19d8091f4c2492ce9"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00013-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00013-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "1ba16f92fa6d8c23c408a85323a1345116a45b67",
+      "lfs_sha256": "e7076f3c089fefc359c0a9fa70e15ca851e527a8641d4df23a43e1acc153d1b4"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00014-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00014-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "8804cb33f12415169eaf8a74c26257a4c46333c4",
+      "lfs_sha256": "611e59e7424e8022ec8f3fbcebcdd96b975043ce6ee032760b5d96bddf9abf1a"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00015-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00015-of-00039.safetensors",
+      "size": 5304505144,
+      "git_blob_id": "086a3342e1db93da6a2c022e34957fdd2773dd4c",
+      "lfs_sha256": "2cf5357b75ebd49acbd6ac65a7d913adabaf3706970788e6ab5aac9e73e7a36f"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00016-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00016-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "d18d5484c67b65d3a3978f26e4f2fc101c9dcf08",
+      "lfs_sha256": "0def761dac33623172965c8389cfe83a4dd1f756306309619cae07b0b84f5d58"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00017-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00017-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "fbad1fdd4cce1f7d9443d647bdcc732b67008bc1",
+      "lfs_sha256": "358db52ff31ee93e95463f1f24269e184f15a856a0944601ec541a26fe256d43"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00018-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00018-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "a8676b484afeebece92a179fab229a9c7ebfa418",
+      "lfs_sha256": "df3c7016c0e9034e6d5eb7d7dadebf8f4b7a05d63ea4350bd8b681886fffe782"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00019-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00019-of-00039.safetensors",
+      "size": 7039913404,
+      "git_blob_id": "d2b1af57e6b1b62a948021e3ba30bc1d31b22080",
+      "lfs_sha256": "112e9a7553ddbd3856c7e7b143f77084861545731b73afaf56cbe27f0f0f691e"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00020-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00020-of-00039.safetensors",
+      "size": 7045248007,
+      "git_blob_id": "041c5bce12cdb6e3fee235c1a2c780c45a48294c",
+      "lfs_sha256": "dfec038e987ed7e6fa47594cb25b0d680a7f771a6be7be0775c45fe501f10068"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00021-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00021-of-00039.safetensors",
+      "size": 3519955195,
+      "git_blob_id": "77f3305902c8b033293b2ddfb6c6752e690d1a2a",
+      "lfs_sha256": "fd8b3384ad7b5fd1fd8a1b1baca636bcf623a5403a6a920494e697e8342714dc"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00022-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00022-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "b997c35991bb4b55c701ec638966cd12099693a3",
+      "lfs_sha256": "8b0119b56fc0f4a90a8b97f1ab0909d2eb48587511c6dff659c14b378e20263a"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00023-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00023-of-00039.safetensors",
+      "size": 5222265083,
+      "git_blob_id": "078d0cd9ccfbbb1fef338216be670e41100c73f3",
+      "lfs_sha256": "bac75629e86cd57ca46772646ca54e7718a14f7cd7a7f86f2f7bdce9bb4489b4"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00024-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00024-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "b6ecb939b5311f1d8ae11342cf9a9feb18df1b40",
+      "lfs_sha256": "ac3a8216e5a0ccf1da89dbced636acd82a00aa29d528e1d39031e89a1b7306db"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00025-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00025-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "5c54e0eb2e38cd730aea04803b80afbffae62b2a",
+      "lfs_sha256": "350c5155c601a4fa94ffd6fe3964e4328b0897cda2be8dcc080ac01681129579"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00026-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00026-of-00039.safetensors",
+      "size": 5218649307,
+      "git_blob_id": "5d97d64aad6c06d76f808cdc1063b6337b520c5f",
+      "lfs_sha256": "e419a674256f8cfe7c97800b26c35a555a8b168557017cd31f90fa6b83e524f8"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00027-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00027-of-00039.safetensors",
+      "size": 5222265083,
+      "git_blob_id": "c58296d91864ba082f579b7397b79f3009490878",
+      "lfs_sha256": "0a43f6d44f03b4a88cc76dd8c882043d53fa56b131599470afd5028eff265cbb"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00028-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00028-of-00039.safetensors",
+      "size": 5220123867,
+      "git_blob_id": "aac99cd3aac2a93002972ad3f5b54fe9549fca36",
+      "lfs_sha256": "009ff46bcdbe2e9a893562a4ea0400a213d0103d54bd43a7cee53e726af989df"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00029-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00029-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "8b513551202abe9d463f43f2c2bdf496b3d60e81",
+      "lfs_sha256": "af001e6806a471a0ffd72f45a602ad303ba30ffbeffdd55a49c2e1ae208db055"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00030-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00030-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "c431a4f369b2fd0e8377b3eb9d5bb70cb4c4503e",
+      "lfs_sha256": "ffbdae1e5e2ff63fb7d09613258b6335f5b1ef4e7f459830a5c7807eeb5e025c"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00031-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00031-of-00039.safetensors",
+      "size": 5226688763,
+      "git_blob_id": "23d8afe87501867f81d6f4b353b6f90d54fcae57",
+      "lfs_sha256": "b8311ec0892b3f218f972a2ecb774cb2b6639913bb597da8416d0ff79212a1d8"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00032-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00032-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "33b16ed45799fe548fe691502200ee28a1ecffd5",
+      "lfs_sha256": "63a37b6acf2e44a7954be7b5dbb2ef7c1398dd82264efff8499c3097a4b34020"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00033-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00033-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "45c7db08d40b58806bb6c33dc1c8f06695392843",
+      "lfs_sha256": "0440b562e46659f14cbff7569e4e9c0871b244e6f356330d77c5032133c01067"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00034-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00034-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "128157477555388b61a63ad0b83abd16d2b71528",
+      "lfs_sha256": "fe77c23bfb562a0f11e09da4eff8e523de94bd05e2b0809c5468adfa0763d8ff"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00035-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00035-of-00039.safetensors",
+      "size": 5226688763,
+      "git_blob_id": "94cd931f4d32bde17e6d439adea8c69b93cb1ff7",
+      "lfs_sha256": "fff364d35b8f18487d69c29a63477eec53666566ca790c5a34bd130c7cc0f988"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00036-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00036-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "4881be1f3991154a9e9d1e5b78cf0fc0922531f9",
+      "lfs_sha256": "b0a88ebf3dfa5f5c6f46d69230fb5678c8ec4aa8dfff83c71681e6738fc17307"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00037-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00037-of-00039.safetensors",
+      "size": 5223072987,
+      "git_blob_id": "d970d1f689208f44e72bb0dc0da034629102141d",
+      "lfs_sha256": "74af1518df9ffcf95150fb44a8564e24530748ee330b586b8f9fb5b5a7ebb0a9"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00038-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00038-of-00039.safetensors",
+      "size": 8116467451,
+      "git_blob_id": "ca91bb47f7d62f1375aef51c6594256382319af9",
+      "lfs_sha256": "1c5276c42203c4c2bc71ad45469abc5bfd73bb53862e809826f71aaa28d6af40"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model-00039-of-00039.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model-00039-of-00039.safetensors",
+      "size": 5817580796,
+      "git_blob_id": "b5ecd913e59f47412188e19f3e063bfbf0c8a671",
+      "lfs_sha256": "eaa32d71ee333f78eec4b2974d830cd085357dec8359d93cb0fb08ad6e6d2934"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "model.safetensors.index.json",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/model.safetensors.index.json",
+      "size": 15501050,
+      "git_blob_id": "704eeb29ccd338041416108d610013f1a78eb0ec",
+      "lfs_sha256": "e35cb7c2f779a04e564accbdc6ddb01d775793255b2c6d8ca2b0492c21fc88f2"
+    },
+    {
+      "repo": "Mia-AiLab/DeepSeek-V4.1-Flash-EXL3-2.9bpw",
+      "revision": "64ba41b6c916a587db06eae2e19b7845f7be6e6b",
+      "path": "quantization_config.json",
+      "destination": "DeepSeek-V4.1-Flash-EXL3-2.9bpw/quantization_config.json",
+      "size": 54643851,
+      "git_blob_id": "50f62c981dfb94ef368ce10f40fe5647642be9af",
+      "lfs_sha256": "2949806ec66ff269a539caebe8afc55ba7d7c7220e011edc478fa67812a95ae1"
+    },
+    {
+      "repo": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "revision": "dba1be0a40aa45a94ad051997016db3960a90277",
+      "path": "model-00047-of-00048.safetensors",
+      "destination": "DeepSeek-V4.1-Flash/model-00047-of-00048.safetensors",
+      "size": 101535150936,
+      "git_blob_id": "3eb96ce647ea90e0874a2da414f30fda9bac0034",
+      "lfs_sha256": "824db4881320407ac340736d14dcee5ecd748c27d0f5836b8127ecc2e3781b0f"
+    },
+    {
+      "repo": "deepseek-ai/DeepSeek-V4.1-Flash",
+      "revision": "dba1be0a40aa45a94ad051997016db3960a90277",
+      "path": "model-00048-of-00048.safetensors",
+      "destination": "DeepSeek-V4.1-Flash/model-00048-of-00048.safetensors",
+      "size": 101537926640,
+      "git_blob_id": "29a0c0b4e03cb4e663e823f28608c79ef7cb0f81",
+      "lfs_sha256": "976330f4954338e1ad8b508c32aa912032c7ad908959fd53c8307650fe4520ed"
+    }
+  ],
+  "total_bytes": 413759848412
+}

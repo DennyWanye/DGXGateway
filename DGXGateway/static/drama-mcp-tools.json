@@ -1,0 +1,2772 @@
+{
+  "tools": [
+    {
+      "name": "drama_extract_entities",
+      "description": "申请结构化文本草稿；冻结本集输入，复用工作台校验，不批准、不拍摄。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "sourceRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 16,
+                "uniqueItems": true
+              },
+              "entityRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "uniqueItems": true
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "repairOf": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "episodeId",
+              "sourceRevisionIds",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_draft_beats",
+      "description": "申请结构化文本草稿；冻结本集输入，复用工作台校验，不批准、不拍摄。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "sourceRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 16,
+                "uniqueItems": true
+              },
+              "entityRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "uniqueItems": true
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "repairOf": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "episodeId",
+              "sourceRevisionIds",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_draft_script",
+      "description": "申请结构化文本草稿；冻结本集输入，复用工作台校验，不批准、不拍摄。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "sourceRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 16,
+                "uniqueItems": true
+              },
+              "entityRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "uniqueItems": true
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "repairOf": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "beatRevisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "episodeId",
+              "sourceRevisionIds",
+              "requestKey",
+              "beatRevisionId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_draft_storyboard",
+      "description": "申请结构化文本草稿；冻结本集输入，复用工作台校验，不批准、不拍摄。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "sourceRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 16,
+                "uniqueItems": true
+              },
+              "entityRevisionIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "uniqueItems": true
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "repairOf": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "scriptRevisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "episodeId",
+              "sourceRevisionIds",
+              "requestKey",
+              "scriptRevisionId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_propose_entity_revision",
+      "description": "保存实体新草稿，必须提供当前版本；可带完整 references 保留各视角，省略会清空草稿参考。复用工作台校验，不批准形象。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "entityId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string"
+              },
+              "referenceAssetId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "referenceRole": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "references": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "assetId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "role": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    }
+                  },
+                  "required": [
+                    "assetId",
+                    "role"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "entityId",
+              "expectedRevision",
+              "name",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_request_keyframe",
+      "description": "按固定镜头修订申请参考图；须通过工作台的引用与批准校验。新图省略 model，即 flux2-dev；改已有图或锁定身份只用 edit_image。不接受原始 workflow、脚本或 SSH。成功不是选用。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "shotRevisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "tool": {
+                "type": "string",
+                "enum": [
+                  "generate_image",
+                  "edit_image",
+                  "compose_image_layers"
+                ]
+              },
+              "parameters": {
+                "type": "object",
+                "description": "固定图片工具的参数；由服务端工具合同验证，不接受原始workflow或URL"
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "shotRevisionId",
+              "tool",
+              "parameters",
+              "requestKey"
+            ],
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "properties": {
+                  "tool": {
+                    "const": "compose_image_layers"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "background_asset_id": {
+                        "type": "string",
+                        "minLength": 64,
+                        "maxLength": 64
+                      },
+                      "layers": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 16,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 80
+                            },
+                            "asset_id": {
+                              "type": "string",
+                              "minLength": 64,
+                              "maxLength": 64
+                            },
+                            "x": {
+                              "type": "integer",
+                              "minimum": -4096,
+                              "maximum": 4096
+                            },
+                            "y": {
+                              "type": "integer",
+                              "minimum": -4096,
+                              "maximum": 4096
+                            },
+                            "width": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 4096
+                            },
+                            "height": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 4096
+                            },
+                            "opacity": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 100
+                            },
+                            "flip_x": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "asset_id",
+                            "x",
+                            "y",
+                            "width",
+                            "height",
+                            "opacity"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "background_asset_id",
+                      "layers"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "tool": {
+                    "const": "edit_image"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "model": {
+                        "type": "string",
+                        "enum": [
+                          "qwen-image-edit-2511",
+                          "llada-image-turbo",
+                          "flux2-dev"
+                        ]
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 8000
+                      },
+                      "asset_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 8
+                      },
+                      "seed": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 18446744073709551615
+                      },
+                      "steps": {
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 40
+                      },
+                      "encoder": {
+                        "type": "string",
+                        "enum": [
+                          "standard",
+                          "huihui-abliterated-bf16"
+                        ]
+                      },
+                      "model_precision": {
+                        "type": "string",
+                        "enum": [
+                          "fp8",
+                          "bf16"
+                        ]
+                      },
+                      "batch_count": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "parallelism": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "candidate_indices": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    },
+                    "required": [
+                      "prompt",
+                      "asset_ids"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "tool": {
+                    "const": "generate_image"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "model": {
+                        "type": "string",
+                        "enum": [
+                          "z-image-turbo",
+                          "flux2-dev",
+                          "flux2-dev-abliterated",
+                          "llada-image-turbo"
+                        ]
+                      },
+                      "preview": {
+                        "type": "boolean",
+                        "description": "Required true only for z-image-turbo, and only after the user explicitly asked for a quick look. Those outputs are not keepers."
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 8000
+                      },
+                      "asset_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 8
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "seed": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 18446744073709551615
+                      },
+                      "batch_count": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "parallelism": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "candidate_indices": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    },
+                    "required": [
+                      "prompt"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_request_entity_image",
+      "description": "按固定实体修订申请参考图；可指定正面、侧面或全身槽位。编辑已批准视角时必须包含该槽位原图；该视角未批准则仍须包含已批准主图。新图省略 model，即 flux2-dev；改已有图或锁定身份只用 edit_image。不批准、不选用。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "entityRevisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "tool": {
+                "type": "string",
+                "enum": [
+                  "generate_image",
+                  "edit_image",
+                  "compose_image_layers"
+                ]
+              },
+              "parameters": {
+                "type": "object",
+                "description": "固定图片工具的参数；由服务端工具合同验证，不接受原始workflow或URL"
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "referenceRole": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            },
+            "required": [
+              "entityRevisionId",
+              "tool",
+              "parameters",
+              "requestKey"
+            ],
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "properties": {
+                  "tool": {
+                    "const": "compose_image_layers"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "background_asset_id": {
+                        "type": "string",
+                        "minLength": 64,
+                        "maxLength": 64
+                      },
+                      "layers": {
+                        "type": "array",
+                        "minItems": 1,
+                        "maxItems": 16,
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 80
+                            },
+                            "asset_id": {
+                              "type": "string",
+                              "minLength": 64,
+                              "maxLength": 64
+                            },
+                            "x": {
+                              "type": "integer",
+                              "minimum": -4096,
+                              "maximum": 4096
+                            },
+                            "y": {
+                              "type": "integer",
+                              "minimum": -4096,
+                              "maximum": 4096
+                            },
+                            "width": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 4096
+                            },
+                            "height": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 4096
+                            },
+                            "opacity": {
+                              "type": "integer",
+                              "minimum": 1,
+                              "maximum": 100
+                            },
+                            "flip_x": {
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "asset_id",
+                            "x",
+                            "y",
+                            "width",
+                            "height",
+                            "opacity"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "background_asset_id",
+                      "layers"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "tool": {
+                    "const": "edit_image"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "model": {
+                        "type": "string",
+                        "enum": [
+                          "qwen-image-edit-2511",
+                          "llada-image-turbo",
+                          "flux2-dev"
+                        ]
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 8000
+                      },
+                      "asset_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 8
+                      },
+                      "seed": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 18446744073709551615
+                      },
+                      "steps": {
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 40
+                      },
+                      "encoder": {
+                        "type": "string",
+                        "enum": [
+                          "standard",
+                          "huihui-abliterated-bf16"
+                        ]
+                      },
+                      "model_precision": {
+                        "type": "string",
+                        "enum": [
+                          "fp8",
+                          "bf16"
+                        ]
+                      },
+                      "batch_count": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "parallelism": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "candidate_indices": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    },
+                    "required": [
+                      "prompt",
+                      "asset_ids"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "tool": {
+                    "const": "generate_image"
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "model": {
+                        "type": "string",
+                        "enum": [
+                          "z-image-turbo",
+                          "flux2-dev",
+                          "flux2-dev-abliterated",
+                          "llada-image-turbo"
+                        ]
+                      },
+                      "preview": {
+                        "type": "boolean",
+                        "description": "Required true only for z-image-turbo, and only after the user explicitly asked for a quick look. Those outputs are not keepers."
+                      },
+                      "prompt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 8000
+                      },
+                      "asset_ids": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1,
+                        "maxItems": 8
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 256,
+                        "maximum": 1536
+                      },
+                      "seed": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 18446744073709551615
+                      },
+                      "batch_count": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "parallelism": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "candidate_indices": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "integer",
+                          "minimum": 0
+                        }
+                      }
+                    },
+                    "required": [
+                      "prompt"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_request_video_take",
+      "description": "按已批准参考和固定镜头修订申请视频；复用项目暂停、预算和版本校验。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "shots": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 32,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "candidateCount": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 4
+                    },
+                    "promptJobId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "shotId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "shotRevisionId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "audioAssetId": {
+                      "type": "string",
+                      "pattern": "^([a-f0-9]{64})?$",
+                      "description": "可选的4秒H3参考WAV"
+                    },
+                    "actionImageAssetId": {
+                      "type": "string",
+                      "pattern": "^([a-f0-9]{64})?$"
+                    },
+                    "videoAssetId": {
+                      "type": "string",
+                      "pattern": "^([a-f0-9]{64})?$"
+                    },
+                    "audioDescription": {
+                      "type": "string",
+                      "maxLength": 2000
+                    },
+                    "seed": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 2147483647
+                    },
+                    "prompt": {
+                      "type": "string",
+                      "maxLength": 16384
+                    },
+                    "generation": {
+                      "type": "object",
+                      "description": "H3 Ring4内部路由与4–15秒时长合同"
+                    }
+                  },
+                  "required": [
+                    "shotId",
+                    "shotRevisionId",
+                    "seed"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "episodeId",
+              "shots",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_get_job",
+      "description": "只读本项目已有文本、图片、视频或导出任务；不重试。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "jobId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "kind": {
+                "enum": [
+                  "text",
+                  "image",
+                  "video",
+                  "export"
+                ]
+              }
+            },
+            "required": [
+              "jobId",
+              "kind"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_record_review_suggestion",
+      "description": "记录审片建议，不改变人工批准、拒绝或采用状态。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "takeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "suggestion": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "takeId",
+              "suggestion",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_build_rough_timeline",
+      "description": "从本集已采用且审片批准的候选形成粗剪草稿；不保存正式时间线或导出。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "episodeId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_save_timeline",
+      "description": "保存本集时间线修订；不导出、不改选片。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "clips": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 64,
+                "items": {
+                  "type": "object"
+                }
+              },
+              "audioClips": {
+                "type": "array",
+                "maxItems": 32,
+                "items": {
+                  "type": "object"
+                }
+              }
+            },
+            "required": [
+              "episodeId",
+              "clips",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_create_export",
+      "description": "按已保存时间线创建导出任务；不自动批准。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "timelineId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "outputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "subtitleRevisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "presetVersion": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "timelineId",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_import_audio",
+      "description": "将本机已校验音频路径或已有音频资产哈希收入当前项目；不调用音乐模型。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "assetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "filename": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_import_video",
+      "description": "将本机 2–15 秒 MP4 路径或已有视频资产哈希收入当前项目，供动作参考；不批准、不生成。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "assetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "filename": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_import_image",
+      "description": "将仓库、状态目录或项目素材目录里的 PNG/JPEG/WebP，或已有图片资产哈希，收入当前项目。不批准、不生成。/tmp 不在允许路径内。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "assetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "filename": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 255
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_create_entity",
+      "description": "在当前项目新建人物、场景、服装或道具草稿，可附带已绑定参考图。不批准形象。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "character",
+                  "location",
+                  "costume",
+                  "prop"
+                ]
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 8000
+              },
+              "referenceAssetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "referenceRole": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "references": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "assetId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    },
+                    "role": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 64
+                    }
+                  },
+                  "required": [
+                    "assetId",
+                    "role"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "kind",
+              "name",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_bind_song",
+      "description": "将已绑定音频设为本集歌曲；不保存时间线。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "songAssetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "episodeId",
+              "songAssetId",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_create_shot",
+      "description": "在指定分集新建空白镜头；不填写内容、不批准、不生成。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              "assetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "episodeId",
+              "title",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_revise_shot",
+      "description": "保存镜头内容草稿修订；不批准参考、不提交生成。动作或提示词修改改当前最完善的镜头，不为同一次修改再建镜头。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "shotId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "baseRevisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "snapshot": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 160
+                  },
+                  "action": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "framing": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "camera": {
+                    "type": "string",
+                    "maxLength": 120
+                  },
+                  "prompt": {
+                    "type": "string",
+                    "maxLength": 16384
+                  },
+                  "referenceNodes": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "media": {
+                          "enum": [
+                            "image",
+                            "video",
+                            "audio"
+                          ]
+                        },
+                        "assetId": {
+                          "type": "string",
+                          "pattern": "^([a-f0-9]{64})?$"
+                        },
+                        "role": {
+                          "enum": [
+                            "character",
+                            "costume",
+                            "scene",
+                            "action",
+                            "first",
+                            "last",
+                            "custom"
+                          ]
+                        },
+                        "customRoleId": {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "media",
+                        "assetId",
+                        "role",
+                        "description"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "customReferenceRoles": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "label": {
+                          "type": "string"
+                        },
+                        "token": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "label",
+                        "token"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "characterRevisionIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "maxItems": 16,
+                    "uniqueItems": true
+                  },
+                  "locationRevisionId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{32}$"
+                  },
+                  "costumeRevisionIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "maxItems": 16,
+                    "uniqueItems": true
+                  },
+                  "propRevisionIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "maxItems": 16,
+                    "uniqueItems": true
+                  },
+                  "approvedReferenceAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "actionReferenceAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "actionReferencePrompt": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "sceneReferenceAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "sceneReferencePrompt": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "blockingReferenceAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "blockingReferencePrompt": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "keyframeGridAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "keyframeGridPrompt": {
+                    "type": "string",
+                    "maxLength": 4000
+                  },
+                  "videoReferenceAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "audioReferenceAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "firstFrameAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "lastFrameAssetId": {
+                    "type": [
+                      "string",
+                      "null"
+                    ],
+                    "pattern": "^[a-f0-9]{64}$"
+                  },
+                  "audioDescription": {
+                    "type": "string",
+                    "maxLength": 2000
+                  },
+                  "referenceRole": {
+                    "type": "string",
+                    "enum": [
+                      "reference_image",
+                      "first_frame"
+                    ]
+                  },
+                  "targetEditFrames": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 86400
+                  },
+                  "generation": {
+                    "type": "object",
+                    "properties": {
+                      "contractVersion": {
+                        "type": "string"
+                      },
+                      "profile": {
+                        "type": "string"
+                      },
+                      "requestDurationSeconds": {
+                        "type": "integer",
+                        "minimum": 4,
+                        "maximum": 15
+                      }
+                    },
+                    "required": [
+                      "contractVersion",
+                      "profile",
+                      "requestDurationSeconds"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "title"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "shotId",
+              "expectedRevision",
+              "baseRevisionId",
+              "snapshot",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_delete_shot",
+      "description": "删除指定镜头，并在项目审计里留下标题、提示词和生成次数。不批准、不选用、不写时间线、不停止模型。未结束或提交回执不明的生成会拒绝删除。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "shotId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "shotId",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_list_shot_audit",
+      "description": "只读本项目已记录的生成提示词、参考资源和镜头删除记录。不改镜头、不生成。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_merge_project",
+      "description": "将来源项目全部分集、资料及历史归并到当前项目；须显式列出全部分集并核对两项目版本、画幅和暂停状态。保留原对象与生成任务编号，来源空项目保留。不生成、不取消、不批准。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "sourceProjectId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "sourceExpectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "episodeIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 2000,
+                "uniqueItems": true
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "sourceProjectId",
+              "sourceExpectedRevision",
+              "expectedRevision",
+              "episodeIds",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "drama_list_projects",
+      "description": "列出项目以取得 projectId；只读。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_get_project",
+      "description": "读取项目、分集和素材清单；只读。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_get_episode",
+      "description": "读取分集镜头、候选和已保存时间线；只读。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "episodeId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_list_entities",
+      "description": "读取项目人物、场景、服装和道具及各版本；只读。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {},
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_get_shot",
+      "description": "读取镜头当前修订、参考画面和失效项；只读。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "shotId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "shotId"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_image_review_queue",
+      "description": "读取项目或分集的抽卡候选、审核和选用状态；不代替用户选择。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "episodeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "scope": {
+                "type": "string",
+                "enum": [
+                  "episode",
+                  "project"
+                ]
+              }
+            },
+            "required": [
+              "scope"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_select_images",
+      "description": "批量选用用户指定的图片，每项独立版本和请求键；返回逐项成功/失败，不隐式批准实体或生成视频。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "selections": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 64,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "expectedRevision": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "requestKey": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 128
+                    },
+                    "candidateId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "acceptStaleCandidate": {
+                      "type": "boolean"
+                    },
+                    "targetType": {
+                      "type": "string",
+                      "enum": [
+                        "entity",
+                        "shot"
+                      ]
+                    },
+                    "targetId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}$"
+                    },
+                    "assetId": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{64}$"
+                    }
+                  },
+                  "required": [
+                    "targetType",
+                    "targetId",
+                    "assetId",
+                    "candidateId",
+                    "expectedRevision",
+                    "requestKey"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "selections"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_review_images",
+      "description": "按用户决定批量通过或拒绝图片质量；意见选填，不改变选用图片。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "candidateIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 2000,
+                "uniqueItems": true
+              },
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "approved",
+                  "rejected"
+                ]
+              },
+              "notes": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "candidateIds",
+              "decision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_select_entity_image",
+      "description": "按用户选择替换实体候选来源槽位，保留其他参考；保存草稿，不批准实体。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "candidateId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "acceptStaleCandidate": {
+                "type": "boolean"
+              },
+              "entityId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "referenceAssetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "entityId",
+              "candidateId",
+              "referenceAssetId",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_approve_entity",
+      "description": "按用户确认批准指定实体修订；可能使关联镜头需要重新复核。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "entityId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "revisionId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              }
+            },
+            "required": [
+              "entityId",
+              "revisionId",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_select_shot_image",
+      "description": "按用户选择批准本镜头画面；已绑定图片可省略 candidateId。不提交视频、不改时间线。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "candidateId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "acceptStaleCandidate": {
+                "type": "boolean"
+              },
+              "shotId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "assetId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            },
+            "required": [
+              "shotId",
+              "assetId",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_review_take",
+      "description": "按用户决定通过或拒绝视频质量，意见选填；不改选片或时间线。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "takeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "decision": {
+                "type": "string",
+                "enum": [
+                  "approved",
+                  "rejected"
+                ]
+              },
+              "notes": {
+                "type": "string",
+                "maxLength": 2000
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "takeId",
+              "decision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_select_take",
+      "description": "按用户选择采用已通过的视频候选；不保存时间线或导出。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "shotId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "takeId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "acceptStale": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "shotId",
+              "takeId",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_review_shot",
+      "description": "按用户决定复核当前镜头的指定失效记录，意见选填；不生成。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "expectedRevision": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              },
+              "shotId": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{32}$"
+              },
+              "invalidationIds": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{32}$"
+                },
+                "minItems": 1,
+                "maxItems": 64,
+                "uniqueItems": true
+              },
+              "reason": {
+                "type": "string",
+                "maxLength": 2000
+              }
+            },
+            "required": [
+              "shotId",
+              "invalidationIds",
+              "expectedRevision",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_create_project",
+      "description": "新建项目并返回 projectId；只建立空白项目，不生成内容。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "width": {
+                "type": "integer",
+                "minimum": 64,
+                "maximum": 3840
+              },
+              "height": {
+                "type": "integer",
+                "minimum": 64,
+                "maximum": 3840
+              },
+              "fps": {
+                "type": "integer",
+                "enum": [
+                  24
+                ]
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "drama",
+                  "mv"
+                ]
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "title",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    },
+    {
+      "name": "drama_create_episode",
+      "description": "在指定项目下新建分集并返回 episodeId；不生成内容。",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$"
+          },
+          "arguments": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "requestKey": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 128
+              }
+            },
+            "required": [
+              "title",
+              "requestKey"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "projectId",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "readOnlyHint": false,
+        "openWorldHint": false
+      }
+    }
+  ]
+}

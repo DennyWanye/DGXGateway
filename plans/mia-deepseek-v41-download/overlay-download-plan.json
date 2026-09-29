@@ -1,0 +1,23 @@
+{
+  "files": [
+    {
+      "repo": "drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed",
+      "revision": "87bb9850e6f49fd20ad9c8516b7817215cbbf5fc",
+      "path": "apply_mia_exl3_wob.py",
+      "destination": "DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed/apply_mia_exl3_wob.py",
+      "size": 3837,
+      "git_blob_id": "f078f8bbfaaee2a867587f692072272c0893c96e",
+      "lfs_sha256": null
+    },
+    {
+      "repo": "drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed",
+      "revision": "87bb9850e6f49fd20ad9c8516b7817215cbbf5fc",
+      "path": "mia_exl3_wo_b_l10_35.safetensors",
+      "destination": "DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed/mia_exl3_wo_b_l10_35.safetensors",
+      "size": 682275992,
+      "git_blob_id": "08934be87188d8cffa2cc52c2b883c35d72b22be",
+      "lfs_sha256": "6060f52b54733f0e819b75c826bf40cf0f698f35736f4d5375511b8709c7efd1"
+    }
+  ],
+  "total_bytes": 682279829
+}

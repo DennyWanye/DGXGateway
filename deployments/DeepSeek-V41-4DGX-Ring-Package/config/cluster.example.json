@@ -1,0 +1,72 @@
+{
+  "root": "/srv/dsv41-ring",
+  "model_dir": "/srv/dsv41-ring/models/DeepSeek-V4.1-Flash",
+  "image": "local/dsv41-ring:20260917",
+  "api_key_file": "/srv/dsv41-ring/secrets/api.env",
+  "api_bind": "127.0.0.1",
+  "api_port": 8891,
+  "master_port": 29541,
+  "test_port": 29561,
+  "nodes": [
+    {
+      "rank": 0,
+      "label": "node0",
+      "management_ip": "FILL_NODE_0_MANAGEMENT_IP",
+      "management_iface": "FILL_MGMT",
+      "prev_iface": "FILL_PREV",
+      "prev_cidr": "192.0.2.14/30",
+      "next_iface": "FILL_NEXT",
+      "next_cidr": "192.0.2.1/30",
+      "unused_rdma_ifaces": [
+        "FILL_UNUSED1",
+        "FILL_UNUSED2"
+      ],
+      "mesh_gid_index": 3
+    },
+    {
+      "rank": 1,
+      "label": "node1",
+      "management_ip": "FILL_NODE_1_MANAGEMENT_IP",
+      "management_iface": "FILL_MGMT",
+      "prev_iface": "FILL_PREV",
+      "prev_cidr": "192.0.2.2/30",
+      "next_iface": "FILL_NEXT",
+      "next_cidr": "192.0.2.5/30",
+      "unused_rdma_ifaces": [
+        "FILL_UNUSED1",
+        "FILL_UNUSED2"
+      ],
+      "mesh_gid_index": 3
+    },
+    {
+      "rank": 2,
+      "label": "node2",
+      "management_ip": "FILL_NODE_2_MANAGEMENT_IP",
+      "management_iface": "FILL_MGMT",
+      "prev_iface": "FILL_PREV",
+      "prev_cidr": "192.0.2.6/30",
+      "next_iface": "FILL_NEXT",
+      "next_cidr": "192.0.2.9/30",
+      "unused_rdma_ifaces": [
+        "FILL_UNUSED1",
+        "FILL_UNUSED2"
+      ],
+      "mesh_gid_index": 3
+    },
+    {
+      "rank": 3,
+      "label": "node3",
+      "management_ip": "FILL_NODE_3_MANAGEMENT_IP",
+      "management_iface": "FILL_MGMT",
+      "prev_iface": "FILL_PREV",
+      "prev_cidr": "192.0.2.10/30",
+      "next_iface": "FILL_NEXT",
+      "next_cidr": "192.0.2.13/30",
+      "unused_rdma_ifaces": [
+        "FILL_UNUSED1",
+        "FILL_UNUSED2"
+      ],
+      "mesh_gid_index": 3
+    }
+  ]
+}

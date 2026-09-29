@@ -1,0 +1,18 @@
+{
+  "source_commit": "e970453b433e1467e22f6d925f270563417540b5",
+  "contract": "ref2va-optional-inputs-v1",
+  "files": {
+    "request_validation.py": {
+      "original_sha256": "13f9b9e4edcdd0aa933c0c80b5f5d8d2c74fadc9928cacc3a06942e3fdc88b7f",
+      "sha256": "4f2cb91fbdcf791b41c03d41110e88e33fb564c41b45cc81742282e38ef2181b"
+    },
+    "presentation.py": {
+      "original_sha256": "e68512d92183b55d5b4c1cdaf4da6b5e5225bdbafef88ee55da54cc1631e3969",
+      "sha256": "132698d0bc65f2c2b17476fb86c7b5a05d183253c2905bb05d09b96668cc425d"
+    },
+    "stages/denoising.py": {
+      "original_sha256": "5a2deefa1255ffacd70646daeb65a84479c922027bb04fa679d22473466941da",
+      "sha256": "bc3d78f50093f2d2a3fe234a9c29a9835af85bea67d5a4e7bb4b086beccb3ff2"
+    }
+  }
+}

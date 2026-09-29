@@ -1,0 +1,695 @@
+#!/usr/bin/env python3
+"""Fail-closed lifecycle owner for the two-node MiniMax H3 service."""
+
+from __future__ import annotations
+
+import argparse
+import fcntl
+import hashlib
+import json
+import os
+import subprocess
+import sys
+import tempfile
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Mapping
+
+
+DEFAULT_STATE_PATH = Path("/run/minimax-h3-two-node/state.json")
+DEFAULT_LOCK_PATH = Path("/run/minimax-h3-two-node/control.lock")
+DEFAULT_BUDGET_PATH = Path("/etc/minimax-h3/coexistence-budget.json")
+DEFAULT_BINDINGS_PATH = Path("/etc/minimax-h3/runtime-bindings.json")
+DEFAULT_PROFILES_PATH = Path("/etc/minimax-h3/profiles-v1.json")
+
+START_ACTIONS = (
+    ("PREFLIGHT", "preflight"),
+    ("RAY_HEAD", "start-ray-head"),
+    ("RAY_WORKER", "start-ray-worker"),
+    ("RAY_WORKER", "wait-worker-stable"),
+    ("RANK1_RUNNING", "start-rank1"),
+    ("RANK1_RUNNING", "wait-rank1-stable"),
+    ("RANK0_STARTING", "start-rank0"),
+    ("RANKS_READY", "wait-ranks-ready"),
+    ("API_READY", "start-api"),
+    ("API_READY", "start-gateway"),
+    ("READY", "wait-ready"),
+)
+
+LOCAL_CLEANUP_ACTIONS = (
+    "drain-requests",
+    "stop-gateway",
+    "stop-api",
+    "stop-rank0",
+    "stop-ray-head",
+)
+
+
+class LifecycleFailure(RuntimeError):
+    pass
+
+
+class AdmissionDenied(LifecycleFailure):
+    pass
+
+
+def _parse_timestamp(value: Any, field: str) -> datetime:
+    if not isinstance(value, str):
+        raise AdmissionDenied(f"concurrent budget {field} is missing")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise AdmissionDenied(f"concurrent budget {field} is invalid") from exc
+    if parsed.tzinfo is None:
+        raise AdmissionDenied(f"concurrent budget {field} must include a timezone")
+    return parsed.astimezone(timezone.utc)
+
+
+class ConcurrentBudget:
+    """Validate a calibrated, identity-bound coexistence budget."""
+
+    REQUIRED_BINDINGS = {
+        "head_hostname",
+        "worker_hostname",
+        "kernel",
+        "driver",
+        "llm_model",
+        "runtime",
+        "model",
+        "profile",
+        "request_policy",
+    }
+
+    def __init__(self, document: Mapping[str, Any] | None):
+        self.document = dict(document) if document is not None else None
+
+    def admit(
+        self,
+        expected_bindings: Mapping[str, str],
+        current_memory: Mapping[str, int] | None,
+    ) -> None:
+        document = self.document
+        if not document:
+            raise AdmissionDenied("concurrent budget is missing")
+        if document.get("schema_version") != 1 or document.get("status") != "calibrated":
+            raise AdmissionDenied("concurrent budget is not calibrated")
+        if document.get("combined_smoke_passed") is not True:
+            raise AdmissionDenied("concurrent combined smoke is not proven")
+
+        now = datetime.now(timezone.utc)
+        created = _parse_timestamp(document.get("created_at"), "created_at")
+        expires = _parse_timestamp(document.get("expires_at"), "expires_at")
+        if created > now or expires <= now or expires <= created:
+            raise AdmissionDenied("concurrent budget is expired or has an invalid validity window")
+
+        actual_bindings = document.get("bindings")
+        if not isinstance(actual_bindings, dict):
+            raise AdmissionDenied("concurrent budget bindings are missing")
+        if set(actual_bindings) != self.REQUIRED_BINDINGS:
+            raise AdmissionDenied("concurrent budget bindings are incomplete or contain unknown keys")
+        if set(expected_bindings) != self.REQUIRED_BINDINGS or actual_bindings != dict(expected_bindings):
+            raise AdmissionDenied("concurrent budget does not match the active deployment")
+
+        safety = document.get("safety")
+        if not isinstance(safety, dict):
+            raise AdmissionDenied("concurrent safety evidence is missing")
+        if (
+            safety.get("oom_events_delta") != 0
+            or safety.get("swap_pressure_ok") is not True
+            or safety.get("cpu_fallback") is not False
+            or safety.get("psi_ok") is not True
+        ):
+            raise AdmissionDenied("concurrent safety evidence is unsafe")
+
+        nodes = document.get("nodes")
+        expected_nodes = {actual_bindings["head_hostname"], actual_bindings["worker_hostname"]}
+        if not isinstance(nodes, dict) or set(nodes) != expected_nodes:
+            raise AdmissionDenied("concurrent node budget does not match both target hosts")
+        if not isinstance(current_memory, Mapping) or set(current_memory) != expected_nodes:
+            raise AdmissionDenied("live concurrent memory measurement is missing or incomplete")
+        for hostname, values in nodes.items():
+            if not isinstance(values, dict):
+                raise AdmissionDenied(f"invalid node budget for {hostname}")
+            numeric_fields = (
+                "a_idle_bytes",
+                "d_h3_bytes",
+                "reserve_bytes",
+                "d_llm_bytes",
+            )
+            if any(not isinstance(values.get(field), int) or values[field] < 0 for field in numeric_fields):
+                raise AdmissionDenied(f"invalid memory values for {hostname}")
+            required = values["d_h3_bytes"] + values["reserve_bytes"]
+            if values.get("llm_resident") is not True:
+                required += values["d_llm_bytes"]
+            live_available = current_memory.get(hostname)
+            if not isinstance(live_available, int) or live_available < 0:
+                raise AdmissionDenied(f"invalid live memory measurement for {hostname}")
+            if values["a_idle_bytes"] < required:
+                raise AdmissionDenied(f"calibrated memory budget is infeasible on {hostname}")
+            if live_available < required:
+                raise AdmissionDenied(f"insufficient concurrent memory on {hostname}")
+
+
+def _atomic_json_write(path: Path, document: Mapping[str, Any], *, mode: int = 0o600) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(document, sort_keys=True, separators=(",", ":")) + "\n"
+    fd, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent, text=True)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            handle.write(payload)
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.chmod(temporary, mode)
+        os.replace(temporary, path)
+    finally:
+        try:
+            os.unlink(temporary)
+        except FileNotFoundError:
+            pass
+
+
+class LifecycleController:
+    """State machine. The CLI's flock makes this the only lifecycle owner."""
+
+    def __init__(
+        self,
+        *,
+        driver: Any,
+        state_path: Path = DEFAULT_STATE_PATH,
+        mode: str = "exclusive",
+        budget: ConcurrentBudget | None = None,
+        expected_bindings: Mapping[str, str] | None = None,
+        profile_contract: Mapping[str, Any] | None = None,
+    ):
+        if mode not in {"exclusive", "concurrent"}:
+            raise LifecycleFailure("H3_LLM_COEXISTENCE_MODE must be exclusive or concurrent")
+        self.driver = driver
+        self.state_path = Path(state_path)
+        self.mode = mode
+        self.budget = budget or ConcurrentBudget(None)
+        self.expected_bindings = dict(expected_bindings or {})
+        self.profile_contract = dict(profile_contract or {})
+
+    def _read_state(self) -> dict[str, Any]:
+        try:
+            document = json.loads(self.state_path.read_text(encoding="utf-8"))
+        except FileNotFoundError:
+            return {"state": "STOPPED"}
+        except (OSError, json.JSONDecodeError) as exc:
+            raise LifecycleFailure("control state is unreadable") from exc
+        if not isinstance(document, dict) or not isinstance(document.get("state"), str):
+            raise LifecycleFailure("control state is invalid")
+        return document
+
+    def _write_state(self, state: str, *, reason: str | None = None) -> None:
+        current = self._read_state()
+        history = current.get("history", [])
+        if not isinstance(history, list):
+            history = []
+        entry = {
+            "state": state,
+            "at": datetime.now(timezone.utc).isoformat(),
+        }
+        if reason:
+            entry["reason"] = reason
+        history = (history + [entry])[-100:]
+        ready = state == "READY"
+        document = {
+            "schema_version": 1,
+            "state": state,
+            "mode": self.mode,
+            "exact_two": ready,
+            "ranks_ready": ready,
+            "runtime_ready": ready,
+            "worker_reachable": ready,
+            "history": history,
+        }
+        if self.profile_contract:
+            identity = {
+                "schema_version": 1,
+                "name": self.profile_contract["name"],
+                "task_family": self.profile_contract["task_type"],
+                "supported_tasks": self.profile_contract.get("supported_tasks", [self.profile_contract["task_type"]]),
+                "text_encoder": self.profile_contract.get("text_encoder", {"kind": "legacy"}),
+                "transformer": self.profile_contract.get("transformer", {"kind": "legacy"}),
+                "modifier": self.profile_contract.get("modifier", {"kind": "none"}),
+                "curve": self.profile_contract.get("curve", {"kind": "none"}),
+                "model_tree_sha256": self.profile_contract["profile_tree_sha256"],
+                "runtime_image_id": self.profile_contract["expected_image_id"],
+                "runtime_overlay_sha256": self.profile_contract.get("runtime_overlay_sha256", "0" * 64),
+                "rank_identities": [0, 1] if ready else [],
+            }
+            identity_canonical = json.dumps(identity, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+            identity["contract_sha256"] = hashlib.sha256(identity_canonical).hexdigest()
+            document.update({
+                "profile": self.profile_contract["name"],
+                "task_type": self.profile_contract["task_type"],
+                "runtime_image_id": self.profile_contract["expected_image_id"],
+                "model_root_sha256": self.profile_contract["profile_tree_sha256"],
+                "profile_contract_sha256": self.profile_contract["contract_sha256"],
+                "rank_identities": [
+                    {"rank": 0, "hostname": "dgx-head"},
+                    {"rank": 1, "hostname": "dgx-worker"},
+                ] if ready else [],
+                "profile_identity": identity,
+            })
+        if reason:
+            document["reason"] = reason
+        # This file contains no secret and must be readable by the isolated
+        # DynamicUser gateway. Credentials and deployment bindings live in
+        # separate mode-0600 files.
+        _atomic_json_write(self.state_path, document, mode=0o644)
+
+    def start(
+        self,
+        *,
+        llm_already_quiesced: bool = False,
+        preserve_llm_quiesce_on_failure: bool = False,
+    ) -> str:
+        current = self._read_state()["state"]
+        if current == "READY":
+            return "READY"
+        if current not in {"STOPPED", "FAILED"}:
+            raise LifecycleFailure(f"refusing start from non-terminal state {current}")
+        if current == "FAILED":
+            raise LifecycleFailure("run stop to clean a failed lifecycle before starting again")
+
+        try:
+            self._write_state("PREFLIGHT")
+            self.driver.run("preflight")
+            if self.mode == "exclusive":
+                if llm_already_quiesced:
+                    self.driver.run("assert-llm-quiesced")
+                else:
+                    self._write_state("QUIESCING")
+                    self.driver.run("quiesce-llm")
+            else:
+                self._write_state("ADMITTING")
+                current_memory = self.driver.run("measure-concurrent")
+                self.budget.admit(self.expected_bindings, current_memory)
+                self.driver.run("admit-concurrent")
+
+            for state, action in START_ACTIONS[1:]:
+                self._write_state(state)
+                self.driver.run(action)
+            self._write_state("READY")
+            return "READY"
+        except Exception as exc:
+            cleanup_errors = self._cleanup_after_failure(
+                str(exc), preserve_llm_quiesce=preserve_llm_quiesce_on_failure
+            )
+            detail = str(exc)
+            if cleanup_errors:
+                detail += "; cleanup errors: " + "; ".join(cleanup_errors)
+            raise LifecycleFailure(detail) from exc
+
+    def _cleanup_after_failure(
+        self, reason: str, *, preserve_llm_quiesce: bool = False
+    ) -> list[str]:
+        errors: list[str] = []
+        self._write_state("DRAINING", reason=reason)
+        self._write_state("CLEANING_LOCAL", reason=reason)
+        for action in LOCAL_CLEANUP_ACTIONS:
+            try:
+                self.driver.run(action)
+            except Exception as exc:
+                errors.append(f"{action}: {exc}")
+        if not preserve_llm_quiesce:
+            self._write_state("RESTORING_LLM", reason=reason)
+            try:
+                self.driver.run("restore-llm")
+            except Exception as exc:
+                errors.append(f"restore-llm: {exc}")
+        self._write_state("CLEANING_WORKER", reason=reason)
+        try:
+            self.driver.run("cleanup-worker")
+        except Exception as exc:
+            errors.append(f"cleanup-worker: {exc}")
+        self._write_state("FAILED", reason=reason)
+        return errors
+
+    def stop(self, *, preserve_llm_quiesce: bool = False) -> str:
+        current = self._read_state()["state"]
+        if current == "STOPPED":
+            return "STOPPED"
+        errors: list[str] = []
+        self._write_state("DRAINING")
+        self._write_state("CLEANING_LOCAL")
+        for action in LOCAL_CLEANUP_ACTIONS:
+            try:
+                self.driver.run(action)
+            except Exception as exc:
+                errors.append(f"{action}: {exc}")
+        if not preserve_llm_quiesce:
+            self._write_state("RESTORING_LLM")
+            try:
+                self.driver.run("restore-llm")
+            except Exception as exc:
+                errors.append(f"restore-llm: {exc}")
+        self._write_state("CLEANING_WORKER")
+        try:
+            self.driver.run("cleanup-worker")
+        except Exception as exc:
+            errors.append(f"cleanup-worker: {exc}")
+        if errors:
+            self._write_state("FAILED", reason="; ".join(errors))
+            raise LifecycleFailure("; ".join(errors))
+        self._write_state("STOPPED")
+        return "STOPPED"
+
+    def switch(self) -> str:
+        current = self._read_state()["state"]
+        if current == "READY":
+            self.stop(preserve_llm_quiesce=True)
+        else:
+            self.stop()
+            self.driver.run("assert-llm-quiesced")
+        return self.start(llm_already_quiesced=True)
+
+    def switch_to(self, target: "LifecycleController") -> str:
+        """Retire this source-bound controller and start a target-bound one.
+
+        Both controllers share the same state file but never share a driver;
+        cleanup actions therefore always execute against the profile that owns
+        the resources being retired.
+        """
+        source_state = self._read_state()
+        if (
+            source_state.get("state") == "READY"
+            and self.profile_contract.get("name") == target.profile_contract.get("name")
+        ):
+            status = self.status()
+            if not status.get("healthy"):
+                raise LifecycleFailure("same-profile readiness verification failed")
+            return "READY"
+        try:
+            self.stop(preserve_llm_quiesce=True)
+            return target.start(llm_already_quiesced=True)
+        except Exception as target_error:
+            try:
+                self.stop(preserve_llm_quiesce=True)
+                self.start(llm_already_quiesced=True)
+            except Exception as rollback_error:
+                reason = f"target failed: {target_error}; rollback failed: {rollback_error}"
+                try:
+                    self.driver.run("assert-h3-stopped")
+                    self.driver.run("assert-worker-stopped")
+                    self.driver.run("assert-llm-quiesced")
+                except Exception as verification_error:
+                    self._write_state(
+                        "FAILED_UNSAFE_UNKNOWN",
+                        reason=f"{reason}; stop verification failed: {verification_error}",
+                    )
+                    raise LifecycleFailure(
+                        f"target and rollback failed; cluster stop state is unknown: "
+                        f"{target_error}; {rollback_error}; {verification_error}"
+                    ) from target_error
+                self._write_state("FAILED_SAFE_STOPPED", reason=reason)
+                raise LifecycleFailure(
+                    f"target failed and rollback failed safely: {target_error}; {rollback_error}"
+                ) from target_error
+            raise LifecycleFailure(f"target failed; source profile restored: {target_error}") from target_error
+
+    def status(self) -> dict[str, Any]:
+        document = self._read_state()
+        if document["state"] != "READY":
+            return {**document, "healthy": False, "reason": "not_ready"}
+        try:
+            worker_reachable = self.driver.run("check-worker") is True
+        except Exception:
+            worker_reachable = False
+        if not worker_reachable:
+            return {**document, "healthy": False, "worker_reachable": False, "reason": "worker_unreachable"}
+        try:
+            runtime_healthy = self.driver.run("check-runtime") is True
+        except Exception:
+            runtime_healthy = False
+        if not runtime_healthy:
+            return {**document, "healthy": False, "runtime_ready": False, "reason": "runtime_unhealthy"}
+        return {**document, "healthy": True, "reason": "ready"}
+
+
+@dataclass(frozen=True)
+class ProductionDriver:
+    action_helper: Path
+    worker_host: str
+    worker_identity: Path
+    worker_known_hosts: Path
+    profile: str = "heretic-hmnsfw-v1"
+
+    WORKER_ACTIONS = {
+        "start-ray-worker": "start-ray-worker",
+        "cleanup-worker": "cleanup",
+        "check-worker": "lifecycle-status",
+        "assert-worker-stopped": "assert-stopped",
+    }
+    ACTION_TIMEOUTS = {
+        "wait-worker-stable": 240,
+        "wait-rank1-stable": 240,
+        "wait-ranks-ready": 2700,
+        "start-api": 600,
+        "wait-ready": 600,
+    }
+
+    def _run_checked(self, argv: list[str], *, timeout: int = 120) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            argv,
+            check=True,
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            timeout=timeout,
+        )
+
+    def run(self, action: str) -> Any:
+        if action == "check-runtime":
+            result = self._run_checked(
+                [str(self.action_helper), "status-local", self.profile], timeout=10,
+            )
+            state = json.loads(result.stdout)
+            return state.get("api") == "RUNNING" and state.get("ray_head") == "RUNNING" and state.get("api_healthy") is True
+        worker_command = self.WORKER_ACTIONS.get(action)
+        if worker_command:
+            argv = [
+                "/usr/bin/ssh",
+                "-o", "BatchMode=yes",
+                "-o", "IdentitiesOnly=yes",
+                "-o", "StrictHostKeyChecking=yes",
+                "-o", f"UserKnownHostsFile={self.worker_known_hosts}",
+                "-o", "ClearAllForwardings=yes",
+                "-o", "RequestTTY=no",
+                "-i", str(self.worker_identity),
+                self.worker_host,
+                worker_command,
+            ]
+            if action == "start-ray-worker":
+                argv.append(self.profile)
+            result = self._run_checked(argv, timeout=self.ACTION_TIMEOUTS.get(action, 120))
+            return action != "check-worker" or result.stdout.strip() == "READY"
+        result = self._run_checked(
+            [str(self.action_helper), action, self.profile],
+            timeout=self.ACTION_TIMEOUTS.get(action, 120),
+        )
+        if action == "measure-concurrent":
+            try:
+                measurement = json.loads(result.stdout)
+            except json.JSONDecodeError as exc:
+                raise LifecycleFailure("live memory helper returned invalid JSON") from exc
+            if not isinstance(measurement, dict):
+                raise LifecycleFailure("live memory helper must return a JSON object")
+            return measurement
+        return True
+
+
+def _load_json(path: Path, *, missing_ok: bool = False) -> dict[str, Any] | None:
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        if missing_ok:
+            return None
+        raise LifecycleFailure(f"required JSON file is missing: {path}")
+    except (OSError, json.JSONDecodeError) as exc:
+        raise LifecycleFailure(f"required JSON file is invalid: {path}") from exc
+    if not isinstance(document, dict):
+        raise LifecycleFailure(f"required JSON root must be an object: {path}")
+    return document
+
+
+def _load_profile_contract(path: Path, name: str) -> dict[str, Any]:
+    catalog = _load_json(path)
+    assert catalog is not None
+    profiles = catalog.get("profiles")
+    schema = catalog.get("schema_version")
+    if (
+        schema not in {1, 2}
+        or not isinstance(profiles, dict)
+        or (schema == 1 and set(profiles) != {"heretic-hmnsfw-v1", "heretic-ref2va-v1"})
+        or name not in profiles
+    ):
+        raise LifecycleFailure("H3 profile catalog allowlist is invalid")
+    value = profiles.get(name)
+    required = {
+        "task_type", "model_root", "model_path", "model_lock", "runtime_lock",
+        "runtime_image", "runtime_overlay", "expected_image_id", "profile_tree_sha256",
+    }
+    v2 = {
+        "visibility", "qualification", "supported_tasks", "text_encoder", "transformer",
+        "modifier", "curve", "runtime_overlay_sha256",
+    }
+    expected = required if schema == 1 else required | v2
+    if not isinstance(value, dict) or set(value) != expected:
+        raise LifecycleFailure("H3 profile contract fields are invalid")
+    if value.get("task_type") not in {"fl2va", "ref2va"}:
+        raise LifecycleFailure("H3 profile task type is invalid")
+    image_id = value.get("expected_image_id")
+    tree = value.get("profile_tree_sha256")
+    import re
+    if not isinstance(image_id, str) or not re.fullmatch(r"sha256:[0-9a-f]{64}", image_id):
+        raise LifecycleFailure("H3 profile runtime image is not sealed")
+    if not isinstance(tree, str) or not re.fullmatch(r"[0-9a-f]{64}", tree):
+        raise LifecycleFailure("H3 profile model tree is not sealed")
+    for key in ("model_root", "model_path", "model_lock", "runtime_lock", "runtime_overlay"):
+        if not isinstance(value.get(key), str) or not Path(value[key]).is_absolute():
+            raise LifecycleFailure(f"H3 profile path is invalid: {key}")
+    contract = {"name": name, **value}
+    canonical = json.dumps(contract, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
+    contract["contract_sha256"] = hashlib.sha256(canonical).hexdigest()
+    return contract
+
+
+def _production_controller(
+    args: argparse.Namespace, profile_name_override: str | None = None
+) -> LifecycleController:
+    mode = os.environ.get("H3_LLM_COEXISTENCE_MODE", "exclusive")
+    budget_path = Path(os.environ.get("H3_COEXISTENCE_BUDGET_PATH", DEFAULT_BUDGET_PATH))
+    bindings_path = Path(os.environ.get("H3_RUNTIME_BINDINGS_PATH", DEFAULT_BINDINGS_PATH))
+    budget = ConcurrentBudget(_load_json(budget_path, missing_ok=True))
+    bindings = _load_json(bindings_path, missing_ok=(mode == "exclusive")) or {}
+    profile_name = profile_name_override or args.profile or os.environ.get("H3_SELECTED_PROFILE", "heretic-hmnsfw-v1")
+    profile_path = Path(os.environ.get("H3_PROFILES_PATH", DEFAULT_PROFILES_PATH))
+    profile = _load_profile_contract(profile_path, profile_name)
+    driver = ProductionDriver(
+        action_helper=Path(os.environ.get("H3_ACTION_HELPER", "/usr/local/libexec/minimax-h3-action")),
+        worker_host=os.environ.get("H3_WORKER_SSH", "operator@192.0.2.34"),
+        worker_identity=Path(os.environ.get("H3_WORKER_IDENTITY", "/etc/minimax-h3/ssh/cluster_ed25519")),
+        worker_known_hosts=Path(os.environ.get("H3_WORKER_KNOWN_HOSTS", "/etc/minimax-h3/ssh/known_hosts")),
+        profile=profile_name,
+    )
+    return LifecycleController(
+        driver=driver,
+        state_path=Path(args.state_path),
+        mode=mode,
+        budget=budget,
+        expected_bindings=bindings,
+        profile_contract=profile,
+    )
+
+
+def _calibrate(candidate_path: Path, budget_path: Path, bindings_path: Path) -> None:
+    candidate = _load_json(candidate_path)
+    bindings = _load_json(bindings_path)
+    assert candidate is not None and bindings is not None
+    nodes = candidate.get("nodes")
+    if not isinstance(nodes, dict):
+        raise AdmissionDenied("candidate node budgets are missing")
+    calibration_memory = {
+        hostname: values.get("a_idle_bytes")
+        for hostname, values in nodes.items()
+        if isinstance(values, dict)
+    }
+    ConcurrentBudget(candidate).admit(bindings, calibration_memory)
+    if budget_path.exists():
+        existing = _load_json(budget_path)
+        if existing != candidate:
+            raise LifecycleFailure("refusing to overwrite an existing coexistence budget")
+        return
+    _atomic_json_write(budget_path, candidate)
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("command", choices=("start", "stop", "restart", "status", "switch", "rollback", "calibrate-concurrent"))
+    parser.add_argument("--profile")
+    parser.add_argument("--state-path", default=os.environ.get("H3_CONTROL_STATE_PATH", str(DEFAULT_STATE_PATH)))
+    parser.add_argument("--lock-path", default=os.environ.get("H3_CONTROL_LOCK_PATH", str(DEFAULT_LOCK_PATH)))
+    parser.add_argument("--candidate")
+    parser.add_argument("--llm-already-quiesced", action="store_true")
+    parser.add_argument("--preserve-llm-quiesce-on-failure", action="store_true")
+    parser.add_argument("--preserve-llm-quiesce", action="store_true")
+    args = parser.parse_args(argv)
+
+    if args.llm_already_quiesced and args.command not in {"start", "restart"}:
+        parser.error("--llm-already-quiesced is only valid with start or restart")
+    if args.preserve_llm_quiesce_on_failure and args.command not in {"start", "restart"}:
+        parser.error("--preserve-llm-quiesce-on-failure is only valid with start or restart")
+    if args.preserve_llm_quiesce and args.command not in {"stop", "restart"}:
+        parser.error("--preserve-llm-quiesce is only valid with stop or restart")
+
+    lock_path = Path(args.lock_path)
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    try:
+        if args.command == "status": # progress-read-without-flock
+            current = _load_json(Path(args.state_path), missing_ok=True) or {"state": "STOPPED"}
+            current_profile = current.get("profile") if isinstance(current.get("profile"), str) else None
+            controller = _production_controller(args, current_profile)
+            print(json.dumps(controller.status(), sort_keys=True))
+            return 0
+        with lock_path.open("a+", encoding="utf-8") as lock_handle:
+            lock_operation = fcntl.LOCK_SH if args.command == "status" else fcntl.LOCK_EX
+            try:
+                fcntl.flock(lock_handle.fileno(), lock_operation | fcntl.LOCK_NB)
+            except BlockingIOError:
+                print("BUSY")
+                return 75
+            if args.command == "calibrate-concurrent":
+                if not args.candidate:
+                    raise LifecycleFailure("--candidate is required for calibrate-concurrent")
+                _calibrate(
+                    Path(args.candidate),
+                    Path(os.environ.get("H3_COEXISTENCE_BUDGET_PATH", DEFAULT_BUDGET_PATH)),
+                    Path(os.environ.get("H3_RUNTIME_BINDINGS_PATH", DEFAULT_BINDINGS_PATH)),
+                )
+                print("CALIBRATED")
+                return 0
+
+            current = _load_json(Path(args.state_path), missing_ok=True) or {"state": "STOPPED"}
+            current_profile = current.get("profile") if isinstance(current.get("profile"), str) else None
+            if args.command == "switch":
+                if not args.profile:
+                    raise LifecycleFailure("--profile is required for switch")
+                if current.get("state") != "READY" or current_profile is None:
+                    raise LifecycleFailure("switch requires an attested READY source profile")
+                source = _production_controller(args, current_profile)
+                target = _production_controller(args, args.profile)
+                print(source.switch_to(target))
+                return 0
+            selected = current_profile if args.command in {"stop", "restart", "rollback"} and current_profile else None
+            controller = _production_controller(args, selected)
+            if args.command == "start":
+                print(controller.start(
+                    llm_already_quiesced=args.llm_already_quiesced,
+                    preserve_llm_quiesce_on_failure=args.preserve_llm_quiesce_on_failure,
+                ))
+            elif args.command == "stop":
+                print(controller.stop(preserve_llm_quiesce=args.preserve_llm_quiesce))
+            elif args.command == "restart":
+                controller.stop(preserve_llm_quiesce=args.preserve_llm_quiesce)
+                print(controller.start(
+                    llm_already_quiesced=args.llm_already_quiesced,
+                    preserve_llm_quiesce_on_failure=args.preserve_llm_quiesce_on_failure,
+                ))
+            elif args.command == "rollback":
+                if not args.profile:
+                    raise LifecycleFailure("rollback requires an explicit --profile")
+                target = _production_controller(args, args.profile)
+                print(controller.switch_to(target))
+            return 0
+    except (LifecycleFailure, subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+        print(f"FAIL: {exc}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "status": "uncalibrated",
+  "created_at": null,
+  "expires_at": null,
+  "combined_smoke_passed": false,
+  "bindings": {},
+  "nodes": {},
+  "safety": {
+    "oom_events_delta": null,
+    "swap_pressure_ok": null,
+    "cpu_fallback": null,
+    "psi_ok": null
+  },
+  "reason": "Concurrent mode is retained but fails closed until a host-bound calibration and combined smoke produce a separate immutable calibrated budget."
+}

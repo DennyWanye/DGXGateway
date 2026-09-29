@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/Comfy-Org/ComfyUI.git",
+  "tag": "v0.34.2",
+  "commit": "169fcf35a2fc163fec31338b816503ddac0d3fcf",
+  "license": "GPL-3.0",
+  "python_base": "python:3.13-slim-bookworm",
+  "python_base_index_digest": "sha256:ed86c82274b3c69b52fb5820f358f0bd7df0b603332063cb5c6e32bd220c3e6e"
+}

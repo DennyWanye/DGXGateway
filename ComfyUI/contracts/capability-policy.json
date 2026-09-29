@@ -1,0 +1,42 @@
+{
+  "schema_id": "comfyui-enabled-capability-policy-v1",
+  "source_commit": "169fcf35a2fc163fec31338b816503ddac0d3fcf",
+  "source_hashes": {
+    "nodes.py": "918a322c43665f24513856a5bec6c564ede01a29b6081b83fd67d27a49571e0c",
+    "server.py": "74573b10465505b88b618da86059878e3a56418f84c7dae4073c8824aee35a6c",
+    "folder_paths.py": "b748be5d1e068ad673f6c4de069fb6b7b723405c40ae3c3c44465d416f7df2db"
+  },
+  "expected_static_counts": {
+    "core_node_mappings": 65,
+    "builtin_extra_modules": 132
+  },
+  "custom_node_allowlist": [
+    "dgx_remote_h3"
+  ],
+  "api_nodes_enabled": false,
+  "allowed_read_roots": [
+    "/data/input",
+    "/data/output",
+    "/data/temp",
+    "/data/user",
+    "/opt/ComfyUI/models",
+    "/opt/ComfyUI/datasets"
+  ],
+  "allowed_write_roots": [
+    "/data/input",
+    "/data/output",
+    "/data/temp",
+    "/data/user"
+  ],
+  "allowed_network_clients": [
+    "custom_nodes.dgx_remote_h3.client"
+  ],
+  "forbidden_secret_outputs": [
+    "workflow",
+    "object_info",
+    "prompt_history",
+    "ui",
+    "logs",
+    "image_metadata"
+  ]
+}

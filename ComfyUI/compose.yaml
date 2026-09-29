@@ -1,0 +1,45 @@
+name: dgx-comfyui-h3
+
+services:
+  comfyui:
+    image: ${DGX_COMFYUI_IMAGE:-dgx-comfyui-h3:0.1.0}
+    build:
+      context: .
+      target: production
+    user: "0:0"
+    restart: "no"
+    read_only: true
+    init: false
+    ports:
+      - "${COMFYUI_BIND_ADDRESS:-127.0.0.1}:8188:8188"
+    cap_drop:
+      - ALL
+    cap_add:
+      - CHOWN
+      - SETGID
+      - SETUID
+      - SETPCAP
+    security_opt:
+      - no-new-privileges:true
+    cpus: "4.0"
+    mem_limit: 6g
+    pids_limit: 512
+    tmpfs:
+      - /run/dgx-h3-secret:rw,noexec,nosuid,nodev,size=64k,mode=0700
+      - /run/secrets-source:rw,noexec,nosuid,nodev,size=64k,mode=0700
+    secrets:
+      - source: h3_gateway_token
+        target: /run/secrets-source/h3_gateway_token
+      - source: h3_profile_control_token
+        target: /run/secrets-source/h3_profile_control_token
+    volumes:
+      - ./data/input:/data/input
+      - ./data/output:/data/output
+      - ./data/user:/data/user
+      - ./data/temp:/data/temp
+
+secrets:
+  h3_gateway_token:
+    file: ./secrets/h3_gateway.token
+  h3_profile_control_token:
+    file: ./secrets/h3_profile_control.token

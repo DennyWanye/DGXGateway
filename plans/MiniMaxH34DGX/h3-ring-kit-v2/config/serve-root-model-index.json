@@ -1,0 +1,8 @@
+{
+  "_class_name": "MiniMaxH3Pipeline",
+  "_diffusers_version": "0.32.2",
+  "FL2VA": [
+    "diffusers",
+    "MiniMaxH3Pipeline"
+  ]
+}

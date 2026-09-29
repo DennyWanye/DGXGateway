@@ -1,0 +1,177 @@
+{
+  "schema_version": 2,
+  "policy_id": "minimax-h3-request-policy-v2",
+  "allowed_routes": {
+    "GET": [
+      "/health",
+      "/v1/models"
+    ],
+    "POST": [
+      "/v1/videos/sync"
+    ]
+  },
+  "multipart": {
+    "allowed_fields": [
+      "prompt",
+      "width",
+      "height",
+      "fps",
+      "num_inference_steps",
+      "flow_shift",
+      "seed",
+      "extra_params"
+    ],
+    "required_fields": [
+      "prompt",
+      "width",
+      "height",
+      "fps",
+      "num_inference_steps",
+      "flow_shift",
+      "seed",
+      "extra_params"
+    ],
+    "allowed_files": [
+      "reference_image",
+      "reference_audio"
+    ],
+    "max_field_bytes": 4096,
+    "max_prompt_bytes": 2048,
+    "max_header_bytes": 8192
+  },
+  "profiles": {
+    "heretic-hmnsfw-v1": {
+      "task_type": "fl2va",
+      "request_variants": [
+        {
+          "task": "t2va",
+          "allowed_sizes": [
+            [
+              768,
+              448
+            ],
+            [
+              1344,
+              768
+            ]
+          ],
+          "duration_min": 2.0,
+          "duration_max": 4.0,
+          "reference_images": 0,
+          "reference_audios": 0
+        }
+      ]
+    },
+    "heretic-ref2va-v1": {
+      "task_type": "ref2va",
+      "request_variants": [
+        {
+          "task": "ref2va",
+          "allowed_sizes": [
+            [
+              1344,
+              768
+            ]
+          ],
+          "duration_min": 4.0,
+          "duration_max": 4.0,
+          "reference_images": 1,
+          "reference_audios": 1
+        }
+      ]
+    },
+    "heretic-ref2va-hmnsfw-v1": {
+      "task_type": "ref2va",
+      "request_variants": [
+        {
+          "task": "ref2va",
+          "allowed_sizes": [
+            [
+              1344,
+              768
+            ]
+          ],
+          "duration_min": 4.0,
+          "duration_max": 15.0,
+          "reference_images": 1,
+          "reference_audios": 1
+        }
+      ],
+      "upstream_timeout_seconds": 0
+    },
+    "10eros-fl2va-v1": {
+      "task_type": "fl2va",
+      "num_inference_steps": 8,
+      "request_variants": [
+        {
+          "task": "t2va",
+          "allowed_sizes": [
+            [
+              768,
+              448
+            ],
+            [
+              1344,
+              768
+            ]
+          ],
+          "duration_min": 2.0,
+          "duration_max": 4.0,
+          "reference_images": 0,
+          "reference_audios": 0
+        },
+        {
+          "task": "fl2va",
+          "allowed_sizes": [
+            [
+              768,
+              448
+            ],
+            [
+              1344,
+              768
+            ]
+          ],
+          "duration_min": 2.0,
+          "duration_max": 4.0,
+          "reference_images": 1,
+          "reference_audios": 0
+        }
+      ]
+    }
+  },
+  "video": {
+    "fps": 24,
+    "num_inference_steps": 20,
+    "flow_shift": 12.0,
+    "audio_flow_shift": 3.0,
+    "seed_min": 0,
+    "seed_max": 2147483647
+  },
+  "reference_image": {
+    "external_field": "reference_image",
+    "upstream_field": "input_reference",
+    "max_bytes": 31457280,
+    "mime_types": [
+      "image/png",
+      "image/jpeg"
+    ]
+  },
+  "reference_audio": {
+    "external_field": "reference_audio",
+    "upstream_field": "audio_reference",
+    "max_bytes": 262144,
+    "mime_types": [
+      "audio/wav"
+    ]
+  },
+  "gateway": {
+    "bind_host": "192.0.2.30",
+    "bind_port": 18081,
+    "upstream_host": "192.0.2.33",
+    "upstream_port": 8000,
+    "max_body_bytes": 31500000,
+    "upstream_timeout_seconds": 3600,
+    "max_concurrent_generations": 1
+  }
+}

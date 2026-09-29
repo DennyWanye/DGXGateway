@@ -1,0 +1,23 @@
+[
+  {
+    "id": "qwen-edit-2511-0",
+    "path": "/home/operator/ai/ComfyUI/models/diffusion_models/qwen_image_edit_2511_fp8mixed.safetensors",
+    "size": 20533762817,
+    "sha256": "c9fdc158e46d3b61ef75f21ae866ca2fe808bf4a53643120d1c1e87c19280a4e",
+    "verified": true
+  },
+  {
+    "id": "qwen-edit-2511-1",
+    "path": "/home/operator/ai/ComfyUI/models/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "size": 9384670680,
+    "sha256": "cb5636d852a0ea6a9075ab1bef496c0db7aef13c02350571e388aea959c5c0b4",
+    "verified": true
+  },
+  {
+    "id": "qwen-edit-2511-2",
+    "path": "/home/operator/ai/ComfyUI/models/vae/qwen_image_vae.safetensors",
+    "size": 253806246,
+    "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f",
+    "verified": true
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "ref2va-official",
+  "model_variant": "ref2va",
+  "online_quantization": "fp8",
+  "encoder_override": false,
+  "transformer_override": false,
+  "performance_mode": "memory",
+  "experimental": false,
+  "asset_ids": [
+    "official-ref"
+  ],
+  "tasks": [
+    "ref2va"
+  ]
+}

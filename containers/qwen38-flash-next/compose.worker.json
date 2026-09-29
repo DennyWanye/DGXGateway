@@ -1,0 +1,66 @@
+{
+  "name": "qwen38-flash-next",
+  "services": {
+    "qwen": {
+      "image": "sha256:393454aa5bc87f02e7a5fe2eed0d833e295e7c3bb97f0b20f6ff66689df0ed90",
+      "container_name": "qwen38-flash-next-worker",
+      "restart": "no",
+      "network_mode": "host",
+      "shm_size": "16g",
+      "init": true,
+      "ulimits": {
+        "memlock": {
+          "soft": -1,
+          "hard": -1
+        }
+      },
+      "devices": [
+        "/dev/infiniband:/dev/infiniband"
+      ],
+      "deploy": {
+        "resources": {
+          "reservations": {
+            "devices": [
+              {
+                "driver": "nvidia",
+                "count": 1,
+                "capabilities": [
+                  "gpu"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "labels": {
+        "com.dgx-spark.model-id": "qwen38-flash-next",
+        "com.dgx-spark.role": "worker"
+      },
+      "volumes": [
+        "/home/operator/dgx-models/qwen38-flash-next/weights/qwen3.8-flash-next-abliterated-NVFP4-plefp8:/model:ro",
+        "/home/operator/dgx-models/qwen38-flash-next/control/runtime/cache:/root/.cache",
+        "/opt/qwen38-flash-next/launch_vllm.py:/opt/qwen/launch_vllm.py:ro",
+        "/opt/qwen38-flash-next/profile.json:/opt/qwen/profile.json:ro"
+      ],
+      "environment": {
+        "QWEN_ROLE": "worker",
+        "VLLM_HOST_IP": "192.0.2.34",
+        "HF_HUB_OFFLINE": "1",
+        "TRANSFORMERS_OFFLINE": "1",
+        "TRITON_CACHE_DIR": "/root/.cache/triton",
+        "CUDA_CACHE_PATH": "/root/.cache/cuda",
+        "NCCL_SOCKET_IFNAME": "=enp1s0f0np0",
+        "GLOO_SOCKET_IFNAME": "enp1s0f0np0",
+        "NCCL_IB_HCA": "=rocep1s0f0:1,roceP2p1s0f0:1",
+        "NCCL_IB_GID_INDEX": "3",
+        "NCCL_CROSS_NIC": "0",
+        "NCCL_IB_DISABLE": "0",
+        "NCCL_DEBUG": "INFO"
+      },
+      "entrypoint": [
+        "python3",
+        "/opt/qwen/launch_vllm.py"
+      ]
+    }
+  }
+}

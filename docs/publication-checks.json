@@ -1,0 +1,10 @@
+{
+  "counts": {
+    "files": 859,
+    "python": 443,
+    "json": 91,
+    "toml": 2,
+    "shell": 111
+  },
+  "errors": []
+}

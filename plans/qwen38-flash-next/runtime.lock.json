@@ -1,0 +1,43 @@
+{
+  "image_id": "sha256:393454aa5bc87f02e7a5fe2eed0d833e295e7c3bb97f0b20f6ff66689df0ed90",
+  "tag": "qwen38-flash-next:plefp8-candidate-20260910",
+  "base_image_id": "sha256:d464f3b466fa9c45ddbff8a812e80564503b6879a9fd95c1a47514f3f0df5a4a",
+  "patch_sha256": "1c65cca1301890183085dadc9623009440d774d6d344a395511dbf4c6433268f",
+  "architecture": "arm64",
+  "ple_before_sha256": "a71144c1d36e06f22a2da1b1ada900076597fe5e824a911e7ada86249a0993e7",
+  "ple_after_sha256": "1e75f950d99b2d2779c5cd64e9661919788535dcdcc21c4ea90b793101877eae",
+  "gpu_tested": true,
+  "status": "GATEWAY_API_LONG_CONTEXT_AND_DEEPSEEK_RESTORE_VERIFIED",
+  "base_manifest_digest": "sha256:3b0e188ffceb3d07e09c3cb5215433a0020eacf02d7f882ed3a8bfd15454477e",
+  "os": "linux",
+  "versions": {
+    "vllm": "0.1.dev20073+g8e685d198",
+    "torch": "2.13.0+cu130",
+    "cuda": "13.0",
+    "transformers": "5.15.1",
+    "nccl": "2.29.7"
+  },
+  "image_id_matches_both_nodes": true,
+  "gpu_test_scope": "GB10 BF16 matmul and 16 MiB two-rank NCCL reduction; CLI help with GPU visible",
+  "gpu_probe_script_sha256": "0934457cf6e14ce0199c8d90a561f01a65fd24a9de08aeb3ac10e4ae5938dcd9",
+  "runtime_evidence": "evidence/deploy/runtime-probe-results.json",
+  "full_model_verified": true,
+  "updated_at": "2026-09-10T07:58:20.096403+00:00",
+  "full_model_weights_loaded": true,
+  "head_weight_load_gib": 61.92,
+  "head_weight_load_seconds": 463.673344,
+  "kv_cache_memory_bytes": 8589934592,
+  "startup_gpu_memory_utilization": 0.7,
+  "verification_scope": "Real 32K functional/API/DeepSeek restore; 256K server 260083-token retrieval, Desktop 262144 window/Read, Claude Code 2.1.260 215506-token retrieval and five-kind shared text requalification passed.",
+  "first_completion_evidence": "evidence/deploy/model-smoke-kv8-answer.json",
+  "gateway_verified": true,
+  "worker_loss_reboot_soak_tested": false,
+  "qualified_context_profiles": {
+    "32K": 32768,
+    "256K": 262144
+  },
+  "default_context_profile": "256K",
+  "context256k_evidence": "evidence/context256k/near-limit-result.json",
+  "context256k_start_operation": "2fffce46cee84f458da4e96d389ea0aa",
+  "context256k_input_tokens_verified": 260083
+}

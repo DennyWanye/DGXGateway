@@ -1,0 +1,16 @@
+{
+  "id": "ref2va-heretic",
+  "model_variant": "ref2va",
+  "online_quantization": "fp8",
+  "encoder_override": true,
+  "transformer_override": false,
+  "performance_mode": "memory",
+  "experimental": false,
+  "asset_ids": [
+    "official-ref",
+    "encoder-heretic"
+  ],
+  "tasks": [
+    "ref2va"
+  ]
+}

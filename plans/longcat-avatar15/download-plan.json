@@ -1,0 +1,333 @@
+{
+  "status": "PROPOSED_NOT_DOWNLOADED_OR_LOAD_VERIFIED",
+  "observed_at": "2026-09-09T07:20:00.241653+08:00",
+  "profile": "official-int8-distilled-clean-speech",
+  "warning": "Not an uncensored checkpoint. Runtime load closure requires offline validation. No model payload downloaded.",
+  "total_bytes": 44747949474,
+  "groups_bytes": {
+    "base_model_int8": 15880585866,
+    "lora": 2523077984,
+    "scheduler": 213,
+    "whisper-large-v3": 3091543112,
+    "text_encoder": 22723695074,
+    "tokenizer": 21454609,
+    "vae": 507592616
+  },
+  "files": [
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/config.json",
+      "size": 853,
+      "lfs_sha256": null,
+      "git_blob_id": "666c43c40d8fe6dd61836fcacc807eb418c3235b",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/quantization_config.json",
+      "size": 193,
+      "lfs_sha256": null,
+      "git_blob_id": "8367e2973ccc39bd6c871e16d2c7843a37b73f20",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/quantization_config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/quantized_model-00001-of-00004.safetensors",
+      "size": 4264635792,
+      "lfs_sha256": "ccf575d8cdf8e762272e2d4e52ae1a7c0b5d1fa81e26dfa4592867de4dd9a4fd",
+      "git_blob_id": "9f560b415b85adeb3366d1d25da2c4c1ca058b1b",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/quantized_model-00001-of-00004.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/quantized_model-00002-of-00004.safetensors",
+      "size": 4275232472,
+      "lfs_sha256": "af6ddb737ad66d12fd5892adee568c14314143ebd4388d3ab9cc6065754b3688",
+      "git_blob_id": "19331fa128a1376de18c94ce0f9cde499a572037",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/quantized_model-00002-of-00004.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/quantized_model-00003-of-00004.safetensors",
+      "size": 4275232472,
+      "lfs_sha256": "6a349b76592b4752c2967235af457824d8938e3514bad8e78cfa86009e8a9bf5",
+      "git_blob_id": "8441856e46a07603efee9fc58baf14a86e4b1fa4",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/quantized_model-00003-of-00004.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/quantized_model-00004-of-00004.safetensors",
+      "size": 3065282200,
+      "lfs_sha256": "ab54b648a3f6a53946f07dd0a21441e2a8cb1aa8da17996b5f3f7f2e1370705b",
+      "git_blob_id": "15bf93a4defdee40859a9ed53ffebe5b801048fd",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/quantized_model-00004-of-00004.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "base_model_int8/quantized_model.safetensors.index.json",
+      "size": 201884,
+      "lfs_sha256": null,
+      "git_blob_id": "5fe9d29b77315bca6b75d57efb4b61a661c5b678",
+      "destination": "LongCat-Video-Avatar-1.5/base_model_int8/quantized_model.safetensors.index.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "lora/dmd_lora.safetensors",
+      "size": 2523077984,
+      "lfs_sha256": "d969115a7f3fbc212a277ed4399f77a1a065d170148c6d4bc272e980cd3e907a",
+      "git_blob_id": "7858c1b776bf9a0f7a3ab3c445b1fae5e4919035",
+      "destination": "LongCat-Video-Avatar-1.5/lora/dmd_lora.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "scheduler/scheduler_config.json",
+      "size": 213,
+      "lfs_sha256": null,
+      "git_blob_id": "a11b9a003af3c9e300f1857df3acc660dafeec0f",
+      "destination": "LongCat-Video-Avatar-1.5/scheduler/scheduler_config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/.gitattributes",
+      "size": 1519,
+      "lfs_sha256": null,
+      "git_blob_id": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/.gitattributes"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/README.md",
+      "size": 21829,
+      "lfs_sha256": null,
+      "git_blob_id": "f98e6afab120b2c8cc504933527659c5adcc6d30",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/README.md"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/added_tokens.json",
+      "size": 34648,
+      "lfs_sha256": null,
+      "git_blob_id": "1b33526d33aaa60d79f78ae8651dae50b730185a",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/added_tokens.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/config.json",
+      "size": 1272,
+      "lfs_sha256": null,
+      "git_blob_id": "14c6c8cf48b64ebb1cb8b637e2b0fab3a9774972",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/generation_config.json",
+      "size": 3903,
+      "lfs_sha256": null,
+      "git_blob_id": "f3294dfe3654ac4e362570867369ec48104af59f",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/generation_config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/merges.txt",
+      "size": 493869,
+      "lfs_sha256": null,
+      "git_blob_id": "6038932a2a1f09a66991b1c2adae0d14066fa29e",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/merges.txt"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/model.safetensors",
+      "size": 3087130976,
+      "lfs_sha256": "a8e94b85976e5864ba3e9525c7e6c83b2a1eca42d4b797a0c7c24d778e40fd95",
+      "git_blob_id": "8cd5f415ca1a4669f588af4dfe1c02f3d509a3b3",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/model.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/normalizer.json",
+      "size": 52666,
+      "lfs_sha256": null,
+      "git_blob_id": "dd6ae819ad738ac1a546e9f9282ef325c33b9ea0",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/normalizer.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/preprocessor_config.json",
+      "size": 340,
+      "lfs_sha256": null,
+      "git_blob_id": "931c77a740890c46365c7ae0c9d350ba3cca908f",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/preprocessor_config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/special_tokens_map.json",
+      "size": 2072,
+      "lfs_sha256": null,
+      "git_blob_id": "3c18e97162d572f2b1d62e7e1c7b805f1be11dbe",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/special_tokens_map.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/tokenizer.json",
+      "size": 2480617,
+      "lfs_sha256": null,
+      "git_blob_id": "3a5e2ba63acdcac9a19ba56cf9bd27f185bfff61",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/tokenizer.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/tokenizer_config.json",
+      "size": 282843,
+      "lfs_sha256": null,
+      "git_blob_id": "06ffdc8308eae6bb7bd1fdd81e94b0a881a539ab",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/tokenizer_config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video-Avatar-1.5",
+      "revision": "92016c71d5d318d0f5d84e4db30015a571484ab6",
+      "path": "whisper-large-v3/vocab.json",
+      "size": 1036558,
+      "lfs_sha256": null,
+      "git_blob_id": "0f3456460629e21d559c6daa23ab6ce3644e8271",
+      "destination": "LongCat-Video-Avatar-1.5/whisper-large-v3/vocab.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/config.json",
+      "size": 854,
+      "lfs_sha256": null,
+      "git_blob_id": "2fd01c57dddd8ae386d518c69c087c8ba8c73804",
+      "destination": "LongCat-Video/text_encoder/config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/model-00001-of-00005.safetensors",
+      "size": 4972389712,
+      "lfs_sha256": "c0ef3a140898e228a3520c9adec60743d2e8e5b3d229651bb37f1a3921919f99",
+      "git_blob_id": "383f168e1318f0f8d6777b1ba5e88546c1273c46",
+      "destination": "LongCat-Video/text_encoder/model-00001-of-00005.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/model-00002-of-00005.safetensors",
+      "size": 4899225672,
+      "lfs_sha256": "481c7b2b39771c44df6dd8d13ee12ed072d731b4a650bd092885d4d52db229ad",
+      "git_blob_id": "05f1cf9934e3ec7e228b51a93b56875cee468b86",
+      "destination": "LongCat-Video/text_encoder/model-00002-of-00005.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/model-00003-of-00005.safetensors",
+      "size": 4966309504,
+      "lfs_sha256": "f93148bcc04052a169e1e49bfcf6125df6cf9bf243cb9c627da75266cf8e35c3",
+      "git_blob_id": "3ea8c93410053a1d42cde624bdf8faf011d329e3",
+      "destination": "LongCat-Video/text_encoder/model-00003-of-00005.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/model-00004-of-00005.safetensors",
+      "size": 4999880704,
+      "lfs_sha256": "a451792c739c05bca4606190cc2dd16731411bac03b4cf6aacc5767321f857c9",
+      "git_blob_id": "9c4d6361dc5ed76d8c129e9c7ad1c64ec7045637",
+      "destination": "LongCat-Video/text_encoder/model-00004-of-00005.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/model-00005-of-00005.safetensors",
+      "size": 2885866152,
+      "lfs_sha256": "7e76e18d224531b8197a46231cb53daf7f2f6ca707130252becf933026ac4eea",
+      "git_blob_id": "75aa52c300dafa768721d112ac5a7f11512156ff",
+      "destination": "LongCat-Video/text_encoder/model-00005-of-00005.safetensors"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "text_encoder/model.safetensors.index.json",
+      "size": 22476,
+      "lfs_sha256": null,
+      "git_blob_id": "60ece61b46ecb3e6a5b705ea304bc97535317c2a",
+      "destination": "LongCat-Video/text_encoder/model.safetensors.index.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "tokenizer/special_tokens_map.json",
+      "size": 7079,
+      "lfs_sha256": null,
+      "git_blob_id": "2ed25bf989a28d20b5d4b5822fbc24666d12a6f7",
+      "destination": "LongCat-Video/tokenizer/special_tokens_map.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "tokenizer/spiece.model",
+      "size": 4548313,
+      "lfs_sha256": "e3909a67b780650b35cf529ac782ad2b6b26e6d1f849d3fbb6a872905f452458",
+      "git_blob_id": "2fe5f347e9f9367585589ae89e997dfbd5cf802c",
+      "destination": "LongCat-Video/tokenizer/spiece.model"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "tokenizer/tokenizer.json",
+      "size": 16837459,
+      "lfs_sha256": "20a46ac256746594ed7e1e3ef733b83fbc5a6f0922aa7480eda961743de080ef",
+      "git_blob_id": "9c6427ab2f801c942da4ee9740f1a750d3978a3b",
+      "destination": "LongCat-Video/tokenizer/tokenizer.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "tokenizer/tokenizer_config.json",
+      "size": 61758,
+      "lfs_sha256": null,
+      "git_blob_id": "09d434f9457238f697f4c208aab47f58caa15bfe",
+      "destination": "LongCat-Video/tokenizer/tokenizer_config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "vae/config.json",
+      "size": 724,
+      "lfs_sha256": null,
+      "git_blob_id": "fe988ee53511225fb2fd0a01004d6e19524df75f",
+      "destination": "LongCat-Video/vae/config.json"
+    },
+    {
+      "repo": "meituan-longcat/LongCat-Video",
+      "revision": "03b55529b1d1d4045f5fbe14d65c8c6e8116b278",
+      "path": "vae/diffusion_pytorch_model.safetensors",
+      "size": 507591892,
+      "lfs_sha256": "d6e524b3fffede1787a74e81b30976dce5400c4439ba64222168e607ed19e793",
+      "git_blob_id": "af13d1f7b1bc28a9f1e9cd85cac5da951aead1b3",
+      "destination": "LongCat-Video/vae/diffusion_pytorch_model.safetensors"
+    }
+  ]
+}

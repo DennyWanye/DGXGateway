@@ -1,0 +1,6 @@
+integrated_multimodal_description:
+一个写实电影镜头：一名身穿灰色外套的成年男子站在窗边，缓慢转头望向窗外。四秒内只完成这一个动作。中景，镜头固定，傍晚柔和自然光，人物比例和服装保持连续。
+overall_soundscape:
+房间内轻微环境声，窗外有远处雨声。没有对白，不生成字幕。
+non_diegetic_music:
+无背景音乐。

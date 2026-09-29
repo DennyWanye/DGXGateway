@@ -1,0 +1,10 @@
+# Offline dependency overlay for the pinned Ring4 runtime.
+# The wheel is staged separately because DGX direct egress is unavailable.
+ARG BASE
+FROM ${BASE}
+COPY comfy_kitchen-0.2.35-cp312-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl /tmp/
+RUN python -m pip install --no-deps /tmp/comfy_kitchen-0.2.35-cp312-abi3-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl \
+    && python -m pip check 2>&1 | tee /opt/h3-pip-check-after.txt \
+    && grep -v '^nvidia-cusparselt-cu13 0.8.1 is not supported on this platform$' /opt/h3-pip-check-after.txt > /tmp/h3-pip-check-unexpected || true \
+    && test ! -s /tmp/h3-pip-check-unexpected \
+    && python -m pip freeze --all > /opt/h3-hybrid-freeze.txt

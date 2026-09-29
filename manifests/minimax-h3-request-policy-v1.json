@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "policy_id": "minimax-h3-request-policy-v1",
+  "allowed_routes": {
+    "GET": [
+      "/health",
+      "/v1/models"
+    ],
+    "POST": [
+      "/v1/videos/sync"
+    ]
+  },
+  "multipart": {
+    "allowed_fields": [
+      "prompt",
+      "width",
+      "height",
+      "fps",
+      "num_inference_steps",
+      "flow_shift",
+      "seed",
+      "extra_params"
+    ],
+    "required_fields": [
+      "prompt",
+      "width",
+      "height",
+      "fps",
+      "num_inference_steps",
+      "flow_shift",
+      "seed",
+      "extra_params"
+    ],
+    "forbidden_fields": [
+      "seconds",
+      "size",
+      "num_frames",
+      "reference",
+      "interpolation",
+      "lora"
+    ],
+    "max_field_bytes": 4096,
+    "max_prompt_bytes": 2048
+  },
+  "video": {
+    "allowed_sizes": [
+      [768, 448],
+      [1344, 768]
+    ],
+    "fps": 24,
+    "num_inference_steps": 20,
+    "flow_shift": 12.0,
+    "duration_min": 2.0,
+    "duration_max": 4.0,
+    "audio_flow_shift": 3.0,
+    "task": "t2va",
+    "seed_min": 0,
+    "seed_max": 2147483647
+  },
+  "gateway": {
+    "bind_host": "192.0.2.30",
+    "bind_port": 18081,
+    "upstream_host": "192.0.2.33",
+    "upstream_port": 8000,
+    "max_body_bytes": 1048576,
+    "upstream_timeout_seconds": 3600,
+    "max_concurrent_generations": 1
+  }
+}

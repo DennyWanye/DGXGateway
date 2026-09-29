@@ -1,0 +1,569 @@
+[
+  {
+    "id": "dsv4-1",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": ".gitattributes",
+    "destination": ".gitattributes"
+  },
+  {
+    "id": "dsv4-2",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "ABLIT_META.json",
+    "destination": "ABLIT_META.json"
+  },
+  {
+    "id": "dsv4-3",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "DSPARK_ANCHOR_MANIFEST.json",
+    "destination": "DSPARK_ANCHOR_MANIFEST.json"
+  },
+  {
+    "id": "dsv4-4",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "LICENSE",
+    "destination": "LICENSE"
+  },
+  {
+    "id": "dsv4-5",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "README.md",
+    "destination": "README.md"
+  },
+  {
+    "id": "dsv4-6",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "RESPONSIBLE_USE.md",
+    "destination": "RESPONSIBLE_USE.md"
+  },
+  {
+    "id": "dsv4-7",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "ablit/refusal_direction_r1.pt",
+    "destination": "ablit/refusal_direction_r1.pt"
+  },
+  {
+    "id": "dsv4-8",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "ablit/refusal_direction_reablit_20260726.pt",
+    "destination": "ablit/refusal_direction_reablit_20260726.pt"
+  },
+  {
+    "id": "dsv4-9",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "config.json",
+    "destination": "config.json"
+  },
+  {
+    "id": "dsv4-10",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/README.md",
+    "destination": "encoding/README.md"
+  },
+  {
+    "id": "dsv4-11",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/encoding_dsv4.py",
+    "destination": "encoding/encoding_dsv4.py"
+  },
+  {
+    "id": "dsv4-12",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/test_encoding_dsv4.py",
+    "destination": "encoding/test_encoding_dsv4.py"
+  },
+  {
+    "id": "dsv4-13",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_input_1.json",
+    "destination": "encoding/tests/test_input_1.json"
+  },
+  {
+    "id": "dsv4-14",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_input_2.json",
+    "destination": "encoding/tests/test_input_2.json"
+  },
+  {
+    "id": "dsv4-15",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_input_3.json",
+    "destination": "encoding/tests/test_input_3.json"
+  },
+  {
+    "id": "dsv4-16",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_input_4.json",
+    "destination": "encoding/tests/test_input_4.json"
+  },
+  {
+    "id": "dsv4-17",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_output_1.txt",
+    "destination": "encoding/tests/test_output_1.txt"
+  },
+  {
+    "id": "dsv4-18",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_output_2.txt",
+    "destination": "encoding/tests/test_output_2.txt"
+  },
+  {
+    "id": "dsv4-19",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_output_3.txt",
+    "destination": "encoding/tests/test_output_3.txt"
+  },
+  {
+    "id": "dsv4-20",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "encoding/tests/test_output_4.txt",
+    "destination": "encoding/tests/test_output_4.txt"
+  },
+  {
+    "id": "dsv4-21",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "generation_config.json",
+    "destination": "generation_config.json"
+  },
+  {
+    "id": "dsv4-22",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/README.md",
+    "destination": "inference/README.md"
+  },
+  {
+    "id": "dsv4-23",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/config.json",
+    "destination": "inference/config.json"
+  },
+  {
+    "id": "dsv4-24",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/convert.py",
+    "destination": "inference/convert.py"
+  },
+  {
+    "id": "dsv4-25",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/generate.py",
+    "destination": "inference/generate.py"
+  },
+  {
+    "id": "dsv4-26",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/kernel.py",
+    "destination": "inference/kernel.py"
+  },
+  {
+    "id": "dsv4-27",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/model.py",
+    "destination": "inference/model.py"
+  },
+  {
+    "id": "dsv4-28",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "inference/requirements.txt",
+    "destination": "inference/requirements.txt"
+  },
+  {
+    "id": "dsv4-29",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00001-of-00048.safetensors",
+    "destination": "model-00001-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-30",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00002-of-00048.safetensors",
+    "destination": "model-00002-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-31",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00003-of-00048.safetensors",
+    "destination": "model-00003-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-32",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00004-of-00048.safetensors",
+    "destination": "model-00004-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-33",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00005-of-00048.safetensors",
+    "destination": "model-00005-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-34",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00006-of-00048.safetensors",
+    "destination": "model-00006-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-35",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00007-of-00048.safetensors",
+    "destination": "model-00007-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-36",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00008-of-00048.safetensors",
+    "destination": "model-00008-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-37",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00009-of-00048.safetensors",
+    "destination": "model-00009-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-38",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00010-of-00048.safetensors",
+    "destination": "model-00010-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-39",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00011-of-00048.safetensors",
+    "destination": "model-00011-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-40",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00012-of-00048.safetensors",
+    "destination": "model-00012-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-41",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00013-of-00048.safetensors",
+    "destination": "model-00013-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-42",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00014-of-00048.safetensors",
+    "destination": "model-00014-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-43",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00015-of-00048.safetensors",
+    "destination": "model-00015-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-44",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00016-of-00048.safetensors",
+    "destination": "model-00016-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-45",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00017-of-00048.safetensors",
+    "destination": "model-00017-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-46",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00018-of-00048.safetensors",
+    "destination": "model-00018-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-47",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00019-of-00048.safetensors",
+    "destination": "model-00019-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-48",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00020-of-00048.safetensors",
+    "destination": "model-00020-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-49",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00021-of-00048.safetensors",
+    "destination": "model-00021-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-50",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00022-of-00048.safetensors",
+    "destination": "model-00022-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-51",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00023-of-00048.safetensors",
+    "destination": "model-00023-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-52",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00024-of-00048.safetensors",
+    "destination": "model-00024-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-53",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00025-of-00048.safetensors",
+    "destination": "model-00025-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-54",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00026-of-00048.safetensors",
+    "destination": "model-00026-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-55",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00027-of-00048.safetensors",
+    "destination": "model-00027-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-56",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00028-of-00048.safetensors",
+    "destination": "model-00028-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-57",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00029-of-00048.safetensors",
+    "destination": "model-00029-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-58",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00030-of-00048.safetensors",
+    "destination": "model-00030-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-59",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00031-of-00048.safetensors",
+    "destination": "model-00031-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-60",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00032-of-00048.safetensors",
+    "destination": "model-00032-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-61",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00033-of-00048.safetensors",
+    "destination": "model-00033-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-62",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00034-of-00048.safetensors",
+    "destination": "model-00034-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-63",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00035-of-00048.safetensors",
+    "destination": "model-00035-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-64",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00036-of-00048.safetensors",
+    "destination": "model-00036-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-65",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00037-of-00048.safetensors",
+    "destination": "model-00037-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-66",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00038-of-00048.safetensors",
+    "destination": "model-00038-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-67",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00039-of-00048.safetensors",
+    "destination": "model-00039-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-68",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00040-of-00048.safetensors",
+    "destination": "model-00040-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-69",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00041-of-00048.safetensors",
+    "destination": "model-00041-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-70",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00042-of-00048.safetensors",
+    "destination": "model-00042-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-71",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00043-of-00048.safetensors",
+    "destination": "model-00043-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-72",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00044-of-00048.safetensors",
+    "destination": "model-00044-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-73",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00045-of-00048.safetensors",
+    "destination": "model-00045-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-74",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00046-of-00048.safetensors",
+    "destination": "model-00046-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-75",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00047-of-00048.safetensors",
+    "destination": "model-00047-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-76",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model-00048-of-00048.safetensors",
+    "destination": "model-00048-of-00048.safetensors"
+  },
+  {
+    "id": "dsv4-77",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "model.safetensors.index.json",
+    "destination": "model.safetensors.index.json"
+  },
+  {
+    "id": "dsv4-78",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "results/refusal32-clean-20260801T183759Z.json",
+    "destination": "results/refusal32-clean-20260801T183759Z.json"
+  },
+  {
+    "id": "dsv4-79",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "results/speed-clean-summary.json",
+    "destination": "results/speed-clean-summary.json"
+  },
+  {
+    "id": "dsv4-80",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "tokenizer.json",
+    "destination": "tokenizer.json"
+  },
+  {
+    "id": "dsv4-81",
+    "repo": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "path": "tokenizer_config.json",
+    "destination": "tokenizer_config.json"
+  }
+]

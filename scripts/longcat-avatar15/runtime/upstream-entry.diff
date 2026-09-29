@@ -1,0 +1,126 @@
+--- run_demo_avatar_single_audio_to_video.py
++++ run_avatar15_clean_speech.py
+@@ -20,13 +20,15 @@
+ from longcat_video.modules.autoencoder_kl_wan import AutoencoderKLWan
+ from longcat_video.modules.avatar.longcat_video_dit_avatar import LongCatVideoAvatarTransformer3DModel
+ from longcat_video.modules.quantization import load_quantized_dit
++if os.environ.get("LONGCAT_META_LOAD") == "1":
++    from meta_loader import load_quantized_dit
+ from longcat_video.context_parallel import context_parallel_util
+ 
+ # -------- avatar related --------
+ import librosa
+ from longcat_video.audio_process import get_audio_encoder, get_audio_feature_extractor
+ from longcat_video.audio_process.torch_utils import save_video_ffmpeg
+-from audio_separator.separator import Separator
++from runtime_guards import require_dmd, require_clean_audio, verify_audio_unchanged, load_required_dmd
+ 
+ 
+ def torch_gc():
+@@ -38,18 +40,6 @@
+     random_part = str(random.randint(100000, 999999))
+     uid = timestamp_part + random_part
+     return uid
+-
+-def extract_vocal_from_speech(source_path, target_path, vocal_separator, audio_output_dir_temp):
+-    outputs = vocal_separator.separate(source_path)
+-    if len(outputs) <= 0:
+-        print("Audio separate failed. Using raw audio.")
+-        return None
+-        
+-    default_vocal_path = audio_output_dir_temp / "vocals" / outputs[0]
+-    default_vocal_path = default_vocal_path.resolve().as_posix()
+-    cmd = f"mv '{default_vocal_path}' '{target_path}'"
+-    os.system(cmd)    
+-    return target_path
+ 
+ def generate(args):
+ 
+@@ -73,6 +63,11 @@
+         text_guidance_scale = 1.0
+         audio_guidance_scale = 1.0
+ 
++    if model_type != "avatar-v1.5" or not use_distill:
++        raise ValueError("This audited entry requires avatar-v1.5 and --use_distill")
++    # Verify before initializing CUDA or allocating models. No missing-adapter fallback.
++    distill_checkpoint_path = require_dmd(checkpoint_dir)
++
+     # set up default inference params
+     save_fps = 16
+     audio_stride = 2
+@@ -92,14 +87,14 @@
+         input_data = json.load(f)
+     prompt = input_data['prompt']
+     negative_prompt = "Close-up, Bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards"
+-    raw_speech_path = input_data['cond_audio']['person1']
++    raw_speech_path, raw_speech_sha256 = require_clean_audio(input_data['cond_audio']['person1'])
+     
+     # prepare distributed environment
+     rank = int(os.environ['RANK'])
+     num_gpus = torch.cuda.device_count()
+     local_rank = rank % num_gpus
+     torch.cuda.set_device(local_rank)
+-    dist.init_process_group(backend="nccl", timeout=datetime.timedelta(seconds=3600*24))
++    dist.init_process_group(backend="nccl", timeout=datetime.timedelta(seconds=600))
+     global_rank    = dist.get_rank()
+     num_processes  = dist.get_world_size()
+ 
+@@ -129,10 +124,7 @@
+         else:
+             dit = LongCatVideoAvatarTransformer3DModel.from_pretrained(checkpoint_dir, subfolder="base_model", cp_split_hw=cp_split_hw, torch_dtype=torch.bfloat16)
+         if use_distill:
+-            distill_checkpoint_path = os.path.join(checkpoint_dir, 'lora', f'dmd_lora.safetensors')
+-            if os.path.exists(distill_checkpoint_path):
+-                dit.load_lora(distill_checkpoint_path, "dmd", multiplier=1.0, lora_network_dim=128, lora_network_alpha=64)
+-                dit.enable_loras(["dmd"])
++            load_required_dmd(dit, distill_checkpoint_path)
+     else:
+         raise ValueError(f"Unsupported model_type: {model_type}. Expected 'avatar-v1.0' or 'avatar-v1.5'.")
+     
+@@ -144,20 +136,6 @@
+     audio_encoder = get_audio_encoder(audio_model_checkpoint_path, model_type).to(local_rank)
+     audio_feature_extractor = get_audio_feature_extractor(audio_model_checkpoint_path, model_type)
+ 
+-    vocal_separator_path = os.path.join(checkpoint_dir, 'vocal_separator/Kim_Vocal_2.onnx')
+-    audio_output_dir_temp = f"./audio_temp_file"
+-    os.makedirs(audio_output_dir_temp, exist_ok=True)
+-    audio_output_dir_temp = Path(audio_output_dir_temp)
+-    audio_separator_model_path = os.path.dirname(vocal_separator_path)
+-    audio_separator_model_name = os.path.basename(vocal_separator_path)
+-    vocal_separator = Separator(
+-        output_dir=audio_output_dir_temp / "vocals",
+-        output_single_stem="vocals",
+-        model_file_dir=audio_separator_model_path,
+-    )
+-    vocal_separator.load_model(audio_separator_model_name)
+-
+-    
+     # initialize pipeline
+     pipe = LongCatVideoAvatarPipeline(
+         tokenizer = tokenizer,
+@@ -178,13 +156,11 @@
+     generator.manual_seed(seed)
+ 
+     if cp_rank == 0:
+-        # extract vocal
+-        temp_vocal_path = extract_vocal_from_speech(raw_speech_path, f"/tmp/temp_speech_{generate_random_uid()}_{global_rank}_vocal.wav", vocal_separator, audio_output_dir_temp)
+-        assert temp_vocal_path is not None and os.path.exists(temp_vocal_path), f"No vocal detected"    
++        # Clean speech is read directly; no separator or temporary input ownership.
+ 
+         # audio padding to target length
+         generate_duration = num_frames / save_fps + (num_segments-1)*(num_frames-num_cond_frames) / save_fps
+-        speech_array, sr = librosa.load(temp_vocal_path, sr=16000)
++        speech_array, sr = librosa.load(raw_speech_path, sr=16000)
+         source_duraion = len(speech_array) / sr
+         added_sample_nums = math.ceil((generate_duration - source_duraion) * sr)
+         if added_sample_nums > 0:
+@@ -201,8 +177,7 @@
+             context_parallel_util.cp_broadcast(full_audio_emb_tensor_shape_list)
+             context_parallel_util.cp_broadcast(full_audio_emb)
+         
+-        if os.path.exists(temp_vocal_path):
+-            os.remove(temp_vocal_path)
++        verify_audio_unchanged(raw_speech_path, raw_speech_sha256)
+ 
+     elif context_parallel_util.get_cp_size() > 1:
+         full_audio_emb_tensor_shape_list = torch.zeros(3, dtype=torch.int64, device=local_rank)

@@ -1,0 +1,9 @@
+[
+  {
+    "id": "flux2-abliterated-000",
+    "repo": "silveroxides/FLUX.2-dev-fp8_scaled",
+    "revision": "a8e566fd208b5b6735c1611622fa3999fdfe9b9d",
+    "path": "mistral_small_3_abliterated_v2_fp8mixed.safetensors",
+    "destination": "mistral_small_3_abliterated_v2_fp8mixed.safetensors"
+  }
+]

@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "kind": "deepseek-v4-flash-dspark-two-node-artifact-lock",
+  "finalized": false,
+  "source": {
+    "repository": "https://github.com/MiaAI-Lab/DeepSeek-v4-Flash-DSpark-2x-DGX-Spark.git",
+    "commit": "0107cef1835a56d1a2bcdabf7d9e1a085b70338b",
+    "guard_policy": "The checkout HEAD and every patch-target preimage SHA-256 must match this lock before a local runtime adaptation is applied. No branch, tag, tip, or latest selection is allowed.",
+    "patch_mechanism": "scripts/prepare-deepseek-v4-flash-dspark.sh apply-runtime-patch",
+    "local_patch": {
+      "path": "patches/deepseek-v4-flash-dspark-local-runtime.patch",
+      "sha256": "b3eb2ad8a1fe9bab9f3bb49b6ea83a5a0d257d2bb860d99fbf17a4f27fb64bce"
+    },
+    "patch_targets": [
+      {
+      "path": "start-deepseek-v4-flash-dspark.sh",
+      "preimage_sha256": "38d777e5ff8d1c21b642f3720ffe25a6320d1345c1b0da9ba3a1631feaa9bb7a",
+      "postimage_sha256": "d0d0ed01e8a4a48a12509bee6b98a96b9c2a684a4806cbed5244a193bc79f1f4"
+      },
+      {
+      "path": "docker-compose.dspark.yml",
+      "preimage_sha256": "1de6b25404787d9b9d826860a069a45271cfeb02c0fc71d82ffb018a4abb5073",
+      "postimage_sha256": "b9354ef64287b6da16d8ad35da76a38bc4b019c40df3dfdeb26a784f03587ff6"
+      }
+    ]
+  },
+  "runtime_image": {
+    "reference": "ghcr.io/anemll/dspark-vllm-gx10@sha256:a83948492cf13df455170fb42885f5ef4db54fefe0feff0f841ecbff464ac9d8",
+    "manifest_digest": "sha256:a83948492cf13df455170fb42885f5ef4db54fefe0feff0f841ecbff464ac9d8",
+    "config_digest": "sha256:3430d6614a8e2925f34d059af6caf05aff42387326db4d05639a60f10f2654d8",
+    "platform": "linux/arm64",
+    "compressed_layer_count": 42,
+    "compressed_layer_bytes": 9787492120,
+    "distribution": "head-save-fabric-copy-worker-load",
+    "worker_registry_pull_allowed": false,
+    "image_id": null,
+    "rootfs_diff_ids": null,
+    "archive": {
+      "path": null,
+      "size": null,
+      "sha256": null
+    },
+    "node_image_ids": {}
+  },
+  "gateway_image": {
+    "reference": "docker.io/library/nginx@sha256:77d740efa8f9c4753f2a7212d8422b8c77411681971f400ea03d07fe38476cac",
+    "tag_provenance": "docker.io/library/nginx:1.29.1-alpine",
+    "manifest_digest": "sha256:77d740efa8f9c4753f2a7212d8422b8c77411681971f400ea03d07fe38476cac",
+    "config_digest": "sha256:35f3cbee4fb77c3efb39f2723a21ce181906139442a37de8ffc52d89641d9936",
+    "platform": "linux/arm64/v8",
+    "compressed_layer_count": 8,
+    "compressed_layer_bytes": 22924818,
+    "placement": "head-only",
+    "worker_registry_pull_allowed": false,
+    "image_id": null,
+    "rootfs_diff_ids": null
+  },
+  "image_acquisition": {
+    "approval_message_sha256": "069cac019d68a3ee4d4fe1e4d173825b62910d8148589efde0dcace5e984fd28",
+    "network_interface": "dgx-vpn",
+    "rx_counter": "/sys/class/net/dgx-vpn/statistics/rx_bytes",
+    "cumulative_rx_budget_bytes": 12000000000,
+    "max_pull_calls": 2,
+    "allowed_registry_pull_role": "head",
+    "cache_policy": "exact-digest-and-valid-journal-only",
+    "retry_policy": "same-digest-layer-resume-only",
+    "forbidden": [
+      "mutable-tag-pull",
+      "digest-substitution",
+      "worker-registry-pull",
+      "credential-or-signed-url-evidence"
+    ]
+  },
+  "fabric_transfer": {
+    "worker": "operator@192.0.2.34",
+    "identity_file": "/home/operator/.ssh/deepseek-v4-flash-worker",
+    "known_hosts_file": "/home/operator/.ssh/deepseek-v4-flash-worker-known_hosts",
+    "ssh_policy": [
+      "BatchMode=yes",
+      "StrictHostKeyChecking=yes"
+    ],
+    "model_destination": "operator@192.0.2.34:/home/operator/dgx-models/deepseek-v4-flash-ablit-anchored/",
+    "runtime_archive_destination": "operator@192.0.2.34:/home/operator/dgx-models/deepseek-v4-flash-dspark/artifacts/dspark-vllm-gx10-a83948492cf13df4.tar",
+    "runtime_archive_receipt_destination": "operator@192.0.2.34:/home/operator/dgx-models/deepseek-v4-flash-dspark/artifacts/dspark-vllm-gx10-a83948492cf13df4.tar.receipt.json"
+  },
+  "model": {
+    "repository": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "expected_path_count": 81,
+    "expected_total_bytes": 166899479893,
+    "expected_shard_count": 48,
+    "allowlist_source": "manifests/deepseek-v4-flash-ablit-anchored-download.json",
+    "closure_algorithm": "sha256 of UTF-8 rows '<sha256>  <size>  <relative_path>\\n' in allowlist order",
+    "closure_finalized": false,
+    "root_sha256": null,
+    "verified_shard_count": 0,
+    "payload_extra_path_count": 0,
+    "source_extra_path_count": null,
+    "files": [],
+    "allowlisted_paths": [
+      ".gitattributes",
+      "ABLIT_META.json",
+      "DSPARK_ANCHOR_MANIFEST.json",
+      "LICENSE",
+      "README.md",
+      "RESPONSIBLE_USE.md",
+      "ablit/refusal_direction_r1.pt",
+      "ablit/refusal_direction_reablit_20260726.pt",
+      "config.json",
+      "encoding/README.md",
+      "encoding/encoding_dsv4.py",
+      "encoding/test_encoding_dsv4.py",
+      "encoding/tests/test_input_1.json",
+      "encoding/tests/test_input_2.json",
+      "encoding/tests/test_input_3.json",
+      "encoding/tests/test_input_4.json",
+      "encoding/tests/test_output_1.txt",
+      "encoding/tests/test_output_2.txt",
+      "encoding/tests/test_output_3.txt",
+      "encoding/tests/test_output_4.txt",
+      "generation_config.json",
+      "inference/README.md",
+      "inference/config.json",
+      "inference/convert.py",
+      "inference/generate.py",
+      "inference/kernel.py",
+      "inference/model.py",
+      "inference/requirements.txt",
+      "model-00001-of-00048.safetensors",
+      "model-00002-of-00048.safetensors",
+      "model-00003-of-00048.safetensors",
+      "model-00004-of-00048.safetensors",
+      "model-00005-of-00048.safetensors",
+      "model-00006-of-00048.safetensors",
+      "model-00007-of-00048.safetensors",
+      "model-00008-of-00048.safetensors",
+      "model-00009-of-00048.safetensors",
+      "model-00010-of-00048.safetensors",
+      "model-00011-of-00048.safetensors",
+      "model-00012-of-00048.safetensors",
+      "model-00013-of-00048.safetensors",
+      "model-00014-of-00048.safetensors",
+      "model-00015-of-00048.safetensors",
+      "model-00016-of-00048.safetensors",
+      "model-00017-of-00048.safetensors",
+      "model-00018-of-00048.safetensors",
+      "model-00019-of-00048.safetensors",
+      "model-00020-of-00048.safetensors",
+      "model-00021-of-00048.safetensors",
+      "model-00022-of-00048.safetensors",
+      "model-00023-of-00048.safetensors",
+      "model-00024-of-00048.safetensors",
+      "model-00025-of-00048.safetensors",
+      "model-00026-of-00048.safetensors",
+      "model-00027-of-00048.safetensors",
+      "model-00028-of-00048.safetensors",
+      "model-00029-of-00048.safetensors",
+      "model-00030-of-00048.safetensors",
+      "model-00031-of-00048.safetensors",
+      "model-00032-of-00048.safetensors",
+      "model-00033-of-00048.safetensors",
+      "model-00034-of-00048.safetensors",
+      "model-00035-of-00048.safetensors",
+      "model-00036-of-00048.safetensors",
+      "model-00037-of-00048.safetensors",
+      "model-00038-of-00048.safetensors",
+      "model-00039-of-00048.safetensors",
+      "model-00040-of-00048.safetensors",
+      "model-00041-of-00048.safetensors",
+      "model-00042-of-00048.safetensors",
+      "model-00043-of-00048.safetensors",
+      "model-00044-of-00048.safetensors",
+      "model-00045-of-00048.safetensors",
+      "model-00046-of-00048.safetensors",
+      "model-00047-of-00048.safetensors",
+      "model-00048-of-00048.safetensors",
+      "model.safetensors.index.json",
+      "results/refusal32-clean-20260801T183759Z.json",
+      "results/speed-clean-summary.json",
+      "tokenizer.json",
+      "tokenizer_config.json"
+    ]
+  },
+  "official_anchor_comparison": {
+    "repository": "drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors",
+    "revision": "a1e69379517383be9cd78c67defb04e77ad6aa68",
+    "independent_metadata_required": true,
+    "tensor_inventory_required": true,
+    "metadata_source": {
+      "url": "https://huggingface.co/api/models/drowzeys/keys-DeepSeekV4-Flash-GA-0731-Dspark-Abliterated-Anchored-Tensors/revision/a1e69379517383be9cd78c67defb04e77ad6aa68?blobs=true",
+      "authenticated": false,
+      "snapshot_path": "manifests/deepseek-v4-flash-official-metadata.json",
+      "observed_at": "2026-08-30T23:42:58.820777+00:00",
+      "response_body_sha256": "813c82dd671c39e0d358fdd4cf1d1644f3a2058fc52f403e5bd998269f0dc365",
+      "inventory_sha256": "9d00455aaad092f95ec0d7fd9e75b574f358c3a02d2dc98a23df86584508ea1a"
+    },
+    "files": [
+      {"path": "model-00001-of-00048.safetensors", "size": 1059061856, "sha256": "f3668ba4cccf1ca6a7eb84e888fb92c1cdc7204d472ba9db771e6fd3abf6b874"},
+      {"path": "model-00008-of-00048.safetensors", "size": 3590024776, "sha256": "224968d2b27f8669365ec08657a768dfec40da0585f85f302a31495931f6a526"},
+      {"path": "model-00016-of-00048.safetensors", "size": 3590026352, "sha256": "5b7ce16064a6edf193895bb7e87eaabf231d586b8ed3d1234b3199769227690b"},
+      {"path": "model-00024-of-00048.safetensors", "size": 3590026352, "sha256": "bbcb99c313bdefd48bbe02840e39ce04e3fb6d20b2fbb897df51b835b7165415"},
+      {"path": "model-00032-of-00048.safetensors", "size": 3590026352, "sha256": "4396e5d6f475c2b4697f723ff3fe847bc76cd5eb07fdd199e74a647750d81b36"},
+      {"path": "model-00040-of-00048.safetensors", "size": 3590026352, "sha256": "8bc93d8a7d1987dc86b14e22b1d8f42ec31da92c56edd9f312daf43f33a6a206"},
+      {"path": "model-00048-of-00048.safetensors", "size": 3692775244, "sha256": "cc43742bd24ae6bcdea343a91442f6f66aed2cfebcc6b235470204851ce2f8a9"}
+    ]
+  },
+  "offline_environment": {
+    "HF_HUB_OFFLINE": "1",
+    "TRANSFORMERS_OFFLINE": "1",
+    "HF_DATASETS_OFFLINE": "1",
+    "HF_HUB_DISABLE_TELEMETRY": "1"
+  },
+  "license_gate": {
+    "required_payload_paths": ["LICENSE", "RESPONSIBLE_USE.md"],
+    "operator_acceptance_receipt": null,
+    "redistribution_claim": "No unrestricted redistribution is asserted. Preserve MIT notices and follow RESPONSIBLE_USE.md."
+  },
+  "finalization": null,
+  "integration_artifacts": {
+    "finalized": false,
+    "files": [
+      {
+        "source_path": "gateway/deepseek-v4-flash-nginx-staging.conf",
+        "install_path": "/etc/deepseek-v4-flash/nginx-staging.conf",
+        "mode": "0644",
+        "sha256": null
+      },
+      {
+        "source_path": "systemd/deepseek-v4-flash-gateway-staging.service",
+        "install_path": "/etc/systemd/system/deepseek-v4-flash-gateway-staging.service",
+        "mode": "0644",
+        "sha256": null
+      }
+    ],
+    "semantic_constraints": {
+      "listen": "127.0.0.1:11435",
+      "restart": "no",
+      "manual_only": true
+    }
+  },
+  "service_assets": {
+    "finalized": false,
+    "source_files": [
+      {"source_path": "scripts/prepare-deepseek-v4-flash-dspark.sh", "sha256": null},
+      {"source_path": "scripts/run-deepseek-v4-flash-dspark.sh", "sha256": null},
+      {"source_path": "scripts/deepseek-v4-flash-nccl-probe.py", "sha256": null},
+      {"source_path": "scripts/recover-deepseek-v4-flash.py", "sha256": null},
+      {"source_path": "configs/deepseek-v4-flash-dspark.env.example", "sha256": null},
+      {"source_path": "systemd/deepseek-v4-flash-dspark.service", "sha256": null},
+      {"source_path": "systemd/deepseek-v4-flash-gateway.service", "sha256": null},
+      {"source_path": "systemd/deepseek-v4-flash-gateway-staging.service", "sha256": null},
+      {"source_path": "systemd/deepseek-v4-flash-fallback.service", "sha256": null},
+      {"source_path": "systemd/deepseek-v4-flash-fallback.timer", "sha256": null},
+      {"source_path": "gateway/deepseek-v4-flash-nginx.conf", "sha256": null},
+      {"source_path": "gateway/deepseek-v4-flash-nginx-staging.conf", "sha256": null}
+    ],
+    "compose_source_path": "docker-compose.dspark.yml",
+    "env_render": {
+      "template": "configs/deepseek-v4-flash-dspark.env.example",
+      "role_key": "DSPARK_ROLE",
+      "roles": ["head", "worker"]
+    },
+    "roles": {
+      "head": [
+        {"kind": "copy", "source_path": "scripts/prepare-deepseek-v4-flash-dspark.sh", "install_path": "/usr/local/libexec/prepare-deepseek-v4-flash-dspark.sh", "mode": "0755"},
+        {"kind": "copy", "source_path": "scripts/run-deepseek-v4-flash-dspark.sh", "install_path": "/usr/local/libexec/run-deepseek-v4-flash-dspark.sh", "mode": "0755"},
+        {"kind": "render-env", "source_path": "configs/deepseek-v4-flash-dspark.env.example", "install_path": "/etc/deepseek-v4-flash-dspark.env", "mode": "0644"},
+        {"kind": "patched-compose", "source_path": "docker-compose.dspark.yml", "install_path": "/opt/deepseek-v4-flash-dspark/docker-compose.dspark.yml", "mode": "0644"},
+        {"kind": "copy", "source_path": "systemd/deepseek-v4-flash-dspark.service", "install_path": "/etc/systemd/system/deepseek-v4-flash-dspark.service", "mode": "0644"},
+        {"kind": "copy", "source_path": "scripts/recover-deepseek-v4-flash.py", "install_path": "/usr/local/libexec/recover-deepseek-v4-flash", "mode": "0755"},
+        {"kind": "copy", "source_path": "systemd/deepseek-v4-flash-gateway.service", "install_path": "/etc/systemd/system/deepseek-v4-flash-gateway.service", "mode": "0644"},
+        {"kind": "copy", "source_path": "systemd/deepseek-v4-flash-gateway-staging.service", "install_path": "/etc/systemd/system/deepseek-v4-flash-gateway-staging.service", "mode": "0644"},
+        {"kind": "copy", "source_path": "systemd/deepseek-v4-flash-fallback.service", "install_path": "/etc/systemd/system/deepseek-v4-flash-fallback.service", "mode": "0644"},
+        {"kind": "copy", "source_path": "systemd/deepseek-v4-flash-fallback.timer", "install_path": "/etc/systemd/system/deepseek-v4-flash-fallback.timer", "mode": "0644"},
+        {"kind": "copy", "source_path": "gateway/deepseek-v4-flash-nginx.conf", "install_path": "/etc/deepseek-v4-flash/nginx.conf", "mode": "0644"},
+        {"kind": "copy", "source_path": "gateway/deepseek-v4-flash-nginx-staging.conf", "install_path": "/etc/deepseek-v4-flash/nginx-staging.conf", "mode": "0644"},
+        {"kind": "secret-map", "install_path": "/etc/deepseek-v4-flash/gateway-secret.conf", "mode": "0600"}
+      ],
+      "worker": [
+        {"kind": "copy", "source_path": "scripts/prepare-deepseek-v4-flash-dspark.sh", "install_path": "/usr/local/libexec/prepare-deepseek-v4-flash-dspark.sh", "mode": "0755"},
+        {"kind": "copy", "source_path": "scripts/run-deepseek-v4-flash-dspark.sh", "install_path": "/usr/local/libexec/run-deepseek-v4-flash-dspark.sh", "mode": "0755"},
+        {"kind": "render-env", "source_path": "configs/deepseek-v4-flash-dspark.env.example", "install_path": "/etc/deepseek-v4-flash-dspark.env", "mode": "0644"},
+        {"kind": "patched-compose", "source_path": "docker-compose.dspark.yml", "install_path": "/opt/deepseek-v4-flash-dspark/docker-compose.dspark.yml", "mode": "0644"},
+        {"kind": "copy", "source_path": "systemd/deepseek-v4-flash-dspark.service", "install_path": "/etc/systemd/system/deepseek-v4-flash-dspark.service", "mode": "0644"}
+      ]
+    },
+    "constraints": {
+      "services_restart": "no",
+      "units_initially_disabled": true,
+      "secret_owner": "root:root",
+      "secret_mode": "0600",
+      "compose_service": "vllm-dspark",
+      "worker_forbidden_kinds": ["gateway", "fallback", "secret"]
+    }
+  },
+  "runtime_parameters": {
+    "tensor_parallel_size": 2,
+    "pipeline_parallel_size": 1,
+    "quantization": "nvfp4_ds_mla",
+    "mtp_num_tokens": 5,
+    "max_model_len": 1048576,
+    "max_num_seqs": 6,
+    "gpu_memory_utilization_text": 0.835,
+    "restart_policy": "no",
+    "internal_host": "127.0.0.1",
+    "internal_port": 18888
+  }
+}

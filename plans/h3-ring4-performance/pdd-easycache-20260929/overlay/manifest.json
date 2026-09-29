@@ -1,0 +1,26 @@
+{
+  "source_commit": "e970453b433e1467e22f6d925f270563417540b5",
+  "contract": "h3-pdd-easycache-v1",
+  "files": {
+    "h3_pdd.py": {
+      "target": "runtime/utils/h3_pdd.py",
+      "sha256": "97ef9014d6ce8d5162d1342cf16004f343092b4472f14601ad47d8fe5303f721"
+    },
+    "h3_easycache.py": {
+      "target": "runtime/utils/h3_easycache.py",
+      "sha256": "27d132fa176f9e83f7b5d237546a51f846d18917024d862dc85d4a2d054e2996"
+    },
+    "denoising.py": {
+      "target": "runtime/pipelines_core/stages/model_specific_stages/minimax_h3/stages/denoising.py",
+      "sha256": "f303f83d2e602f7cf38b62df40422edcb04fe97a8389b2f3e954de7bf1950e77"
+    },
+    "timestep_preparation.py": {
+      "target": "runtime/pipelines_core/stages/model_specific_stages/minimax_h3/stages/timestep_preparation.py",
+      "sha256": "fec8df7f523a031257d522dc0c9696c9fdbff3338fdd98d0d5e6c3124bcd1518"
+    },
+    "denoise_loop.py": {
+      "target": "runtime/pipelines_core/stages/model_specific_stages/minimax_h3/denoise_loop.py",
+      "sha256": "4acccf615b02e58763b35d097a2439940112795605a8e283e4f0e066570e1ca2"
+    }
+  }
+}
